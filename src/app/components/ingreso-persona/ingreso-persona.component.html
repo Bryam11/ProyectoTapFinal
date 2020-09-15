@@ -1,0 +1,48 @@
+<div class="navigation-example" style="background-image:url('assets/img/header.jpg')">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <h1 style="text-align: center;"><strong><span style="color: #ffffff;">POST OF PERSON</span></strong></h1>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <form>
+                <div class="col-sm-18 col-lg-16">
+                    <div class="form-group">
+                        <input [(ngModel)]="objectpersona.cedula" type="text" value="" placeholder="Cedula" class="form-control" name="cedula" />
+                    </div>
+                </div>
+                <div class="col-sm-18 col-lg-16">
+                    <div class="form-group">
+                        <input [(ngModel)]="objectpersona.nombre" type="text" value="" placeholder="Nombre" class="form-control" name="nombre" />
+                    </div>
+                </div>
+                <div class="col-sm-18 col-lg-16">
+                    <div class="form-group">
+                        <input [(ngModel)]="objectpersona.apellido" type="text" value="" placeholder="Apellido" class="form-control" name="apellido" />
+                    </div>
+                </div>
+                <div class="col-sm-18 col-lg-16">
+                    <div class="form-group">
+                        <input [(ngModel)]="objectpersona.edad" type="text" value="" placeholder="Edad" class="form-control" name="edad" />
+                    </div>
+                </div>
+                <div class="col-sm-18 col-lg-16">
+                    <div class="form-group">
+                        <input [(ngModel)]="objectpersona.email" type="text" value="" placeholder="Email" class="form-control" name="email" />
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p>
+                        <a class=" btn btn-danger btn-round" (click)="subirPersonasService()">Save the shoes</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
