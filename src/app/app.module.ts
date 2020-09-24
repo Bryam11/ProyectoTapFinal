@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
+import { APPROUTING } from './app.routing';
 import { ExamplesModule } from './examples/examples.module';
 
 import { AppComponent } from './app.component';
@@ -12,21 +11,38 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { PersonaControllerService } from './Rest/api/personaController.service';
 import { PublicacionControllerService } from './Rest/api/publicacionController.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './components/footer/footer.component';
+import { BodyComponent } from './components/body/body.component';
+import { BuscarPorCedulaComponent } from './components/buscar-por-cedula/buscar-por-cedula.component';
+import { IngresoPersonaComponent } from './components/ingreso-persona/ingreso-persona.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { CommonModule } from '@angular/common';
+import { NouisliderModule } from 'ng2-nouislider';
+import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
+import { IngresoPublicacioComponent } from './components/ingreso-publicacio/ingreso-publicacio.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavbarComponent
+        NavbarComponent,
+        FooterComponent,
+        BodyComponent,
+        BuscarPorCedulaComponent,
+        IngresoPersonaComponent,
+        IngresoPublicacioComponent,
+        NavigationComponent
     ],
     imports: [
         BrowserAnimationsModule,
         NgbModule,
         FormsModule,
         RouterModule,
-        AppRoutingModule,
-        ComponentsModule,
+        APPROUTING,
         ExamplesModule,
-        HttpClientModule
+        HttpClientModule,
+        CommonModule,
+        NouisliderModule,
+        JwBootstrapSwitchNg2Module
     ],
     providers: [PersonaControllerService,PublicacionControllerService],
     bootstrap: [AppComponent]
