@@ -13,7 +13,7 @@ import { PublicacionControllerService } from './Rest/api/publicacionController.s
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { BodyComponent } from './components/body/body.component';
-import { BuscarPorCedulaComponent } from './components/buscar-por-cedula/buscar-por-cedula.component';
+
 import { IngresoPersonaComponent } from './components/ingreso-persona/ingreso-persona.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { CommonModule } from '@angular/common';
@@ -27,7 +27,7 @@ import { IngresoPublicacioComponent } from './components/ingreso-publicacio/ingr
         NavbarComponent,
         FooterComponent,
         BodyComponent,
-        BuscarPorCedulaComponent,
+    
         IngresoPersonaComponent,
         IngresoPublicacioComponent,
         NavigationComponent
