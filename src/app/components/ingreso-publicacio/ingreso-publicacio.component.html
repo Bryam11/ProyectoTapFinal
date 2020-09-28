@@ -1,97 +1,59 @@
 <div class="navigation-example" style="background-image:url('assets/img/header.jpg')">
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="container">
-        <h1 style="text-align: center;"><strong><span style="color: #ffffff;">POST OF PUBLICATION</span></strong></h1>
-    </div>
-    <div class="container">
-        <div class="search">
-            <h1>START YOUR SEARCH HERE</h1>
-            <form>
-                <input [(ngModel)]="personaPublicacionToSearch" name="cedula" autofocus type="text" placeholder="Enter the name of the brand...">
-                <button (click)=" buscarPersonaByCedulaService()"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-    </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="container">
-        <div style="align-content: center;">
-            <!-- Brand of  user -->
-            <div class="col-md-6 text-center">
-                <div class="text-center">
-                    <label style="color:white; margin-left: 215px; margin-right: auto;">Data User</label>
-                </div>
-                <table class="table table-hover table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Cedula</th>
-                            <th scope="col">Edad</th>
-                            <th scope="col">Email</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let persona of ListaPersonas">
-                            <td>{{persona.nombre}}</td>
-                            <td>{{persona.cedula}}</td>
-                            <td>{{persona.edad}}</td>
-                            <td>{{persona.email}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <br>
-    <br>
-
-
-
-    <div id="content">
+    <div class="">
         <div class="container">
-
             <div class="row">
-                <div id="left">
-                    <form>
-                        <div class="col-sm-10 col-lg-8">
-                            <div class="form-group">
-                                <input [(ngModel)]="publicacion.cedula" type="text" value="" placeholder="Cedula" class="form-control" name="cedulas" />
-                            </div>
-                        </div>
-                        <div class="col-sm-10 col-lg-8">
-                            <div class="form-group">
-                                <input [(ngModel)]="publicacion.mensaje" type="text" value="" placeholder="Mensaje" class="form-control" name="mensaje" />
-                            </div>
-                        </div>
-                        <div class="col-sm-10 col-lg-8">
-                            <div class="text-center">
-                                <a>
-                                    <select class="btn btn-outline-neutral btn-round btn-lg" [(ngModel)]="tipoSeleccionada" name="tipoMensaje" (change)="shoesChangeListener()">
-    
-                                <option *ngFor="let mensaje of listaMensajes">{{mensaje}}</option>
-                            </select>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="text-center">
-                            <p>
-                                <a class=" btn btn-danger btn-round" (click)=" guardarPublicacion()">Save the shoes</a>
-                            </p>
-                        </div>
-                    </form>
+                <div class="col-md-10 ml-auto col-xl-6 mr-auto">
+                    <p class="category">Publications</p>
+                    <!-- Nav tabs -->
+              <tr *ngFor="let publicaciones of ListaPersonas |paginate:{itemsPerPage:7, currentPage:page}">
+                    <div class="card">
+                      <div class="nav-tabs-navigation">
+                          <div class="nav-tabs-wrapper">
+                              <ngb-tabset [justify]="'center'" class="text-center">
+                                  <ngb-tab>
+                                    <ng-template ngbTabTitle>
+                                      <i class="now-ui-icons objects_umbrella-13"></i> Home
+                                    </ng-template>
+                                      <ng-template ngbTabContent>
+                                        <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+                                      </ng-template>
+                                  </ngb-tab>
+                                  <ngb-tab>
+                                    <ng-template ngbTabTitle>
+                                      <i class="now-ui-icons shopping_cart-simple"></i> Profile
+                                    </ng-template>
+                                      <ng-template ngbTabContent>
+                                          <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+                                      </ng-template>
+                                  </ngb-tab>
+                                  <ngb-tab>
+                                    <ng-template ngbTabTitle>
+                                        <i class="now-ui-icons shopping_shop"></i> Messages
+                                    </ng-template>
+                                      <ng-template ngbTabContent>
+                                          <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+                                      </ng-template>
+                                  </ngb-tab>
+                                  <ngb-tab>
+                                    <ng-template ngbTabTitle>
+                                      <i class="now-ui-icons ui-2_settings-90"></i> Settings
+                                    </ng-template>
+                                      <ng-template ngbTabContent>
+                                        <p>
+                                            "I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
+                                        </p>
+                                      </ng-template>
+                                  </ngb-tab>
+                              </ngb-tabset>
+                          </div>
+                      </div>
+                    </div>
+                </tr>
                 </div>
-            </div>
 
-
-        </div>
-    </div>
+               
+</div>
+ <div class="col-md-6">
+    <h4 style="color: aliceblue; align-content: center;">Pagination</h4>
+    <ngb-pagination [collectionSize]="50" [(page)]="page" aria-label="Default pagination" class="pagination-primary"></ngb-pagination>
 </div>

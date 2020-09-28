@@ -16,6 +16,9 @@ export class IngresoPublicacioComponent implements OnInit {
   listaMensajes = ["Seleccione...", "Urgente", "Aviso", "Chat"]
   publicacion: Publicaciones = {};
 
+  page = 1;
+  
+
   personaPublicacionToSearch = "";
 
   ListaPersonas = [];
