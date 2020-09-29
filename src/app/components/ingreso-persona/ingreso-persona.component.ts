@@ -9,19 +9,19 @@ import { PersonaControllerService } from '../../Rest/api/personaController.servi
 })
 export class IngresoPersonaComponent implements OnInit {
 
-  persona : Persona = {};
+  persona: Persona = {};
 
-  constructor(private personaServicio:PersonaControllerService) {
-    this.persona.usuario=[{}]
-   }
+  constructor(private personaServicio: PersonaControllerService) {
+    this.persona.usuario = [{}]
+  }
 
 
   ngOnInit(): void {
   }
 
-  insertPersona(){
-    this.personaServicio.guardarPersonaUsingPOST(this.persona).subscribe(data=>{
-    console.log(data);
+  insertPersona() {
+    this.personaServicio.guardarPersonaUsingPOST(this.persona).subscribe(data => {
+      console.log(data);
     })
   }
 }

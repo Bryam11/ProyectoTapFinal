@@ -20,6 +20,7 @@ import { NouisliderModule } from 'ng2-nouislider';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { IngresoPublicacioComponent } from './components/ingreso-publicacio/ingreso-publicacio.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { LenguajeControllerService } from './Rest';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,7 @@ import { BlogComponent } from './components/blog/blog.component';
         NouisliderModule,
         JwBootstrapSwitchNg2Module
     ],
-    providers: [PersonaControllerService],
+    providers: [PersonaControllerService,LenguajeControllerService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

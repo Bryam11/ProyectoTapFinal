@@ -40,32 +40,38 @@
 					<div class="sign-up-htm">
 						<div class="group">
 							<label for="user" class="label">Username</label>
-							<input id="user" type="text" class="input">
+							<input id="user" type="text" class="input" pInputText [(ngModel)]="persona.usuarios[0].usuario">
 						</div>
 						<div class="group">
 							<label for="pass" class="label">Password</label>
-							<input id="pass" type="password" class="input" data-type="password">
+							<input id="pass" type="password" class="input" data-type="password" pInputText [(ngModel)]="persona.usuarios[0].contraseña">
 						</div>
 						<div class="group">
 							<label for="pass" class="label">Email Address</label>
-							<input id="pass" type="text" class="input">
+							<input id="pass" type="text" class="input" pInputText [(ngModel)]="persona.email">
 						</div>
 						
                         <div class="group">
 							<label for="user" class="label">Name</label>
-							<input id="user" type="text" class="input">
+							<input id="user" type="text" class="input" pInputText [(ngModel)]="persona.nombre">
 						</div>
 						<div class="group">
 							<label for="pass" class="label">Last Name</label>
-							<input id="pass" type="password" class="input" data-type="password">
+							<input id="pass" type="text" class="input" pInputText [(ngModel)]="persona.apellido">
 						</div>
 						<div class="group">
 							<label for="pass" class="label">Country</label>
-							<input id="pass" type="password" class="input" data-type="password">
+							<input id="pass" type="text" class="input" >
 						</div>
 						<div class="group">
 							<label for="pass" class="label">Photo</label>
-							<input id="pass" type="text" class="input">
+							<input id="pass" type="text" class="input" pInputText [(ngModel)]="persona.foto">
+							<!--h4 *ngIf="subiendo">Subiendo imagen {{archivo.name}}</h4-->
+							<br>
+							<button type="button"
+								style="display: block; margin-left: 145px; margin-right: auto;color: rgb(204, 229, 245)" pButton
+								type="button" label="Comparar" label="Guardar" class="ui-button-rounded ui-button-secundary"
+								(click)="onClickSubir($event)"></button>
 						</div>
 						<div class="group">
 							<input type="submit" class="button" value="Sign Up">
