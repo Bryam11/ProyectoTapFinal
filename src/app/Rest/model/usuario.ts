@@ -11,6 +11,6 @@
  */
 
 export interface Usuario { 
-    contrasea?: string;
+    contrasenia?: string;
     usuario?: string;
 }
