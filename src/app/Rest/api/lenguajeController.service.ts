@@ -10,19 +10,17 @@
  * Do not edit the class manually.
  *//* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional } from '@angular/core';
-import {
-    HttpClient, HttpHeaders, HttpParams,
-    HttpResponse, HttpEvent
-} from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec } from '../encoder';
+import { Inject, Injectable, Optional }                      from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams,
+         HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
-import { Observable } from 'rxjs';
+import { Observable }                                        from 'rxjs';
 
 import { Lenguajes } from '../model/lenguajes';
 
-import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
-import { Configuration } from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
+import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
@@ -32,7 +30,7 @@ export class LenguajeControllerService {
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -67,7 +65,7 @@ export class LenguajeControllerService {
     public guardarLenguajesUsingPOST(body: Lenguajes, observe?: 'body', reportProgress?: boolean): Observable<string>;
     public guardarLenguajesUsingPOST(body: Lenguajes, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
     public guardarLenguajesUsingPOST(body: Lenguajes, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public guardarLenguajesUsingPOST(body: Lenguajes, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public guardarLenguajesUsingPOST(body: Lenguajes, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling guardarLenguajesUsingPOST.');
@@ -93,7 +91,7 @@ export class LenguajeControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<string>('post', `${this.basePath}/lenguaje`,
+        return this.httpClient.request<string>('post',`${this.basePath}/lenguaje`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -113,7 +111,7 @@ export class LenguajeControllerService {
     public listarlenguajesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Lenguajes>>;
     public listarlenguajesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Lenguajes>>>;
     public listarlenguajesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Lenguajes>>>;
-    public listarlenguajesUsingGET(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public listarlenguajesUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -130,7 +128,7 @@ export class LenguajeControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Lenguajes>>('get', `${this.basePath}/lenguaje/list`,
+        return this.httpClient.request<Array<Lenguajes>>('get',`${this.basePath}/lenguaje/list`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

@@ -11,12 +11,38 @@ export class IngresoPersonaComponent implements OnInit {
 
   persona: Persona = {};
 
+  showMensaje = false;
+  tipoSeleccionada = "";
+
+  listaofPaises = ["Seleccione...",
+    "Argentina",
+    "Bolivia",
+    "Brasil",
+    "Chile",
+    "Colombia",
+    "Ecuador",
+    "Guyana",
+    "Guyana Francesa",
+    "Paraguay",
+    "Perú",
+    "Suriname",
+    "Uruguay",
+    "Venezuela"]
+
   constructor(private personaServicio: PersonaControllerService) {
     this.persona.usuario = [{}]
   }
 
 
   ngOnInit(): void {
+  }
+
+  shoesChangeListener() {
+    if (this.tipoSeleccionada != null && this.tipoSeleccionada != "Seleccione...") {
+      this.showMensaje = true;
+    } else {
+      this.showMensaje = false;
+    }
   }
 
   insertPersona() {
