@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Publicaciones } from '../../Rest/model/publicaciones';
 import { PersonaControllerService } from '../../Rest/api/personaController.service';
-import { PublicacionControllerService } from 'app/Rest';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,7 +24,7 @@ export class IngresoPublicacioComponent implements OnInit {
   ListaPersonas = [];
 
   // tslint:disable-next-line: max-line-length
-  constructor(private personaservice: PersonaControllerService, private publicacionservice: PublicacionControllerService, private router:Router) { }
+  constructor(private personaservice: PersonaControllerService, private router:Router) { }
 
   ngOnInit(): void {
     
@@ -38,16 +38,11 @@ export class IngresoPublicacioComponent implements OnInit {
   }
   buscarPersonaByCedulaService() {
 
-    this.personaservice.buscarPersonaByCedulaUsingGET(this.personaPublicacionToSearch).subscribe(data => {
-      this.ListaPersonas = data;
-    })
+    
   }
 
   guardarPublicacion() {
-    this.publicacion.tipoMensaje= this.tipoSeleccionada;
-    this.publicacionservice.guardarPublicacionUsingPOST(this.publicacion).subscribe(data => {
-      alert('se ha ingresado correctamente la publicacion')
-    })
+    
   }
 
   cambiarRuta(){

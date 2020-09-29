@@ -9,7 +9,6 @@ import { ExamplesModule } from './examples/examples.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { PersonaControllerService } from './Rest/api/personaController.service';
-import { PublicacionControllerService } from './Rest/api/publicacionController.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { BodyComponent } from './components/body/body.component';
@@ -46,7 +45,7 @@ import { BlogComponent } from './components/blog/blog.component';
         NouisliderModule,
         JwBootstrapSwitchNg2Module
     ],
-    providers: [PersonaControllerService,PublicacionControllerService],
+    providers: [PersonaControllerService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

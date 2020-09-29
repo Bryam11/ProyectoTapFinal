@@ -8,21 +8,20 @@ import { PersonaControllerService } from '../../Rest/api/personaController.servi
   styleUrls: ['./ingreso-persona.component.css']
 })
 export class IngresoPersonaComponent implements OnInit {
- public objectpersona: Persona={
-  apellido: "",
-  cedula: "",
-  edad: 0,
-  email: "",
-  nombre: ""
- };
 
-  constructor(private personaServicio:PersonaControllerService) { }
+  persona : Persona = {};
+
+  constructor(private personaServicio:PersonaControllerService) {
+    this.persona.usuario=[{}]
+   }
+
 
   ngOnInit(): void {
   }
-  subirPersonasService(){
-this.personaServicio.guardarPersonaUsingPOST(this.objectpersona).subscribe(data=>{
-alert('se ha ingresado correctamente la persona')
-})
+
+  insertPersona(){
+    this.personaServicio.guardarPersonaUsingPOST(this.persona).subscribe(data=>{
+    console.log(data);
+    })
   }
 }
