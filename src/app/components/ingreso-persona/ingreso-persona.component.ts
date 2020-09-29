@@ -37,7 +37,8 @@ export class IngresoPersonaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  shoesChangeListener() {
+
+  ConutryChangeListener() {
     if (this.tipoSeleccionada != null && this.tipoSeleccionada != "Seleccione...") {
       this.showMensaje = true;
     } else {
