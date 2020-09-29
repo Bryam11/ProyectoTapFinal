@@ -17,14 +17,14 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { Publicaciones } from '../model/publicaciones';
+import { Lenguajes } from '../model/lenguajes';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
-export class PublicacionControllerService {
+export class LenguajeControllerService {
 
     protected basePath = '//localhost:8080/';
     public defaultHeaders = new HttpHeaders();
@@ -56,19 +56,19 @@ export class PublicacionControllerService {
 
 
     /**
-     * guardarPublicacion
+     * guardarLenguajes
      * 
-     * @param body publicacion
+     * @param body len
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public guardarPublicacionUsingPOST(body: Publicaciones, observe?: 'body', reportProgress?: boolean): Observable<Publicaciones>;
-    public guardarPublicacionUsingPOST(body: Publicaciones, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Publicaciones>>;
-    public guardarPublicacionUsingPOST(body: Publicaciones, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Publicaciones>>;
-    public guardarPublicacionUsingPOST(body: Publicaciones, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public guardarLenguajesUsingPOST(body: Lenguajes, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public guardarLenguajesUsingPOST(body: Lenguajes, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public guardarLenguajesUsingPOST(body: Lenguajes, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public guardarLenguajesUsingPOST(body: Lenguajes, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling guardarPublicacionUsingPOST.');
+            throw new Error('Required parameter body was null or undefined when calling guardarLenguajesUsingPOST.');
         }
 
         let headers = this.defaultHeaders;
@@ -91,7 +91,7 @@ export class PublicacionControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<Publicaciones>('post',`${this.basePath}/publicacion`,
+        return this.httpClient.request<string>('post',`${this.basePath}/lenguaje`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -103,15 +103,15 @@ export class PublicacionControllerService {
     }
 
     /**
-     * listarPersonas
+     * listarlenguajes
      * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public listarPersonasUsingGET1(observe?: 'body', reportProgress?: boolean): Observable<Array<Publicaciones>>;
-    public listarPersonasUsingGET1(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Publicaciones>>>;
-    public listarPersonasUsingGET1(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Publicaciones>>>;
-    public listarPersonasUsingGET1(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public listarlenguajesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Lenguajes>>;
+    public listarlenguajesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Lenguajes>>>;
+    public listarlenguajesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Lenguajes>>>;
+    public listarlenguajesUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -128,55 +128,8 @@ export class PublicacionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Publicaciones>>('get',`${this.basePath}/publicacion/list`,
+        return this.httpClient.request<Array<Lenguajes>>('get',`${this.basePath}/lenguaje/list`,
             {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * listarPublicacionesbyTipo
-     * 
-     * @param cedula cedula
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public listarPublicacionesbyTipoUsingGET(cedula: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Publicaciones>>;
-    public listarPublicacionesbyTipoUsingGET(cedula: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Publicaciones>>>;
-    public listarPublicacionesbyTipoUsingGET(cedula: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Publicaciones>>>;
-    public listarPublicacionesbyTipoUsingGET(cedula: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (cedula === null || cedula === undefined) {
-            throw new Error('Required parameter cedula was null or undefined when calling listarPublicacionesbyTipoUsingGET.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (cedula !== undefined && cedula !== null) {
-            queryParameters = queryParameters.set('cedula', <any>cedula);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Publicaciones>>('get',`${this.basePath}/publicacion/listbytipo`,
-            {
-                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

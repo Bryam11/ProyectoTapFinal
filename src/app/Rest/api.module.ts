@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 
 
 import { BasicErrorControllerService } from './api/basicErrorController.service';
+import { LenguajeControllerService } from './api/lenguajeController.service';
 import { PersonaControllerService } from './api/personaController.service';
-import { PublicacionControllerService } from './api/publicacionController.service';
 
 @NgModule({
   imports:      [],
@@ -13,8 +13,8 @@ import { PublicacionControllerService } from './api/publicacionController.servic
   exports:      [],
   providers: [
     BasicErrorControllerService,
-    PersonaControllerService,
-    PublicacionControllerService ]
+    LenguajeControllerService,
+    PersonaControllerService ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {

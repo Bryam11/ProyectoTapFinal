@@ -9,6 +9,7 @@ import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import * as Rellax from 'rellax';
 
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',

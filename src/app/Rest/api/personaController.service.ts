@@ -56,24 +56,95 @@ export class PersonaControllerService {
 
 
     /**
-     * buscarPersonaByCedula
+     * anadirPublicacionPersona
      * 
-     * @param cedula cedula
+     * @param IDE IDE
+     * @param codigo codigo
+     * @param descripcion descripcion
+     * @param fecha fecha
+     * @param lenguaje lenguaje
+     * @param usuario usuario
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public buscarPersonaByCedulaUsingGET(cedula: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public buscarPersonaByCedulaUsingGET(cedula: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public buscarPersonaByCedulaUsingGET(cedula: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public buscarPersonaByCedulaUsingGET(cedula: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, usuario?: string, observe?: 'body', reportProgress?: boolean): Observable<Persona>;
+    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, usuario?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Persona>>;
+    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, usuario?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Persona>>;
+    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, usuario?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (cedula === null || cedula === undefined) {
-            throw new Error('Required parameter cedula was null or undefined when calling buscarPersonaByCedulaUsingGET.');
-        }
+
+
+
+
+
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (cedula !== undefined && cedula !== null) {
-            queryParameters = queryParameters.set('cedula', <any>cedula);
+        if (IDE !== undefined && IDE !== null) {
+            queryParameters = queryParameters.set('IDE', <any>IDE);
+        }
+        if (codigo !== undefined && codigo !== null) {
+            queryParameters = queryParameters.set('codigo', <any>codigo);
+        }
+        if (descripcion !== undefined && descripcion !== null) {
+            queryParameters = queryParameters.set('descripcion', <any>descripcion);
+        }
+        if (fecha !== undefined && fecha !== null) {
+            queryParameters = queryParameters.set('fecha', <any>fecha);
+        }
+        if (lenguaje !== undefined && lenguaje !== null) {
+            queryParameters = queryParameters.set('lenguaje', <any>lenguaje);
+        }
+        if (usuario !== undefined && usuario !== null) {
+            queryParameters = queryParameters.set('usuario', <any>usuario);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Persona>('put',`${this.basePath}/persona/InsertarPublicacionByUsuario`,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * ComprobarLogueo
+     * 
+     * @param contrasea Contraseña
+     * @param usuario usuario
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public comprobarLogueoUsingGET(contrasea?: string, usuario?: string, observe?: 'body', reportProgress?: boolean): Observable<Persona>;
+    public comprobarLogueoUsingGET(contrasea?: string, usuario?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Persona>>;
+    public comprobarLogueoUsingGET(contrasea?: string, usuario?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Persona>>;
+    public comprobarLogueoUsingGET(contrasea?: string, usuario?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (contrasea !== undefined && contrasea !== null) {
+            queryParameters = queryParameters.set('Contraseña', <any>contrasea);
+        }
+        if (usuario !== undefined && usuario !== null) {
+            queryParameters = queryParameters.set('usuario', <any>usuario);
         }
 
         let headers = this.defaultHeaders;
@@ -91,9 +162,45 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/findByCedula`,
+        return this.httpClient.request<Persona>('get',`${this.basePath}/persona/Comprobarlogueo`,
             {
                 params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * findMaxIdPersona
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public findMaxIdPersonaUsingGET(observe?: 'body', reportProgress?: boolean): Observable<number>;
+    public findMaxIdPersonaUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<number>>;
+    public findMaxIdPersonaUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<number>>;
+    public findMaxIdPersonaUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<number>('get',`${this.basePath}/persona/findMaxIdPersona`,
+            {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -109,9 +216,9 @@ export class PersonaControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public guardarPersonaUsingPOST(body: Persona, observe?: 'body', reportProgress?: boolean): Observable<Persona>;
-    public guardarPersonaUsingPOST(body: Persona, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Persona>>;
-    public guardarPersonaUsingPOST(body: Persona, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Persona>>;
+    public guardarPersonaUsingPOST(body: Persona, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public guardarPersonaUsingPOST(body: Persona, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public guardarPersonaUsingPOST(body: Persona, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public guardarPersonaUsingPOST(body: Persona, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -138,7 +245,7 @@ export class PersonaControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<Persona>('post',`${this.basePath}/persona`,
+        return this.httpClient.request<string>('post',`${this.basePath}/persona`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -150,32 +257,21 @@ export class PersonaControllerService {
     }
 
     /**
-     * listarPersonasApellidoOnombre
+     * likeByCodigo
      * 
-     * @param apellido apellido
-     * @param nombre nombre
+     * @param codigo codigo
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public listarPersonasApellidoOnombreUsingGET(apellido: string, nombre: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasApellidoOnombreUsingGET(apellido: string, nombre: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasApellidoOnombreUsingGET(apellido: string, nombre: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasApellidoOnombreUsingGET(apellido: string, nombre: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public likeByCodigoUsingGET(codigo?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
+    public likeByCodigoUsingGET(codigo?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
+    public likeByCodigoUsingGET(codigo?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
+    public likeByCodigoUsingGET(codigo?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (apellido === null || apellido === undefined) {
-            throw new Error('Required parameter apellido was null or undefined when calling listarPersonasApellidoOnombreUsingGET.');
-        }
-
-        if (nombre === null || nombre === undefined) {
-            throw new Error('Required parameter nombre was null or undefined when calling listarPersonasApellidoOnombreUsingGET.');
-        }
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (apellido !== undefined && apellido !== null) {
-            queryParameters = queryParameters.set('apellido', <any>apellido);
-        }
-        if (nombre !== undefined && nombre !== null) {
-            queryParameters = queryParameters.set('nombre', <any>nombre);
+        if (codigo !== undefined && codigo !== null) {
+            queryParameters = queryParameters.set('codigo', <any>codigo);
         }
 
         let headers = this.defaultHeaders;
@@ -193,7 +289,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/findPersonasPublicanNombreOapellido`,
+        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/likebyCodigo`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -205,32 +301,21 @@ export class PersonaControllerService {
     }
 
     /**
-     * listarPersonasByCedula
+     * likeByDescripcion
      * 
-     * @param edad edad
-     * @param nombre nombre
+     * @param descripcion descripcion
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public listarPersonasByCedulaUsingGET(edad: number, nombre: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasByCedulaUsingGET(edad: number, nombre: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasByCedulaUsingGET(edad: number, nombre: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasByCedulaUsingGET(edad: number, nombre: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public likeByDescripcionUsingGET(descripcion?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
+    public likeByDescripcionUsingGET(descripcion?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
+    public likeByDescripcionUsingGET(descripcion?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
+    public likeByDescripcionUsingGET(descripcion?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (edad === null || edad === undefined) {
-            throw new Error('Required parameter edad was null or undefined when calling listarPersonasByCedulaUsingGET.');
-        }
-
-        if (nombre === null || nombre === undefined) {
-            throw new Error('Required parameter nombre was null or undefined when calling listarPersonasByCedulaUsingGET.');
-        }
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (edad !== undefined && edad !== null) {
-            queryParameters = queryParameters.set('edad', <any>edad);
-        }
-        if (nombre !== undefined && nombre !== null) {
-            queryParameters = queryParameters.set('nombre', <any>nombre);
+        if (descripcion !== undefined && descripcion !== null) {
+            queryParameters = queryParameters.set('descripcion', <any>descripcion);
         }
 
         let headers = this.defaultHeaders;
@@ -248,54 +333,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/findPersonasPublican`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * listarPersonasMayores
-     * 
-     * @param edad edad
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public listarPersonasMayoresUsingGET(edad: number, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasMayoresUsingGET(edad: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasMayoresUsingGET(edad: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasMayoresUsingGET(edad: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (edad === null || edad === undefined) {
-            throw new Error('Required parameter edad was null or undefined when calling listarPersonasMayoresUsingGET.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (edad !== undefined && edad !== null) {
-            queryParameters = queryParameters.set('edad', <any>edad);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/findPersonasMayoresPublican`,
+        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/likebyDescripcion`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -343,60 +381,21 @@ export class PersonaControllerService {
     }
 
     /**
-     * ListarPersonasbyNamenotnull
+     * listarPersonasbylenguaje
      * 
+     * @param lenguaje Lenguaje
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public listarPersonasbyNamenotnullUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasbyNamenotnullUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasbyNamenotnullUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasbyNamenotnullUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public listarPersonasbylenguajeUsingGET(lenguaje?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
+    public listarPersonasbylenguajeUsingGET(lenguaje?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
+    public listarPersonasbylenguajeUsingGET(lenguaje?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
+    public listarPersonasbylenguajeUsingGET(lenguaje?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/listbynamenotnull`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * ListarPersonasbyNnotnombre
-     * 
-     * @param nombre nombre
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public listarPersonasbyNnotnombreUsingGET(nombre: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasbyNnotnombreUsingGET(nombre: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasbyNnotnombreUsingGET(nombre: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasbyNnotnombreUsingGET(nombre: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (nombre === null || nombre === undefined) {
-            throw new Error('Required parameter nombre was null or undefined when calling listarPersonasbyNnotnombreUsingGET.');
-        }
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (nombre !== undefined && nombre !== null) {
-            queryParameters = queryParameters.set('nombre', <any>nombre);
+        if (lenguaje !== undefined && lenguaje !== null) {
+            queryParameters = queryParameters.set('Lenguaje', <any>lenguaje);
         }
 
         let headers = this.defaultHeaders;
@@ -414,344 +413,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/listbynamenot`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * ListarPersonasbyNombreContain
-     * 
-     * @param nombre nombre
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public listarPersonasbyNombreContainUsingGET(nombre: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasbyNombreContainUsingGET(nombre: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasbyNombreContainUsingGET(nombre: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasbyNombreContainUsingGET(nombre: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (nombre === null || nombre === undefined) {
-            throw new Error('Required parameter nombre was null or undefined when calling listarPersonasbyNombreContainUsingGET.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (nombre !== undefined && nombre !== null) {
-            queryParameters = queryParameters.set('nombre', <any>nombre);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/listbynamecontaint`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * ListarPersonasbyNombreNotContain
-     * 
-     * @param nombre nombre
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public listarPersonasbyNombreNotContainUsingGET(nombre: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasbyNombreNotContainUsingGET(nombre: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasbyNombreNotContainUsingGET(nombre: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasbyNombreNotContainUsingGET(nombre: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (nombre === null || nombre === undefined) {
-            throw new Error('Required parameter nombre was null or undefined when calling listarPersonasbyNombreNotContainUsingGET.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (nombre !== undefined && nombre !== null) {
-            queryParameters = queryParameters.set('nombre', <any>nombre);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/listbynameNotcontaint`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * ListarPersonasbyNombre
-     * 
-     * @param nombre nombre
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public listarPersonasbyNombreUsingGET(nombre: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasbyNombreUsingGET(nombre: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasbyNombreUsingGET(nombre: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasbyNombreUsingGET(nombre: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (nombre === null || nombre === undefined) {
-            throw new Error('Required parameter nombre was null or undefined when calling listarPersonasbyNombreUsingGET.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (nombre !== undefined && nombre !== null) {
-            queryParameters = queryParameters.set('nombre', <any>nombre);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/listbynombre`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * ListarPersonasbyNomnreRegex
-     * 
-     * @param nombre nombre
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public listarPersonasbyNomnreRegexUsingGET(nombre: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasbyNomnreRegexUsingGET(nombre: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasbyNomnreRegexUsingGET(nombre: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasbyNomnreRegexUsingGET(nombre: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (nombre === null || nombre === undefined) {
-            throw new Error('Required parameter nombre was null or undefined when calling listarPersonasbyNomnreRegexUsingGET.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (nombre !== undefined && nombre !== null) {
-            queryParameters = queryParameters.set('nombre', <any>nombre);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/listbynameregex`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * ListarPersonasbyedad
-     * 
-     * @param desde desde
-     * @param hasta hasta
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public listarPersonasbyedadUsingGET(desde: number, hasta: number, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasbyedadUsingGET(desde: number, hasta: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasbyedadUsingGET(desde: number, hasta: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasbyedadUsingGET(desde: number, hasta: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (desde === null || desde === undefined) {
-            throw new Error('Required parameter desde was null or undefined when calling listarPersonasbyedadUsingGET.');
-        }
-
-        if (hasta === null || hasta === undefined) {
-            throw new Error('Required parameter hasta was null or undefined when calling listarPersonasbyedadUsingGET.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (desde !== undefined && desde !== null) {
-            queryParameters = queryParameters.set('desde', <any>desde);
-        }
-        if (hasta !== undefined && hasta !== null) {
-            queryParameters = queryParameters.set('hasta', <any>hasta);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/listbyedad`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * ListarPersonasbyedadgreater
-     * 
-     * @param edad edad
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public listarPersonasbyedadgreaterUsingGET(edad: number, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasbyedadgreaterUsingGET(edad: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasbyedadgreaterUsingGET(edad: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasbyedadgreaterUsingGET(edad: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (edad === null || edad === undefined) {
-            throw new Error('Required parameter edad was null or undefined when calling listarPersonasbyedadgreaterUsingGET.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (edad !== undefined && edad !== null) {
-            queryParameters = queryParameters.set('edad', <any>edad);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/listbyedadgreater`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * ListarPersonasbyedadless
-     * 
-     * @param edad edad
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public listarPersonasbyedadlessUsingGET(edad: number, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public listarPersonasbyedadlessUsingGET(edad: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public listarPersonasbyedadlessUsingGET(edad: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasbyedadlessUsingGET(edad: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (edad === null || edad === undefined) {
-            throw new Error('Required parameter edad was null or undefined when calling listarPersonasbyedadlessUsingGET.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (edad !== undefined && edad !== null) {
-            queryParameters = queryParameters.set('edad', <any>edad);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/listbyedadless`,
+        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/listbyLenguaje`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

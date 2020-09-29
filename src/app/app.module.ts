@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { NouisliderModule } from 'ng2-nouislider';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { IngresoPublicacioComponent } from './components/ingreso-publicacio/ingreso-publicacio.component';
+import { BlogComponent } from './components/blog/blog.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { IngresoPublicacioComponent } from './components/ingreso-publicacio/ingr
     
         IngresoPersonaComponent,
         IngresoPublicacioComponent,
-        NavigationComponent
+        NavigationComponent,
+        BlogComponent
     ],
     imports: [
         BrowserAnimationsModule,

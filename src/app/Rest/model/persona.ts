@@ -9,11 +9,17 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Publicaciones } from './publicaciones';
+import { Usuario } from './usuario';
 
 export interface Persona { 
     apellido?: string;
-    cedula?: string;
-    edad?: number;
+    edad?: string;
     email?: string;
+    foto?: string;
+    id?: number;
     nombre?: string;
+    pais?: string;
+    publicaciones?: Array<Publicaciones>;
+    usuario?: Array<Usuario>;
 }

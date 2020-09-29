@@ -10,10 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface Publicaciones { 
-    codigo?: string;
-    descripcion?: string;
-    fecha?: string;
-    ide?: string;
-    lenguajeProgra?: string;
+export interface Usuario { 
+    contrasea?: string;
+    usuario?: string;
 }
