@@ -19,7 +19,7 @@ export class IngresoPersonaComponent implements OnInit {
     id: 0,
     nombre: '',
     pais: '',
-    publicaciones: null
+    publicaciones:[]
   };
 
   publi:Publicaciones = {
