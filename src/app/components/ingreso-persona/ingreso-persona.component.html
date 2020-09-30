@@ -6,12 +6,7 @@
 	<div class="container">
 		<h1 style="text-align: center;"><strong><span style="color: #ffffff;">POST OF PERSON</span></strong></h1>
 	</div>
-	<p *ngFor="let alert of alerts">
-		<ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
-	</p>
-	<p>
-		<button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
-	</p>
+
 
 	<div class="container">
 		<div class="login-wrap">

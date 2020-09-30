@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { PersonaControllerService } from 'app/Rest';
+import { Router } from '@angular/router';
+
 
 @Component({
     selector: 'app-navbar',
@@ -11,7 +13,8 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(public location: Location, private element : ElementRef) {
+    // tslint:disable-next-line: max-line-length
+    constructor(public location: Location, private element: ElementRef, private router: Router) {
         this.sidebarVisible = false;
     }
 
@@ -22,7 +25,7 @@ export class NavbarComponent implements OnInit {
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];
-        setTimeout(function(){
+        setTimeout(function () {
             toggleButton.classList.add('toggled');
         }, 500);
         html.classList.add('nav-open');
@@ -32,7 +35,7 @@ export class NavbarComponent implements OnInit {
     sidebarClose() {
         const html = document.getElementsByTagName('html')[0];
         // console.log(html);
-      // this.toggleButton.classList.remove('toggled');
+        // this.toggleButton.classList.remove('toggled');
         this.sidebarVisible = false;
         html.classList.remove('nav-open');
     };
@@ -45,14 +48,22 @@ export class NavbarComponent implements OnInit {
             this.sidebarClose();
         }
     };
-  
+
     isDocumentation() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
-        if( titlee === '/documentation' ) {
+        if (titlee === '/documentation') {
             return true;
         }
         else {
             return false;
         }
+    }
+
+    logout() {
+        localStorage.removeItem('loggedInUser');
+        this.router.navigate(['blog'])
+    }
+    loggedIn() {
+        return !!localStorage.getItem('user');
     }
 }

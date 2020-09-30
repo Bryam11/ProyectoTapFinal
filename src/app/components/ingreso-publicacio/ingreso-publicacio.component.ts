@@ -23,13 +23,17 @@ export class IngresoPublicacioComponent implements OnInit {
 
   LenguajeSeleccionado: '';
 
+  login = false;
+  logout = true;
+
+
   listaLenguajes = [];
 
   // tslint:disable-next-line: max-line-length
   constructor(private personaservice: PersonaControllerService, private router: Router, private lenguajeservice: LenguajeControllerService) { }
 
   ngOnInit(): void {
-  this.Listarlenjuages();
+    this.Listarlenjuages();
   }
 
   lenguajesChangeListener() {
@@ -58,7 +62,7 @@ export class IngresoPublicacioComponent implements OnInit {
   }
 
   guardarPublicacion() {
-    this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide,this.publicacion.codigo,this.publicacion.descripcion,this.publicacion.fecha,this.publicacion.lenguajeProgra,this.usuario.usuario).subscribe(data => {
+    this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide, this.publicacion.codigo, this.publicacion.descripcion, this.publicacion.fecha, this.publicacion.lenguajeProgra, this.usuario.usuario).subscribe(data => {
       console.log('Se a creado la publicacion correctamente');
       alert('Se a creado la publicacion corrextamente');
     })

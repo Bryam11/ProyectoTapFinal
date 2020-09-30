@@ -22,7 +22,7 @@ export class BlogComponent implements OnInit {
     this.personaServicio.listarPersonasUsingGET().subscribe(data => {
       this.ListaPersonas = data;
       console.log(this.ListaPersonas);
-      
+
     })
   }
 

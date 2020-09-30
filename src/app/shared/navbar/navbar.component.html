@@ -39,9 +39,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-neutral" href="ingreso/Persona" >
+                    <a class="nav-link btn btn-neutral"  *ngIf="loggedIn()"  routerLinkActive="active" href="ingreso/Persona" >
                         <i class="now-ui-icons arrows-1_share-66"></i>
                         <p>Sign In/Register</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-neutral" style="cursor:pointe" *ngIf="!loggedIn()" (click)="logout()" href="ingreso/Persona" >
+                        <i class="now-ui-icons arrows-1_share-66"></i>
+                        <p>logout</p>
                     </a>
                 </li>
                
