@@ -3,6 +3,7 @@ import { Publicaciones } from '../../Rest/model/publicaciones';
 import { PersonaControllerService } from '../../Rest/api/personaController.service';
 
 import { Router } from '@angular/router';
+import { Usuario } from 'app/Rest';
 
 @Component({
   selector: 'app-ingreso-publicacio',
@@ -15,9 +16,9 @@ export class IngresoPublicacioComponent implements OnInit {
   tipoSeleccionada = "";
   listaMensajes = ["Seleccione...", "Urgente", "Aviso", "Chat"]
   publicacion: Publicaciones = {};
+  usuario: Usuario = {};
 
   page = 1;
-  
 
   personaPublicacionToSearch = "";
 
@@ -42,9 +43,11 @@ export class IngresoPublicacioComponent implements OnInit {
   }
 
   guardarPublicacion() {
-    
-  }
-
+    this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide,this.publicacion.codigo,this.publicacion.descripcion,this.publicacion.fecha,this.publicacion.lenguajeProgra,this.usuario.usuario).subscribe(data => {
+      console.log();
+    })
+    };
+  
   cambiarRuta(){
     this.router.navigate(['ingreso/Persona'])
   }

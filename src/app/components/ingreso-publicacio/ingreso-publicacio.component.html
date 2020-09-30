@@ -1,0 +1,71 @@
+<div class="navigation-example" style="background-image:url('assets/img/header.jpg')">
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+		<h1 style="text-align: center;"><strong><span style="color: #ffffff;">POST OF PERSON</span></strong></h1>
+	</div>
+
+
+    <div class="container">
+		<div class="login-wrap">
+			<div class="login-html">
+				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Registrar Publicacion</label>
+				<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+				<div class="login-form">
+					<div class="sign-in-htm">
+                        
+                        <div class="group">
+							<label for="ide" class="label">IDE</label>
+							<input id="ide" type="text" class="input" pInputText
+								[(ngModel)]="publicacion.ide">
+						</div>
+
+						<div class="group">
+							<label for="descripcions" class="label">DESCRIPTION</label>
+							<input id="descripcion" type="text" class="input" pInputText
+								[(ngModel)]="publicacion.descripcion">
+						</div>
+
+						<div class="group">
+							<label for="date" class="label">DATE</label>
+							<input id="date" type="date" class="input" pInputText [(ngModel)]="publicacion.fecha">
+						</div>
+
+						<div class="group">
+							<label for="lenguaje" class="label">LENGUAJE</label>
+							<input id="lenguaje" type="text" class="input" pInputText [(ngModel)]="publicacion.lenguajeProgra">
+						</div>
+						<div class="group">
+							<label for="user" class="label">USER</label>
+							<input id="user" type="text" class="input" pInputText [(ngModel)]="usuario.usuario">
+                        </div>
+                        
+                        <div class="group">
+                            <label for="codigo" class="label">CODE</label>
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+                            <div class="col-md-12">
+                                <textarea [(ngModel)]="publicacion.codigo" class="input" style="background:rgba(174, 171, 175, 0.185); color: blanchedalmond;" id="codigo" name="codigo" placeholder="Enter your code" rows="7"></textarea>
+                            </div>
+                        </div>
+                        
+                       
+                          <div class="group">
+							<input type="submit" class="button" (click)="guardarPublicacion()" value="REGISTER">
+                        </div>
+                       
+						<div class="hr"></div>
+						<div class="foot-lnk">
+
+					</div>
+					
+				</div>
+			</div>
+
+		</div>
+    </div>
+    
+
+  
+</div>
