@@ -70,7 +70,7 @@ export class IngresoPersonaComponent implements OnInit {
   validaciondeLogueo() {
 
     this.personaServicio.comprobarLogueoUsingGET(this.persona.usuario[0].contrasenia, this.persona.usuario[0].usuario).subscribe(data => {
-      alert(`usuarios correctos Bienvenidos ${data.usuario[0].usuario}`)
+      alert(`usuarios correctos Bienvenido ${data.usuario[0].usuario} al Blog`)
 
       // Cambiamos de componentes
       this.cambiardeVentana();
