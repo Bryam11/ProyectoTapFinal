@@ -22,7 +22,7 @@ export class IngresoPersonaComponent implements OnInit {
     publicaciones: null
   };
 
-  publi:Publicaciones = {
+  publi: Publicaciones = {
     codigo: '',
     descripcion: '',
     fecha: '',
@@ -32,6 +32,7 @@ export class IngresoPersonaComponent implements OnInit {
   alerts: Alert[];
 
   showMensaje = false;
+
   PaisSeleccionado = '';
 
   listaofPaises = ['Seleccione...',
@@ -69,13 +70,15 @@ export class IngresoPersonaComponent implements OnInit {
 
   validaciondeLogueo() {
 
+    this.PaisSeleccionado = this.persona.pais;
+
     this.personaServicio.comprobarLogueoUsingGET(this.persona.usuario[0].contrasenia, this.persona.usuario[0].usuario).subscribe(data => {
       alert(`usuarios correctos Bienvenido ${data.usuario[0].usuario} al Blog`)
 
       // Cambiamos de componentes
       this.cambiardeVentana();
     }, (err) => {
-        alert('Verifique su usuario y contraseña')
+      alert('Verifique su usuario y contraseña')
     })
 
   }

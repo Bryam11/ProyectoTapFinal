@@ -3,7 +3,7 @@ import { Publicaciones } from '../../Rest/model/publicaciones';
 import { PersonaControllerService } from '../../Rest/api/personaController.service';
 
 import { Router } from '@angular/router';
-import { Usuario } from 'app/Rest';
+import { Usuario, LenguajeControllerService } from 'app/Rest';
 
 @Component({
   selector: 'app-ingreso-publicacio',
@@ -21,17 +21,18 @@ export class IngresoPublicacioComponent implements OnInit {
   page = 1;
 
 
-  personaPublicacionToSearch = '';
+  LenguajeSeleccionado: '';
 
-  ListaPersonas = [];
+  listaLenguajes = [];
 
   // tslint:disable-next-line: max-line-length
-  constructor(private personaservice: PersonaControllerService, private router: Router) { }
+  constructor(private personaservice: PersonaControllerService, private router: Router, private lenguajeservice: LenguajeControllerService) { }
 
   ngOnInit(): void {
-
+  this.Listarlenjuages();
   }
-  shoesChangeListener() {
+
+  lenguajesChangeListener() {
     // tslint:disable-next-line: triple-equals
     if (this.tipoSeleccionada != null && this.tipoSeleccionada != 'Seleccione...') {
       this.showMensaje = true;
@@ -39,18 +40,31 @@ export class IngresoPublicacioComponent implements OnInit {
       this.showMensaje = false;
     }
   }
+
+  Listarlenjuages() {
+
+    this.lenguajeservice.listarlenguajesUsingGET().subscribe(data => {
+      // tslint:disable-next-line: no-unused-expression
+      this.listaLenguajes = data;
+      console.log(this.listaLenguajes);
+
+
+    })
+  }
+
   buscarPersonaByCedulaService() {
 
 
   }
 
   guardarPublicacion() {
-    this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide,this.publicacion.codigo,this.publicacion.descripcion,this.publicacion.fecha,this.publicacion.lenguajeProgra,this.usuario.usuario).subscribe(data => {
+    // tslint:disable-next-line: max-line-length
+    this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide, this.publicacion.codigo, this.publicacion.descripcion, this.publicacion.fecha, this.publicacion.lenguajeProgra, this.usuario.usuario).subscribe(data => {
       console.log();
     })
-    };
-  
-  cambiarRuta(){
+  };
+
+  cambiarRuta() {
     this.router.navigate(['ingreso/Persona'])
   }
 
