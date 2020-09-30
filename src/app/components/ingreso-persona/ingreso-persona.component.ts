@@ -22,6 +22,8 @@ export class IngresoPersonaComponent implements OnInit {
     publicaciones: null
   };
 
+  message: string;
+
   publi: Publicaciones = {
     codigo: '',
     descripcion: '',
@@ -59,7 +61,7 @@ export class IngresoPersonaComponent implements OnInit {
   }
 
 
-  ConutryChangeListener() {
+  CountryChangeListener() {
     // tslint:disable-next-line: triple-equals
     if (this.PaisSeleccionado != null && this.PaisSeleccionado != 'Seleccione...') {
       this.showMensaje = true;
@@ -74,6 +76,9 @@ export class IngresoPersonaComponent implements OnInit {
 
     this.personaServicio.comprobarLogueoUsingGET(this.persona.usuario[0].contrasenia, this.persona.usuario[0].usuario).subscribe(data => {
       alert(`usuarios correctos Bienvenido ${data.usuario[0].usuario} al Blog`)
+
+      localStorage.setItem('user', this.persona.usuario[0].usuario)
+      this.message = 'Login Sucesfull';
 
       // Cambiamos de componentes
       this.cambiardeVentana();
