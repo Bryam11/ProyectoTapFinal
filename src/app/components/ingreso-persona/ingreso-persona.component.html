@@ -6,7 +6,12 @@
 	<div class="container">
 		<h1 style="text-align: center;"><strong><span style="color: #ffffff;">POST OF PERSON</span></strong></h1>
 	</div>
-
+	<p *ngFor="let alert of alerts">
+		<ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+	  </p>
+	  <p>
+		<button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+	  </p>
 
 	<div class="container">
 		<div class="login-wrap">
@@ -18,18 +23,18 @@
 					<div class="sign-in-htm">
 						<div class="group">
 							<label for="user" class="label">Username</label>
-							<input id="user" type="text" class="input">
+							<input id="user" type="text" class="input" [(ngModel)]="persona.usuario[0].usuario">
 						</div>
 						<div class="group">
 							<label for="pass" class="label">Password</label>
-							<input id="pass" type="password" class="input" data-type="password">
+							<input id="pass" type="password" class="input" data-type="password" [(ngModel)]="persona.usuario[0].contrasenia">
 						</div>
 						<div class="group">
 							<input id="check" type="checkbox" class="check" checked>
 							<label for="check"><span class="icon"></span> Keep me Signed in</label>
 						</div>
 						<div class="group">
-							<input type="submit" class="button" value="Sign In">
+							<input type="submit" class="button" (click)="validaciondeLogueo()" value="Sign In">
 						</div>
 						<div class="hr"></div>
 						<div class="foot-lnk">
@@ -40,50 +45,40 @@
 					<div class="sign-up-htm">
 						<div class="group">
 							<label for="user" class="label">Username</label>
-							<input id="user" type="text" class="input" pInputText
-								[(ngModel)]="persona.usuarios[0].usuario">
+							<input id="user" type="text" class="input" [(ngModel)]="persona.usuario[0].usuario">
 						</div>
 
 						<div class="group">
 							<label for="pass" class="label">Password</label>
-							<input id="pass" type="password" class="input" data-type="password" pInputText
-								[(ngModel)]="persona.usuarios[0].contrasenia">
+							<input id="pass" type="password" class="input" data-type="password" [(ngModel)]="persona.usuario[0].contrasenia">
 						</div>
 
 						<div class="group">
-							<label for="pass" class="label">Email Address</label>
-							<input id="pass" type="text" class="input" pInputText [(ngModel)]="persona.email">
+							<label for="addres" class="label">Email Address</label>
+							<input id="addres" type="text" class="input" [(ngModel)]="persona.email" >
 						</div>
 
 						<div class="group">
-							<label for="user" class="label">Name</label>
-							<input id="user" type="text" class="input" pInputText [(ngModel)]="persona.nombre">
+							<label for="name" class="label">Name</label>
+							<input id="name" type="text" class="input"  [(ngModel)]="persona.nombre">
 						</div>
 						<div class="group">
-							<label for="pass" class="label">Last Name</label>
-							<input id="pass" type="text" class="input" pInputText [(ngModel)]="persona.apellido">
+							<label for="last" class="label">Last Name</label>
+							<input id="last" type="text" class="input" [(ngModel)]="persona.apellido">
 						</div>
 						<div class="group">
-							<label for="pass" class="label">Country</label>
-							<a>
-								<select class="btn btn-outline-neutral btn-round btn-lg" [(ngModel)]="PaisSeleccionada"
-									name="tipoMensaje" (change)="ConutryChangeListener()">
-									<option *ngFor="let mensaje of  listaofPaises">{{mensaje}}</option>
-								</select>
-							</a>
+							<label for="coutry" class="label">Country</label>
+							<select class="btn btn-outline-neutral btn-round btn-lg" [(ngModel)]="PaisSeleccionado"
+							(change)="ConutryChangeListener()">
+								<option *ngFor="let pais of listaofPaises">{{pais}}</option>
+							</select>
 						</div>
 						<div class="group">
-							<label for="pass" class="label">Photo</label>
-							<input id="pass" type="text" class="input" pInputText [(ngModel)]="persona.foto">
-							<!--h4 *ngIf="subiendo">Subiendo imagen {{archivo.name}}</h4-->
-							<br>
-							<button type="button"
-								style="display: block; margin-left: 145px; margin-right: auto;color: rgb(204, 229, 245)"
-								pButton type="button" label="Comparar" label="Guardar"
-								class="ui-button-rounded ui-button-secundary" (click)="onClickSubir($event)"></button>
+							<label for="photo" class="label">Photo</label>
+							<input id="photo" type="text" class="input" [(ngModel)]="persona.foto">
 						</div>
 						<div class="group">
-							<input type="submit" class="button" value="Sign Up">
+							<input type="submit" class="button" (click)="insertPersona()" value="Sign Up">
 						</div>
 						<div class="hr"></div>
 						<div class="foot-lnk">
@@ -110,3 +105,4 @@
 
 
 </div>
+
