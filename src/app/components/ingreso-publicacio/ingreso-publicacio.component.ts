@@ -13,25 +13,27 @@ import { Usuario } from 'app/Rest';
 export class IngresoPublicacioComponent implements OnInit {
 
   showMensaje = false;
-  tipoSeleccionada = "";
-  listaMensajes = ["Seleccione...", "Urgente", "Aviso", "Chat"]
+  tipoSeleccionada = '';
+  listaMensajes = ['Seleccione...', 'Urgente', 'Aviso', 'Chat']
   publicacion: Publicaciones = {};
   usuario: Usuario = {};
 
   page = 1;
 
-  personaPublicacionToSearch = "";
+
+  personaPublicacionToSearch = '';
 
   ListaPersonas = [];
 
   // tslint:disable-next-line: max-line-length
-  constructor(private personaservice: PersonaControllerService, private router:Router) { }
+  constructor(private personaservice: PersonaControllerService, private router: Router) { }
 
   ngOnInit(): void {
-    
+
   }
   shoesChangeListener() {
-    if (this.tipoSeleccionada != null && this.tipoSeleccionada != "Seleccione...") {
+    // tslint:disable-next-line: triple-equals
+    if (this.tipoSeleccionada != null && this.tipoSeleccionada != 'Seleccione...') {
       this.showMensaje = true;
     } else {
       this.showMensaje = false;
@@ -39,7 +41,7 @@ export class IngresoPublicacioComponent implements OnInit {
   }
   buscarPersonaByCedulaService() {
 
-    
+
   }
 
   guardarPublicacion() {

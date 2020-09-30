@@ -20,8 +20,8 @@ export class AppComponent implements OnInit {
     model: NgbDateStruct;
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
-    constructor(private renderer: Renderer2, private router: Router, @Inject(DOCUMENT) private document: any, private element: ElementRef, public location: Location) { 
-       
+    // tslint:disable-next-line: max-line-length
+    constructor(private renderer: Renderer2, private router: Router, @Inject(DOCUMENT) private document: any, private element: ElementRef, public location: Location) {
     }
     ngOnInit() {
         var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];

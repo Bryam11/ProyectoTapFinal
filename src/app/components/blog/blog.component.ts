@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonaControllerService } from 'app/Rest';
 
 @Component({
   selector: 'app-blog',
@@ -11,9 +12,16 @@ export class BlogComponent implements OnInit {
 
   ListaPersonas = [];
 
-  constructor() { }
+  constructor(private personaServicio: PersonaControllerService) { }
 
   ngOnInit(): void {
+    this.listarpublicaciones();
+  }
+
+  listarpublicaciones() {
+    this.personaServicio.listarPersonasUsingGET().subscribe(data => {
+      this.ListaPersonas = data;
+    })
   }
 
 }
