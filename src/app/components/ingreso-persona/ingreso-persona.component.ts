@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from '../../Rest/model/persona';
 import { PersonaControllerService } from '../../Rest/api/personaController.service';
 import { Router } from '@angular/router';
+import { Publicaciones } from 'app/Rest';
 
 @Component({
   selector: 'app-ingreso-persona',
@@ -10,8 +11,24 @@ import { Router } from '@angular/router';
 })
 export class IngresoPersonaComponent implements OnInit {
 
-  persona: Persona = {};
+  persona: Persona = {
+    apellido: '',
+    edad: '',
+    email: '',
+    foto: '',
+    id: 0,
+    nombre: '',
+    pais: '',
+    publicaciones: null
+  };
 
+  publi:Publicaciones = {
+    codigo: '',
+    descripcion: '',
+    fecha: '',
+    ide: '',
+    lenguajeProgra: ''
+  }
   alerts: Alert[];
 
   showMensaje = false;
