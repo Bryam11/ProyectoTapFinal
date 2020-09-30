@@ -21,6 +21,8 @@ export class BlogComponent implements OnInit {
   listarpublicaciones() {
     this.personaServicio.listarPersonasUsingGET().subscribe(data => {
       this.ListaPersonas = data;
+      console.log(this.ListaPersonas);
+      
     })
   }
 

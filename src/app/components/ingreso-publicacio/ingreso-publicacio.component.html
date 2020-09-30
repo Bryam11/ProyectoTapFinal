@@ -35,7 +35,10 @@
 
 						<div class="group">
 							<label for="lenguaje" class="label">LENGUAJE</label>
-							<input id="lenguaje" type="text" class="input" pInputText [(ngModel)]="publicacion.lenguajeProgra">
+              <select class="btn btn-outline-neutral btn-round btn-lg"[(ngModel)]="LenguajeSeleccionado"
+              (change)="lenguajesChangeListener()">
+              <option *ngFor="let lenguaje of listaLenguajes" >{{lenguaje.lenguajes}}</option>
+            </select>
 						</div>
 						<div class="group">
 							<label for="user" class="label">USER</label>

@@ -22,7 +22,9 @@ export class IngresoPersonaComponent implements OnInit {
     publicaciones:[]
   };
 
-  publi:Publicaciones = {
+  message: string;
+
+  publi: Publicaciones = {
     codigo: '',
     descripcion: '',
     fecha: '',
@@ -32,6 +34,7 @@ export class IngresoPersonaComponent implements OnInit {
   alerts: Alert[];
 
   showMensaje = false;
+
   PaisSeleccionado = '';
 
   listaofPaises = ['Seleccione...',
@@ -58,7 +61,7 @@ export class IngresoPersonaComponent implements OnInit {
   }
 
 
-  ConutryChangeListener() {
+  CountryChangeListener() {
     // tslint:disable-next-line: triple-equals
     if (this.PaisSeleccionado != null && this.PaisSeleccionado != 'Seleccione...') {
       this.showMensaje = true;
@@ -69,13 +72,18 @@ export class IngresoPersonaComponent implements OnInit {
 
   validaciondeLogueo() {
 
+    this.PaisSeleccionado = this.persona.pais;
+
     this.personaServicio.comprobarLogueoUsingGET(this.persona.usuario[0].contrasenia, this.persona.usuario[0].usuario).subscribe(data => {
       alert(`usuarios correctos Bienvenido ${data.usuario[0].usuario} al Blog`)
+
+      localStorage.setItem('user', this.persona.usuario[0].usuario)
+      this.message = 'Login Sucesfull';
 
       // Cambiamos de componentes
       this.cambiardeVentana();
     }, (err) => {
-        alert('Verifique su usuario y contraseña')
+      alert('Verifique su usuario y contraseña')
     })
 
   }

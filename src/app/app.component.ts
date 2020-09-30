@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
     model: NgbDateStruct;
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
+    loggedInUser: string = null;
+
     // tslint:disable-next-line: max-line-length
     constructor(private renderer: Renderer2, private router: Router, @Inject(DOCUMENT) private document: any, private element: ElementRef, public location: Location) {
     }
@@ -66,6 +68,8 @@ export class AppComponent implements OnInit {
         else {
             return true;
         }
+
+
     }
 
 }

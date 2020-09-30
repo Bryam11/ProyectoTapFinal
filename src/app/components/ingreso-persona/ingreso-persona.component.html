@@ -69,9 +69,13 @@
 							<input id="last" type="text" class="input" [(ngModel)]="persona.apellido">
 						</div>
 						<div class="group">
+							<label for="age" class="label">Last Name</label>
+							<input id="age" type="int" class="input" [(ngModel)]="persona.edad">
+						</div>
+						<div class="group">
 							<label for="coutry" class="label">Country</label>
 							<select class="btn btn-outline-neutral btn-round btn-lg" [(ngModel)]="PaisSeleccionado"
-								(change)="ConutryChangeListener()">
+								(change)="CountryChangeListener()">
 								<option *ngFor="let pais of listaofPaises">{{pais}}</option>
 							</select>
 						</div>
