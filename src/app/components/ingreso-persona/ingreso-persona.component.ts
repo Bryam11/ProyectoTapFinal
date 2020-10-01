@@ -10,7 +10,7 @@ import { Publicaciones } from 'app/Rest';
   styleUrls: ['./ingreso-persona.component.css']
 })
 export class IngresoPersonaComponent implements OnInit {
-
+  
   persona: Persona = {
     apellido: '',
     edad: '',
@@ -75,15 +75,16 @@ export class IngresoPersonaComponent implements OnInit {
     this.PaisSeleccionado = this.persona.pais;
 
     this.personaServicio.comprobarLogueoUsingGET(this.persona.usuario[0].contrasenia, this.persona.usuario[0].usuario).subscribe(data => {
-      alert(`usuarios correctos Bienvenido ${data.usuario[0].usuario} al Blog`)
+      
 
       localStorage.setItem('user', this.persona.usuario[0].usuario)
       this.message = 'Login Sucesfull';
 
       // Cambiamos de componentes
       this.cambiardeVentana();
+
     }, (err) => {
-      alert('Verifique su usuario y contraseña')
+      this.mostrarToastFail();
     })
 
   }
@@ -106,11 +107,38 @@ export class IngresoPersonaComponent implements OnInit {
       // Guardamos la persona
       this.personaServicio.guardarPersonaUsingPOST(this.persona).subscribe(data => {
         console.log(data);
-        alert('Se ha registrado correctamente')
+        this.mostrarToast();
       }, (err) => {
-        alert('los nommbres estan repetidos')
+        this.mostrarToastRepeat();
       })
     })
 
   }
+ 
+  mostrarToast() {
+    var toast = document.getElementById("mitoast");
+    toast.className = "mostrar";
+    setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 5000);
+}
+
+
+mostrarToastFail() {
+  var toast = document.getElementById("mitoastfail");
+  toast.className = "mostrar";
+  setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 5000);
+}
+
+mostrarToastRepeat() {
+  var toast = document.getElementById("mitoastrepeat");
+  toast.className = "mostrar";
+  setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 5000);
+}
+ 
+// Con esta función se cierra el Toast 
+cerrarToast() {
+    var toast = document.getElementById("mitoast");
+    toast.className = "cerrar";
+    toast.className = toast.className.replace("cerrar", "");
+}
+
 }
