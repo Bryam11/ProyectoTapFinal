@@ -20,7 +20,7 @@ export class IngresoPublicacioComponent implements OnInit {
 
   page = 1;
 
-
+  nombreusuario = localStorage.getItem('user');
   LenguajeSeleccionado: '';
 
   login = false;
@@ -33,6 +33,7 @@ export class IngresoPublicacioComponent implements OnInit {
   constructor(private personaservice: PersonaControllerService, private router: Router, private lenguajeservice: LenguajeControllerService) { }
 
   ngOnInit(): void {
+
     this.Listarlenjuages();
   }
 
@@ -46,7 +47,7 @@ export class IngresoPublicacioComponent implements OnInit {
   }
 
   Listarlenjuages() {
-
+    this.mostrarToast();
     this.lenguajeservice.listarlenguajesUsingGET().subscribe(data => {
       // tslint:disable-next-line: no-unused-expression
       this.listaLenguajes = data;
@@ -60,6 +61,19 @@ export class IngresoPublicacioComponent implements OnInit {
 
 
   }
+
+  mostrarToast() {
+    var toast = document.getElementById("mitoast");
+    toast.className = "mostrar";
+    setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 6000);
+}
+
+
+cerrarToast() {
+  var toast = document.getElementById("mitoast");
+  toast.className = "cerrar";
+  toast.className = toast.className.replace("cerrar", "");
+}
 
   guardarPublicacion() {
     this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide, this.publicacion.codigo, this.publicacion.descripcion, this.publicacion.fecha, this.publicacion.lenguajeProgra, this.usuario.usuario).subscribe(data => {
