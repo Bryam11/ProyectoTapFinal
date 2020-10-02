@@ -31,7 +31,7 @@ export class IngresoPersonaComponent implements OnInit {
     ide: '',
     lenguajeProgra: ''
   }
-  alerts: Alert[];
+  
 
   showMensaje = false;
 
