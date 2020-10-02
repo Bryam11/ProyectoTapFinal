@@ -16,4 +16,5 @@ export interface Publicaciones {
     fecha?: string;
     ide?: string;
     lenguajeProgra?: string;
+    titulo?: string;
 }
