@@ -76,7 +76,7 @@ cerrarToast() {
 }
 
   guardarPublicacion() {
-    this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide, this.publicacion.codigo, this.publicacion.descripcion, this.publicacion.fecha, this.publicacion.lenguajeProgra, this.usuario.usuario).subscribe(data => {
+    this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide, this.publicacion.titulo,this.publicacion.codigo, this.publicacion.descripcion, this.publicacion.fecha, this.publicacion.lenguajeProgra, this.usuario.usuario).subscribe(data => {
       console.log('Se a creado la publicacion correctamente');
       alert('Se a creado la publicacion corrextamente');
     })

@@ -63,14 +63,16 @@ export class PersonaControllerService {
      * @param descripcion descripcion
      * @param fecha fecha
      * @param lenguaje lenguaje
+     * @param titulo titulo
      * @param usuario usuario
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, usuario?: string, observe?: 'body', reportProgress?: boolean): Observable<Persona>;
-    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, usuario?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Persona>>;
-    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, usuario?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Persona>>;
-    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, usuario?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, titulo?: string, usuario?: string, observe?: 'body', reportProgress?: boolean): Observable<Persona>;
+    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, titulo?: string, usuario?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Persona>>;
+    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, titulo?: string, usuario?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Persona>>;
+    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, titulo?: string, usuario?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
 
 
 
@@ -93,6 +95,9 @@ export class PersonaControllerService {
         }
         if (lenguaje !== undefined && lenguaje !== null) {
             queryParameters = queryParameters.set('lenguaje', <any>lenguaje);
+        }
+        if (titulo !== undefined && titulo !== null) {
+            queryParameters = queryParameters.set('titulo', <any>titulo);
         }
         if (usuario !== undefined && usuario !== null) {
             queryParameters = queryParameters.set('usuario', <any>usuario);

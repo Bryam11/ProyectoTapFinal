@@ -21,6 +21,7 @@ import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { IngresoPublicacioComponent } from './components/ingreso-publicacio/ingreso-publicacio.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { LenguajeControllerService } from './Rest';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,8 @@ import { LenguajeControllerService } from './Rest';
         HttpClientModule,
         CommonModule,
         NouisliderModule,
-        JwBootstrapSwitchNg2Module
+        JwBootstrapSwitchNg2Module,
+        AutocompleteLibModule
     ],
     providers: [PersonaControllerService,LenguajeControllerService],
     bootstrap: [AppComponent]
