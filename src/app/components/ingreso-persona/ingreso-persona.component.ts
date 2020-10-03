@@ -10,7 +10,7 @@ import { Publicaciones } from 'app/Rest';
   styleUrls: ['./ingreso-persona.component.css']
 })
 export class IngresoPersonaComponent implements OnInit {
-  
+
   persona: Persona = {
     apellido: '',
     edad: '',
@@ -19,7 +19,7 @@ export class IngresoPersonaComponent implements OnInit {
     id: 0,
     nombre: '',
     pais: '',
-    publicaciones:[]
+    publicaciones: []
   };
 
   message: string;
@@ -31,7 +31,7 @@ export class IngresoPersonaComponent implements OnInit {
     ide: '',
     lenguajeProgra: ''
   }
-  
+
 
   showMensaje = false;
 
@@ -75,7 +75,7 @@ export class IngresoPersonaComponent implements OnInit {
     this.PaisSeleccionado = this.persona.pais;
 
     this.personaServicio.comprobarLogueoUsingGET(this.persona.usuario[0].contrasenia, this.persona.usuario[0].usuario).subscribe(data => {
-      
+
 
       localStorage.setItem('user', this.persona.usuario[0].usuario)
       this.message = 'Login Sucesfull';
@@ -104,6 +104,8 @@ export class IngresoPersonaComponent implements OnInit {
         this.persona.id = data + 1;
       }
 
+
+      this.persona.pais = this.PaisSeleccionado;
       // Guardamos la persona
       this.personaServicio.guardarPersonaUsingPOST(this.persona).subscribe(data => {
         console.log(data);
@@ -114,31 +116,31 @@ export class IngresoPersonaComponent implements OnInit {
     })
 
   }
- 
+
   mostrarToast() {
     var toast = document.getElementById("mitoast");
     toast.className = "mostrar";
-    setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 5000);
-}
+    setTimeout(function () { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+  }
 
 
-mostrarToastFail() {
-  var toast = document.getElementById("mitoastfail");
-  toast.className = "mostrar";
-  setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 5000);
-}
+  mostrarToastFail() {
+    var toast = document.getElementById("mitoastfail");
+    toast.className = "mostrar";
+    setTimeout(function () { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+  }
 
-mostrarToastRepeat() {
-  var toast = document.getElementById("mitoastrepeat");
-  toast.className = "mostrar";
-  setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 5000);
-}
- 
-// Con esta función se cierra el Toast 
-cerrarToast() {
+  mostrarToastRepeat() {
+    var toast = document.getElementById("mitoastrepeat");
+    toast.className = "mostrar";
+    setTimeout(function () { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+  }
+
+  // Con esta función se cierra el Toast 
+  cerrarToast() {
     var toast = document.getElementById("mitoast");
     toast.className = "cerrar";
     toast.className = toast.className.replace("cerrar", "");
-}
+  }
 
 }
