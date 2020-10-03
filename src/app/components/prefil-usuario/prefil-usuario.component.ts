@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonaControllerService } from 'app/Rest';
 
 @Component({
   selector: 'app-prefil-usuario',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./prefil-usuario.component.css']
 })
 export class PrefilUsuarioComponent implements OnInit {
+  ListaPersonas: any = [];
 
-  constructor() { }
+  constructor(private personaServicio: PersonaControllerService) { 
+
+  }
 
   ngOnInit(): void {
+ 
   }
+
+ 
 
 }
