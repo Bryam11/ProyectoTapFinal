@@ -7,7 +7,6 @@ import { BasicErrorControllerService } from './api/basicErrorController.service'
 import { LenguajeControllerService } from './api/lenguajeController.service';
 import { PersonaControllerService } from './api/personaController.service';
 
-
 @NgModule({
   imports:      [],
   declarations: [],

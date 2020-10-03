@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PersonaControllerService, LenguajeControllerService } from 'app/Rest';
 import { newArray } from '@angular/compiler/src/util';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -12,14 +13,21 @@ export class BlogComponent implements OnInit {
 
   page = 1;
 
+  @Input() persona: any = {}
+  @Input() indice: number;
+
   keyword = 'lenguajes';
 
   public data$: Observable<any[]>;
 
+
   ListaPersonas = [];
   objPubli: [{}];
 
-  constructor(private personaServicio: PersonaControllerService, private listarlenguaje: LenguajeControllerService) { }
+  usuarios = '';
+
+  // tslint:disable-next-line: max-line-length
+  constructor(private personaServicio: PersonaControllerService, private listarlenguaje: LenguajeControllerService, private router: Router) { }
 
   ngOnInit(): void {
     this.listarpublicaciones();
@@ -28,6 +36,12 @@ export class BlogComponent implements OnInit {
 
   getData(): void {
     this.data$ = this.listarlenguaje.listarlenguajesUsingGET();
+  }
+
+  VerUsuario( usuarios) {
+   this.personaServicio.verusuarioUsingGET(this.usuarios).subscribe(data=>{
+
+   })
   }
 
 
@@ -39,11 +53,10 @@ export class BlogComponent implements OnInit {
     document.execCommand("copy");
     document.body.removeChild(aux);
   }
-  
+
   listarpublicaciones() {
     this.personaServicio.listarPersonasUsingGET().subscribe(data => {
       this.ListaPersonas = data;
-
       for (let ListaP of this.ListaPersonas) {
         console.log(ListaP, "esta lista buenarda");
         for (this.objPubli of ListaP.publicaciones) {
