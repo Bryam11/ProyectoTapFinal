@@ -11,6 +11,7 @@ import { IngresoPublicacioComponent } from './components/ingreso-publicacio/ingr
 import { IngresoPersonaComponent } from './components/ingreso-persona/ingreso-persona.component';
 import { BodyComponent } from './components/body/body.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { PrefilUsuarioComponent } from './components/prefil-usuario/prefil-usuario.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes = [
     { path: 'examples/profile', component: ProfileComponent },
     { path: 'ingreso/Publicaciones', component: IngresoPublicacioComponent },
     { path: 'ingreso/Persona', component: IngresoPersonaComponent },
-    { path: 'Blog', component: BlogComponent}
+    { path: 'Blog', component: BlogComponent},
+    { path: 'Perfildeusuario', component: PrefilUsuarioComponent}
 ];
 
 

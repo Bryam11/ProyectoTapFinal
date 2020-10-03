@@ -211,4 +211,6 @@ strong {
   .blog-footer p:last-child {
     margin-bottom: 0;
   }
+
   
+.link { color: #FF0000; } /* CSS link color (red) */

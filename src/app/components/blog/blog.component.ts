@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonaControllerService } from 'app/Rest';
+import { PersonaControllerService, LenguajeControllerService } from 'app/Rest';
+import { newArray } from '@angular/compiler/src/util';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-blog',
@@ -10,28 +12,34 @@ export class BlogComponent implements OnInit {
 
   page = 1;
 
-  keyword = 'codigo';
-  data = [
-     {
-       id: 1,
-       name: 'Usa'
-     },
-     {
-       id: 2,
-       name: 'England'
-     }
-  ];
+  keyword = 'lenguajes';
+
+  public data$: Observable<any[]>;
 
   ListaPersonas = [];
   objPubli: [{}];
-  
 
-  constructor(private personaServicio: PersonaControllerService) { }
+  constructor(private personaServicio: PersonaControllerService, private listarlenguaje: LenguajeControllerService) { }
 
   ngOnInit(): void {
     this.listarpublicaciones();
+    this.getData();
   }
 
+  getData(): void {
+    this.data$ = this.listarlenguaje.listarlenguajesUsingGET();
+  }
+
+
+  copiarAlPortapapeles(id_elemento) {
+    var aux = document.createElement("input");
+    aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+  }
+  
   listarpublicaciones() {
     this.personaServicio.listarPersonasUsingGET().subscribe(data => {
       this.ListaPersonas = data;
@@ -40,7 +48,7 @@ export class BlogComponent implements OnInit {
         console.log(ListaP, "esta lista buenarda");
         for (this.objPubli of ListaP.publicaciones) {
           console.log(this.objPubli, "publicaciones");
-   
+
         }
       }
       console.log(this.ListaPersonas);

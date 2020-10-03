@@ -22,6 +22,7 @@ import { IngresoPublicacioComponent } from './components/ingreso-publicacio/ingr
 import { BlogComponent } from './components/blog/blog.component';
 import { LenguajeControllerService } from './Rest';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { PrefilUsuarioComponent } from './components/prefil-usuario/prefil-usuario.component';
 
 @NgModule({
     declarations: [
@@ -29,11 +30,11 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
         NavbarComponent,
         FooterComponent,
         BodyComponent,
-    
         IngresoPersonaComponent,
         IngresoPublicacioComponent,
         NavigationComponent,
-        BlogComponent
+        BlogComponent,
+        PrefilUsuarioComponent
     ],
     imports: [
         BrowserAnimationsModule,
