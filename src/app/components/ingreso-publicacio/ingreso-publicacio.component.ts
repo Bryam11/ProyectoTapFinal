@@ -68,6 +68,13 @@ export class IngresoPublicacioComponent implements OnInit {
     setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 6000);
 }
 
+mostrarToastPubli() {
+  var toast = document.getElementById("mitoastpubli");
+  toast.className = "mostrar";
+  setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 6000);
+}
+
+
 
 cerrarToast() {
   var toast = document.getElementById("mitoast");
@@ -80,12 +87,12 @@ cerrarToast() {
     this.publicacion.lenguajeProgra = this.LenguajeSeleccionado;
     this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide,this.publicacion.codigo, this.publicacion.descripcion, this.publicacion.fecha, this.publicacion.lenguajeProgra , this.publicacion.titulo , this.usuario.usuario).subscribe(data => {
       console.log('Se a creado la publicacion correctamente', this.LenguajeSeleccionado);
-      alert('Se a creado la publicacion corrextamente');
+      this.mostrarToastPubli();
     })
   };
 
   cambiarRuta() {
     this.router.navigate(['ingreso/Persona'])
   }
-
+ 
 }
