@@ -38,10 +38,8 @@ export class BlogComponent implements OnInit {
     this.data$ = this.listarlenguaje.listarlenguajesUsingGET();
   }
 
-  VerUsuario( usuarios) {
-   this.personaServicio.verusuarioUsingGET(this.usuarios).subscribe(data=>{
-
-   })
+  VerUsuario( nombre: string) {
+   this.router.navigate(['Perfildeusuario',nombre,'usuario']);
   }
 
 
