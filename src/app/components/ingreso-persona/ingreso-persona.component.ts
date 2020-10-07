@@ -80,9 +80,6 @@ export class IngresoPersonaComponent implements OnInit {
       localStorage.setItem('user', this.persona.usuario[0].usuario)
       this.message = 'Login Sucesfull';
 
-      // Cambiamos de componentes
-      this.cambiardeVentana();
-
     }, (err) => {
       this.mostrarToastFail();
     })
@@ -141,6 +138,10 @@ export class IngresoPersonaComponent implements OnInit {
     var toast = document.getElementById("mitoast");
     toast.className = "cerrar";
     toast.className = toast.className.replace("cerrar", "");
+  }
+
+  Ingresar(nombre: string) {
+    this.router.navigate(['Perfildeusuario', nombre, 'usuario']);
   }
 
 }

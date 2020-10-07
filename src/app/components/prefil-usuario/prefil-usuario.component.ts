@@ -33,4 +33,6 @@ export class PrefilUsuarioComponent implements OnInit {
   navegarpublicaion() {
     this.router.navigate(['/publicaciones'])
   }
+
+ 
 }

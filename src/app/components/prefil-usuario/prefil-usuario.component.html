@@ -47,20 +47,27 @@
             </div>
         </div>
         <div class="row">
+            <tr *ngFor="let personas of ListaPersonas">
+          
             <div class="col-md-4">
                 <div class="profile-work">
-                    <p>WORK LINK</p>
-                    <a href="">Website Link</a><br />
-                    <a href="">Bootsnipp Profile</a><br />
+                    <p>SKILLS</p>
+                    <div *ngFor="let publicaciones of personas.publicaciones">
+                    <a href="">{{publicaciones.ide}}</a><br />
+                    <a href="">{{publicaciones.lenguajeProgra}}</a><br />
                     <a href="">Bootply Profile</a>
+                </div>
                     <p>SKILLS</p>
                     <a href="">Web Designer</a><br />
                     <a href="">Web Developer</a><br />
                     <a href="">WordPress</a><br />
                     <a href="">WooCommerce</a><br />
                     <a href="">PHP, .Net</a><br />
+                
                 </div>
             </div>
+                
+            </tr>
 
 
             <div class="col-md-8">
