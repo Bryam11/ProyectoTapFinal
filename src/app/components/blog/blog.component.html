@@ -1,43 +1,12 @@
-<div class="container">
-  <header class="blog-header py-3">
-    <div class="row flex-nowrap justify-content-between align-items-center">
-      <div class="col-4 pt-1">
-        <a class="text-muted" href="#">Subscribe</a>
-      </div>
-      <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Large</a>
-      </div>
-      <div class="col-4 d-flex justify-content-end align-items-center">
-        <a class="text-muted" href="#" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"
-            focusable="false">
-            <title>Search</title>
-            <circle cx="10.5" cy="10.5" r="7.5" />
-            <path d="M21 21l-5.2-5.2" />
-          </svg>
-        </a>
-        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
-      </div>
-    </div>
-  </header>
+<br>
+<br>
+<br>
+<br>
 
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href="#">World</a>
-      <a class="p-2 text-muted" href="#">U.S.</a>
-      <a class="p-2 text-muted" href="#">Technology</a>
-      <a class="p-2 text-muted" href="#">Design</a>
-      <a class="p-2 text-muted" href="#">Culture</a>
-      <a class="p-2 text-muted" href="#">Business</a>
-      <a class="p-2 text-muted" href="#">Politics</a>
-      <a class="p-2 text-muted" href="#">Opinion</a>
-      <a class="p-2 text-muted" href="#">Science</a>
-      <a class="p-2 text-muted" href="#">Health</a>
-      <a class="p-2 text-muted" href="#">Style</a>
-      <a class="p-2 text-muted" href="#">Travel</a>
-    </nav>
-  </div>
+<div class="container">
+  <h1 style="text-align:center; color: orangered;" class="pb-4 mb-4 font-italic border-bottom">
+  <strong>Snippets Desarrollo de Software</strong>  
+  </h1>
 
   <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
@@ -47,95 +16,55 @@
       <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
     </div>
   </div>
-
-  <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
-          <h3 class="mb-0">Featured post</h3>
-          <div class="mb-1 text-muted">Nov 12</div>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to
-            additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">Design</strong>
-          <h3 class="mb-0">Post title</h3>
-          <div class="mb-1 text-muted">Nov 11</div>
-          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.
-          </p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col-md-8 blog-main">
-      <h3 class="pb-4 mb-4 font-italic border-bottom">
-        Desarrollo de Software
-      </h3>
-      <div class="ng-autocomplete">
-        <ng-autocomplete 
-          [data]="data$ | async"
-          [searchKeyword]="keyword"
-          [itemTemplate]="itemTemplate"
-          [notFoundTemplate]="notFoundTemplate">                                 
-        </ng-autocomplete>
-       
-        <ng-template #itemTemplate let-item >
-          <a id="link" [innerHTML]="item.name" style="visibility: hidden;"></a>
-          </ng-template>
-           
-          <ng-template #notFoundTemplate let-notFound>
-          <div [innerHTML]="notFound"></div>
-          </ng-template>
-          </div>
-          <br>
+
+      <div class="search">
+        <h2 style="color:rgb(0, 0, 0);">🔎Buscar:</h2>
+        <form>
+          <input style="BORDER:  rgb(252, 88, 28) 1px solid;FONT-SIZE: 10pt; width: 350px;" [(ngModel)]="searchCodigo"
+            name="publicacionCodigo" autofocus type="text" placeholder="Enter the code to search">
+          <button style=" FONT-SIZE: 11pt;background: rgb(252, 88, 28);" (click)="buscarByCodigo()"><i
+              class="fa fa-search"></i>
+          </button>
+        </form>
+      </div>
+      <br>
 
       <tr *ngFor="let publicaciones of ListaPersonas">
         <div *ngFor="let objpublicacion of publicaciones.publicaciones">
           <div *ngFor="let objusuario of publicaciones.usuario">
             <hr style="background: orangered;">
-          <div class="blog-post">
-            <h2 class="blog-post-title">{{objpublicacion.titulo}}</h2>
+            <div class="blog-post">
+              <h2 class="blog-post-title">{{objpublicacion.titulo}}</h2>
 
-            <p class="blog-post-meta">{{objpublicacion.fecha}} <a (click)="VerUsuario(objusuario.usuario)" >{{objusuario.usuario}}</a></p>
-            <h2>Codigo</h2>
+              <p class="blog-post-meta">{{objpublicacion.fecha}} <a style="color: rgb(0, 162, 255)"
+                  (click)="VerUsuario(objusuario.usuario)"><strong>{{objusuario.usuario}}</strong></a></p>
+              <h3>Codigo</h3>
 
 
-            <pre><code id="p1">{{objpublicacion.codigo}}</code></pre>
-            <!--input type="submit" class="button" (click)="copiarAlPortapapeles('p1')" value="COPY"-->
-            <br />
-            
-         
-            <h3>Descripcion</h3>
+              <pre><code id="p1">{{objpublicacion.codigo}}</code></pre>
+              <!--input type="submit" class="button" (click)="copiarAlPortapapeles('p1')" value="COPY"-->
+              <br />
 
-            <p>{{objpublicacion.descripcion}}</p>
-            <h3>Caracteristicas</h3>
-            <p>El siguente codigo se encuentra desarrolado en el siguinete lenguaje y el IDE.</p>
-            <ul>
-              <li>{{objpublicacion.lenguajeProgra}}</li>
-              <li>{{objpublicacion.ide}}</li>
-            </ul>
+
+              <h3>Descripcion</h3>
+
+              <p>{{objpublicacion.descripcion}}</p>
+              <h3>Caracteristicas</h3>
+              <p>El siguente codigo se encuentra desarrolado en el siguinete lenguaje y el IDE.</p>
+              <ul>
+                <li>{{objpublicacion.lenguajeProgra}}</li>
+                <li>{{objpublicacion.ide}}</li>
+              </ul>
+
+            </div>
+
 
           </div>
-
-         
-        </div>
         </div>
 
       </tr>
@@ -145,23 +74,46 @@
         <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
       </nav>
 
-    </div><!-- /.blog-main -->
+    </div>
 
     <aside class="col-md-4 blog-sidebar">
       <div class="p-4 mb-3 bg-light rounded">
+        <div class="container">
+
+
+          <h5 style="color:rgb(0, 0, 0);">🔎Buscar Lenguaje de Programacion:</h5>
+
+          <div class="ng-autocomplete">
+            <h4></h4>
+            <ng-autocomplete [data]="data$ | async" [searchKeyword]="keyword" [itemTemplate]="itemTemplate"
+              [notFoundTemplate]="notFoundTemplate" placeholder="Search">
+            </ng-autocomplete>
+              
+
+            <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item.lenguajes"></a>
+            </ng-template>
+
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
+
+
+        </div>
         <h4 class="font-italic">About</h4>
         <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet
           fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
       </div>
 
       <div class="p-4">
-        <h4 class="font-italic">Archives</h4>
+        <h4 class="font-italic">Buscar por:</h4>
         <ol class="list-unstyled mb-0">
-          <li><a href="#">March 2014</a></li>
-          <li><a href="#">February 2014</a></li>
-          <li><a href="#">January 2014</a></li>
-          <li><a href="#">December 2013</a></li>
-          <li><a href="#">November 2013</a></li>
+          <li><a href="#">Netbeans</a></li>
+          <li><a href="#">Eclipse</a></li>
+          <li><a href="#">SpringTool</a></li>
+          <li><a href="#">Atom</a></li>
+          <li><a href="#">....</a></li>
           <li><a href="#">October 2013</a></li>
           <li><a href="#">September 2013</a></li>
           <li><a href="#">August 2013</a></li>

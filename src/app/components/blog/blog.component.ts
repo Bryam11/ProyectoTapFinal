@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PersonaControllerService, LenguajeControllerService } from 'app/Rest';
-import { newArray } from '@angular/compiler/src/util';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -19,11 +18,17 @@ export class BlogComponent implements OnInit {
   keyword = 'lenguajes';
 
   public data$: Observable<any[]>;
-
+ 
+  ide1='Netbeans';
+  ide2='Eclipse';
+  ide3='SpringTool';
+  ide4='Atom';
+  ide5='Netbeans';
 
   ListaPersonas = [];
   objPubli: [{}];
 
+  searchCodigo = '';
   usuarios = '';
 
   // tslint:disable-next-line: max-line-length
@@ -55,16 +60,20 @@ export class BlogComponent implements OnInit {
   listarpublicaciones() {
     this.personaServicio.listarPersonasUsingGET().subscribe(data => {
       this.ListaPersonas = data;
-      for (let ListaP of this.ListaPersonas) {
-        console.log(ListaP, "esta lista buenarda");
-        for (this.objPubli of ListaP.publicaciones) {
-          console.log(this.objPubli, "publicaciones");
-
-        }
-      }
-      console.log(this.ListaPersonas);
-
+    })
+  }
+  buscarByCodigo(){
+    this.personaServicio.likeByCodigoUsingGET(this.searchCodigo).subscribe(data => {
+      this.ListaPersonas = data;
     })
   }
 
+  listarNetbeans(){
+  }
+  listareclipse(){
+    
+  }
+  listarAtom(){
+    
+  }
 }
