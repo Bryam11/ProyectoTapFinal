@@ -106,9 +106,10 @@
           </div>
           <br>
 
-      <tr *ngFor="let publicaciones of ListaPersonas ">
+      <tr *ngFor="let publicaciones of ListaPersonas">
         <div *ngFor="let objpublicacion of publicaciones.publicaciones">
           <div *ngFor="let objusuario of publicaciones.usuario">
+            <hr style="background: orangered;">
           <div class="blog-post">
             <h2 class="blog-post-title">{{objpublicacion.titulo}}</h2>
 
@@ -129,15 +130,14 @@
             <ul>
               <li>{{objpublicacion.lenguajeProgra}}</li>
               <li>{{objpublicacion.ide}}</li>
-              <li>Nulla vitae elit libero, a pharetra augue.</li>
             </ul>
-
 
           </div>
 
+         
+        </div>
+        </div>
 
-        </div>
-        </div>
       </tr>
 
       <nav class="blog-pagination">
