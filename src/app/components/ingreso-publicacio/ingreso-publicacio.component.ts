@@ -57,10 +57,6 @@ export class IngresoPublicacioComponent implements OnInit {
     })
   }
 
-  buscarPersonaByCedulaService() {
-
-
-  }
 
   mostrarToast() {
     var toast = document.getElementById("mitoast");

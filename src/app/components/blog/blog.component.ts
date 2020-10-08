@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PersonaControllerService, LenguajeControllerService } from 'app/Rest';
-import { Observable } from 'rxjs';
+import { PersonaControllerService, LenguajeControllerService, Persona, Lenguajes } from 'app/Rest';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,36 +11,32 @@ export class BlogComponent implements OnInit {
 
   page = 1;
 
+  mostrar= false;
   @Input() persona: any = {}
   @Input() indice: number;
 
-  keyword = 'lenguajes';
+  listaLenguajes = [];
 
-  public data$: Observable<any[]>;
- 
-  ide1='Netbeans';
-  ide2='Eclipse';
-  ide3='SpringTool';
-  ide4='Atom';
-  ide5='Netbeans';
-
+  personas: Persona={};
+  lenguaje:Lenguajes={};
   ListaPersonas = [];
   objPubli: [{}];
 
   searchCodigo = '';
   usuarios = '';
+  LenguajeSeleccionado='';
 
-  // tslint:disable-next-line: max-line-length
-  constructor(private personaServicio: PersonaControllerService, private listarlenguaje: LenguajeControllerService, private router: Router) { }
+
+  constructor(private personaServicio: PersonaControllerService, private listarlenguaje: LenguajeControllerService, private router: Router) {
+    this.personas.publicaciones = [{}];
+   }
 
   ngOnInit(): void {
     this.listarpublicaciones();
-    this.getData();
+    this.Listarlenjuages();
   }
 
-  getData(): void {
-    this.data$ = this.listarlenguaje.listarlenguajesUsingGET();
-  }
+
 
   VerUsuario( nombre: string) {
    this.router.navigate(['Perfildeusuario',nombre,'usuario']);
@@ -68,12 +63,24 @@ export class BlogComponent implements OnInit {
     })
   }
 
-  listarNetbeans(){
+  buscarByDescripcion(){
+    this.personaServicio.likeByDescripcionUsingGET(this.searchCodigo).subscribe(data => {
+      this.ListaPersonas = data;
+    })
   }
-  listareclipse(){
-    
+
+  Listarlenjuages() {
+    this.listarlenguaje.listarlenguajesUsingGET().subscribe(data => {
+      // tslint:disable-next-line: no-unused-expression
+      this.listaLenguajes = data;
+    })
   }
-  listarAtom(){
-    
+
+  buscarByLenguaje(){
+    console.log(this.LenguajeSeleccionado)
+    this.personaServicio.listarPersonasbylenguajeUsingGET(this.LenguajeSeleccionado).subscribe(data => {
+      this.ListaPersonas = data;
+    })
   }
+
 }
