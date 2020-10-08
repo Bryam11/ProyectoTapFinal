@@ -70,7 +70,7 @@ export class IngresoPersonaComponent implements OnInit {
     }
   }
 
-  validaciondeLogueo() {
+  validaciondeLogueo(nombre: string) {
 
     this.PaisSeleccionado = this.persona.pais;
 
@@ -78,6 +78,7 @@ export class IngresoPersonaComponent implements OnInit {
 
 
       localStorage.setItem('user', this.persona.usuario[0].usuario)
+      this.router.navigate(['Perfildeusuario', nombre, 'usuario']);
       this.message = 'Login Sucesfull';
 
     }, (err) => {
@@ -115,33 +116,31 @@ export class IngresoPersonaComponent implements OnInit {
   }
 
   mostrarToast() {
-    var toast = document.getElementById("mitoast");
-    toast.className = "mostrar";
-    setTimeout(function () { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+    // tslint:disable-next-line: prefer-const
+    var toast = document.getElementById('mitoast');
+    toast.className = 'mostrar';
+    setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 5000);
   }
 
 
   mostrarToastFail() {
-    var toast = document.getElementById("mitoastfail");
-    toast.className = "mostrar";
-    setTimeout(function () { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+    var toast = document.getElementById('mitoastfail');
+    toast.className = 'mostrar';
+    setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 5000);
   }
 
   mostrarToastRepeat() {
-    var toast = document.getElementById("mitoastrepeat");
-    toast.className = "mostrar";
-    setTimeout(function () { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+    var toast = document.getElementById('mitoastrepeat');
+    toast.className = 'mostrar';
+    setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 5000);
   }
 
   // Con esta función se cierra el Toast 
   cerrarToast() {
-    var toast = document.getElementById("mitoast");
-    toast.className = "cerrar";
-    toast.className = toast.className.replace("cerrar", "");
+    var toast = document.getElementById('mitoast');
+    toast.className = 'cerrar';
+    toast.className = toast.className.replace('cerrar', '');
   }
 
-  Ingresar(nombre: string) {
-    this.router.navigate(['Perfildeusuario', nombre, 'usuario']);
-  }
-
+  
 }

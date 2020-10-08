@@ -3,6 +3,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+
+
+
 <div class="container emp-profile">
     <form method="post">
         <div class="row">
@@ -48,78 +51,135 @@
         </div>
         <div class="row">
             <tr *ngFor="let personas of ListaPersonas">
-          
-            <div class="col-md-4">
-                <div class="profile-work">
-                    <p>SKILLS</p>
-                    <div *ngFor="let publicaciones of personas.publicaciones">
-                    <a href="">{{publicaciones.ide}}</a><br />
-                    <a href="">{{publicaciones.lenguajeProgra}}</a><br />
-                    <a href="">Bootply Profile</a>
+
+                <div class="col-md-4">
+                    <div class="profile-work">
+                        <p>SKILLS</p>
+                        <div *ngFor="let publicaciones of personas.publicaciones">
+                            <a href="">{{publicaciones.ide}}</a><br />
+                            <a href="">{{publicaciones.lenguajeProgra}}</a><br />
+                            <a href="">Bootply Profile</a>
+                        </div>
+                        <p>SKILLS</p>
+                        <a href="">Web Designer</a><br />
+                        <a href="">Web Developer</a><br />
+                        <a href="">WordPress</a><br />
+                        <a href="">WooCommerce</a><br />
+                        <a href="">PHP, .Net</a><br />
+
+                    </div>
                 </div>
-                    <p>SKILLS</p>
-                    <a href="">Web Designer</a><br />
-                    <a href="">Web Developer</a><br />
-                    <a href="">WordPress</a><br />
-                    <a href="">WooCommerce</a><br />
-                    <a href="">PHP, .Net</a><br />
-                
-                </div>
-            </div>
-                
+
             </tr>
 
 
             <div class="col-md-8">
                 <div class="tab-content profile-tab" id="myTabContent">
                     <tr *ngFor="let personas of ListaPersonas">
-                        <div *ngFor="let publicaciones of personas.publicaciones">
-                            <div *ngFor="let usuarios of personas.usuario">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel"
-                                    aria-labelledby="home-tab">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Usuario</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{usuarios.usuario}}</p>
-                                        </div>
+                         <div *ngFor="let usuarios of personas.usuario">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Usuario</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Nombre</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{personas.nombre}}</p>
-                                        </div>
+                                    <div class="col-md-6">
+                                        <p>{{usuarios.usuario}}</p>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Email</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{personas.email}}</p>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Nombre</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Phone</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>123 456 7890</p>
-                                        </div>
+                                    <div class="col-md-6">
+                                        <ng-template [ngIf]="mostrar">
+                                            <div>
+                                                <p>{{personas.nombre}}</p>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template [ngIf]="!mostrar">
+                                            <div>
+                                                <div class="form-group">
+                                                    <input type="text" placeholder="Regular" class="form-control"
+                                                        [(ngModel)]="persona.nombre" name="nombre" />
+                                                </div>
+                                            </div>
+                                        </ng-template>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Profession</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>Web Developer and Designer</p>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Apellido</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ng-template [ngIf]="mostrar">
+                                            <div>
+                                                <p>{{personas.apellido}}</p>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template [ngIf]="!mostrar">
+                                            <div>
+                                                <input id="user" type="text" class="form-control" pInputText
+                                                    [(ngModel)]="persona.apellido" name="apellido"></div>
+                                        </ng-template>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ng-template [ngIf]="mostrar">
+                                            <div>
+                                                <p>{{personas.email}}</p>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template [ngIf]="!mostrar">
+                                            <div>
+                                                <input id="user" type="text" class="form-control" pInputText
+                                                    [(ngModel)]="persona.email" name="email"></div>
+                                        </ng-template>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Edad</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ng-template [ngIf]="mostrar">
+                                            <div>
+                                                <p>{{personas.edad}}</p>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template [ngIf]="!mostrar">
+                                            <div>
+                                                <input id="user" type="text" class="form-control" pInputText
+                                                    [(ngModel)]="persona.edad" name="edad"></div>
+                                        </ng-template>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Pais:</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ng-template [ngIf]="mostrar">
+                                            <div>
+                                                <p>{{personas.pais}}</p>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template [ngIf]="!mostrar">
+                                            <div>
+                                                <input id="user" type="text" class="form-control" pInputText
+                                                    [(ngModel)]="persona.pais" name="pais"></div>
+                                        </ng-template>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <ng-template [ngIf]="!mostrar">
+                            <button type="button" style="align-content: center;" (click)='EditarUsuario()' class="btn btn-primary btn-sm">Actualizar</button>    
+                        </ng-template>
+                        
+
                     </tr>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row">
