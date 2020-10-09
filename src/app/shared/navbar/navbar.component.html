@@ -1,34 +1,34 @@
 <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent" color-on-scroll="500">
     <div class="container">
-        <div class="dropdown button-dropdown">
-            <div ngbDropdown>
-                <a class="dropdown-toggle" ngbDropdownToggle>
-                    <span class="button-bar"></span>
-                    <span class="button-bar"></span>
-                    <span class="button-bar"></span>
+        <div *ngIf="loggedIn()">
+            <div class="navbar-translate">
+                <img class="" style="width: 35px;height: 35px;
+                  border-radius: 50%"
+                    src="https://scontent.fcue1-1.fna.fbcdn.net/v/t1.0-9/50936364_1502469486552156_6216291525404393472_n.jpg?_nc_cat=110&_nc_sid=09cbfe&_nc_ohc=oSqPR4XAQk8AX_ajOxd&_nc_ht=scontent.fcue1-1.fna&oh=9201139e41646b010833923d09d970a6&oe=5FA8151C"
+                    alt="">
+           
+                <a class="navbar-brand" [routerLink]="['/home']" placement="bottom"
+                    ngbTooltip="Aqui podra ver todas las publicaciones"
+                    style="margin-left:10px ; text-shadow:0.1em 0.1em 0.2em black;font-size: 16px;font-family:Verdana;">
+                    <strong>{{nombreusuario}} </strong>
                 </a>
-                <div ngbDropdownMenu>
-                    <a class="dropdown-header">Publicaciones</a>
-                    <a class="dropdown-item" href="ingreso/Publicaciones">Ingresar Publicaciones</a>
-                    <a class="dropdown-item" href="buscar/Publicaciones/cedula">Buscar por Cedula</a>
-                    <a class="dropdown-item" href="#">Buscar por Nombre</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="ingreso/Persona">Ingresar Persona</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">One more separated link</a>
-                </div>
             </div>
         </div>
-        <div class="navbar-translate">
-            <a class="navbar-brand" [routerLink]="['/home']" placement="bottom" ngbTooltip="Aqui podra ver todas las publicaciones">
-                Ver Publicaciones
-            </a>
-            </div>
+
+
+        <div *ngIf="!loggedIn()">
+            <a class="navbar-brand" [routerLink]="['/home']" placement="bottom"
+                ngbTooltip="Aqui podra ver todas las publicaciones"
+                style="margin-left:10px ; text-shadow:0.1em 0.1em 0.2em black;font-size: 18px;font-family:Verdana;">Home</a>
+        </div>
+
+
         <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="Blog" >
-                        <i style="text-shadow:0.1em 0.1em 0.2em black;" class="now-ui-icons education_agenda-bookmark"></i>
+                    <a class="nav-link" href="Blog">
+                        <i style="text-shadow:0.1em 0.1em 0.2em black;"
+                            class="now-ui-icons education_agenda-bookmark"></i>
                         <p style="text-shadow:0.1em 0.1em 0.2em black;"><strong>Blog</strong></p>
                     </a>
                 </li>
@@ -39,32 +39,42 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-neutral"  *ngIf="loggedIn()"  routerLinkActive="active" href="ingreso/Persona" >
-                        <i class="now-ui-icons arrows-1_share-66"></i>
-                        <p>Sign In/Register</p>
+                    <a class="nav-link btn btn-neutral" style="cursor:pointe;background: transparent;"
+                        *ngIf="!loggedIn()" routerLinkActive="active" href="ingreso/Persona">
+                        <i class="now-ui-icons objects_key-25"
+                            style="text-shadow:0.1em 0.1em 0.2em black;color:white;"></i>
+                        <p style="text-shadow:0.1em 0.1em 0.2em black;color:white;"><strong>Sign In/Register</strong>
+                        </p>
+
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link btn btn-neutral" style="cursor:pointe;background: transparent;" *ngIf="!loggedIn()" (click)="logout()" href="ingreso/Persona" >
-                        <i class="now-ui-icons arrows-1_share-66" style="text-shadow:0.1em 0.1em 0.2em black;color:white;"></i>
+                    <a class="nav-link btn btn-neutral" style="cursor:pointe;background: transparent;"
+                        *ngIf="loggedIn()" (click)="logout()" href="ingreso/Persona">
+                        <i class="now-ui-icons media-1_button-power"
+                            style="text-shadow:0.1em 0.1em 0.2em black;color:white;"></i>
                         <p style="text-shadow:0.1em 0.1em 0.2em black;color:white;"><strong>Logout</strong></p>
                     </a>
                 </li>
-               
+
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom"
+                        href="https://twitter.com/CreativeTim" target="_blank">
                         <i class="fab fa-twitter" style="text-shadow:0.1em 0.1em 0.2em black;"></i>
                         <p class="d-lg-none d-xl-none">Twitter</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/edisson.nauta/" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom"
+                        href="https://www.facebook.com/edisson.nauta/" target="_blank">
                         <i class="fab fa-facebook-square" style="text-shadow:0.1em 0.1em 0.2em black;"></i>
                         <p class="d-lg-none d-xl-none">Facebook</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/brhyantxavier/" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom"
+                        href="https://www.instagram.com/brhyantxavier/" target="_blank">
                         <i class="fab fa-instagram" style="text-shadow:0.1em 0.1em 0.2em black;"></i>
                         <p class="d-lg-none d-xl-none">Instagram</p>
                     </a>

@@ -12,16 +12,23 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
+    mostrar;
+  
+    nombreusuario= '';
 
     // tslint:disable-next-line: max-line-length
     constructor(public location: Location, private element: ElementRef, private router: Router) {
         this.sidebarVisible = false;
+        this.nombreusuario = localStorage.getItem('user');
+
     }
 
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     }
+
+
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];
@@ -60,10 +67,11 @@ export class NavbarComponent implements OnInit {
     }
 
     logout() {
-        localStorage.removeItem('loggedInUser');
+        localStorage.removeItem('user');
         this.router.navigate(['blog'])
     }
     loggedIn() {
         return !!localStorage.getItem('user');
+        
     }
 }
