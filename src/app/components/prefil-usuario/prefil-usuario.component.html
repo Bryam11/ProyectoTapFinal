@@ -174,10 +174,15 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label>About Me</label>
-                                                            <textarea rows="4" cols="80" class="form-control"
-                                                                placeholder="Here can be your description"
-                                                                value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                                            <ng-template [ngIf]="!mostrar">
+
+                                                                <div> <button (click)='EditarUsuario()'
+                                                                    class="btn btn-primary btn-round"
+                                                                    style="display: block; margin-left: auto; margin-right: auto;"
+                                                                    type="button">
+                                                                    <i class="now-ui-icons ui-2_favourite-28"></i> Guardar Edicion
+                                                                </button></div>
+                                                            </ng-template>
                                                         </div>
                                                     </div>
                                                 </div>
