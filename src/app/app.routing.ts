@@ -21,7 +21,7 @@ const routes: Routes = [
     { path: 'ingreso/Publicaciones', component: IngresoPublicacioComponent },
     { path: 'ingreso/Persona', component: IngresoPersonaComponent },
     { path: 'Blog', component: BlogComponent},
-    { path: 'Perfildeusuario/:nombre/usuario', component: PrefilUsuarioComponent}
+    { path: 'Perfildeusuario/:nombre/usuario', component: PrefilUsuarioComponent},
 ];
 
 

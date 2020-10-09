@@ -67,7 +67,7 @@ export class PrefilUsuarioComponent implements OnInit {
   }
   
   navegarpublicaion() {
-    this.router.navigate(['/publicaciones'])
+    this.router.navigate(['ingreso/Publicaciones'])
   }
 
   // metodo para consultar el usuario y cargar en los inputs
