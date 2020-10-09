@@ -1,239 +1,253 @@
+<!--
 
+=========================================================
+* Now UI Dashboard - v1.5.0
+=========================================================
 
+* Product Page: https://www.creative-tim.com/product/now-ui-dashboard
+* Copyright 2019 Creative Tim (http://www.creative-tim.com)
 
+* Designed by www.invisionapp.com Coded by www.creative-tim.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+-->
 <div class="navigation-example" style="background-image:url('assets/img/header.jpg')">
-
- 
-
-
-    <div class="container emp-profile">
-        <form method="post">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="profile-img">
-
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                            alt="" />
-                        <div class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file" />
-                        </div>
-
-                    </div>
-                </div>
-                <tr *ngFor="let persona of ListaPersonas">
-
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                            <h5>
-                                {{persona.nombre}}
-                            </h5>
-                            <h6>
-                                Web Developer and Designer
-                            </h6>
-                            <p class="proile-rating">RANKINGS : <span>8/10</span></p>
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                        aria-controls="home" aria-selected="true">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                        aria-controls="profile" aria-selected="false">Timeline</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </tr>
-                <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
-                </div>
+    <br>
+    <br>
+    <br>
+    <div class="user-profile">
+        <div class="wrapper ">
+            <div class="sidebar" data-color="orange">
+                <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
             </div>
-            <div class="row">
-                <tr *ngFor="let personas of ListaPersonas">
-
-                    <div class="col-md-4">
-                        <div class="profile-work">
-                            <p>SKILLS</p>
-                            <div *ngFor="let publicaciones of personas.publicaciones">
-                                <a href="">{{publicaciones.ide}}</a><br />
-                                <a href="">{{publicaciones.lenguajeProgra}}</a><br />
-                                <a href="">Bootply Profile</a>
+            <div class="main-panel" id="main-panel">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+                    <div class="container-fluid">
+                        <div class="navbar-wrapper">
+                            <div class="navbar-toggle">
+                                <button type="button" class="navbar-toggler">
+                                    <span class="navbar-toggler-bar bar1"></span>
+                                    <span class="navbar-toggler-bar bar2"></span>
+                                    <span class="navbar-toggler-bar bar3"></span>
+                                </button>
                             </div>
-                            <p>SKILLS</p>
-                            <a href="">Web Designer</a><br />
-                            <a href="">Web Developer</a><br />
-                            <a href="">WordPress</a><br />
-                            <a href="">WooCommerce</a><br />
-                            <a href="">PHP, .Net</a><br />
-
+                            <a class="navbar-brand">Bienvenido {{persona.usuario[0].usuario}}</a>
                         </div>
+
+
                     </div>
+                </nav>
+                <!-- End Navbar -->
+                <div class="panel-header panel-header-sm">
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="title">Edit Profile</h5>
+                                </div>
 
-                </tr>
+                                <div *ngFor="let personas of ListaPersonas">
+                                    <div *ngFor="let usuarios of personas.usuario">
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-md-5 pr-1">
+                                                        <div class="form-group">
+                                                            <label>Usuario (disabled)</label>
+                                                            <ng-template [ngIf]="mostrar">
+                                                                <div>
+                                                                    <label> {{usuarios.usuario}}</label>
+                                                                </div>
 
+                                                            </ng-template>
+                                                            <ng-template [ngIf]="!mostrar">
+                                                                <div> <input type="text" class="form-control"
+                                                                        disabled="" placeholder="Usuario"
+                                                                        [(ngModel)]="persona.usuario[0].usuario"
+                                                                        name="usuario"></div>
 
-                <div class="col-md-8">
-                    <div class="tab-content profile-tab" id="myTabContent">
-                        <tr *ngFor="let personas of ListaPersonas">
-                            <div *ngFor="let usuarios of personas.usuario">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel"
-                                    aria-labelledby="home-tab">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Usuario</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{usuarios.usuario}}</p>
+                                                            </ng-template>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 px-1">
+                                                        <div class="form-group">
+                                                            <label>Nombre</label>
+                                                            <ng-template [ngIf]="mostrar">
+                                                                <div><label>{{personas.nombre}}</label> </div>
+                                                            </ng-template>
+                                                            <ng-template [ngIf]="!mostrar">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Username" [(ngModel)]="persona.nombre"
+                                                                    name="nombre">
+                                                            </ng-template>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 pl-1">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Apellido</label>
+                                                            <ng-template [ngIf]="mostrar">
+                                                                <div><label>{{personas.apellido}}</label> </div>
 
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Nombre</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <ng-template [ngIf]="mostrar">
-                                                <div>
-                                                    <p>{{personas.nombre}}</p>
-                                                </div>
-                                            </ng-template>
-                                            <ng-template [ngIf]="!mostrar">
-                                                <div>
-                                                    <div class="form-group">
-                                                        <input type="text" placeholder="Regular" class="form-control"
-                                                            [(ngModel)]="persona.nombre" name="nombre" />
+                                                            </ng-template>
+                                                            <ng-template [ngIf]="!mostrar">
+                                                                <input type="email" class="form-control"
+                                                                    placeholder="Apellido"
+                                                                    [(ngModel)]="persona.apellido" name="aplellido">
+                                                            </ng-template>
+
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </ng-template>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Apellido</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <ng-template [ngIf]="mostrar">
-                                                <div>
-                                                    <p>{{personas.apellido}}</p>
-                                                </div>
-                                            </ng-template>
-                                            <ng-template [ngIf]="!mostrar">
-                                                <div>
-                                                    <input id="user" type="text" class="form-control" pInputText
-                                                        [(ngModel)]="persona.apellido" name="apellido"></div>
-                                            </ng-template>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Email</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <ng-template [ngIf]="mostrar">
-                                                <div>
-                                                    <p>{{personas.email}}</p>
-                                                </div>
-                                            </ng-template>
-                                            <ng-template [ngIf]="!mostrar">
-                                                <div>
-                                                    <input id="user" type="text" class="form-control" pInputText
-                                                        [(ngModel)]="persona.email" name="email"></div>
-                                            </ng-template>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Edad</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <ng-template [ngIf]="mostrar">
-                                                <div>
-                                                    <p>{{personas.edad}}</p>
-                                                </div>
-                                            </ng-template>
-                                            <ng-template [ngIf]="!mostrar">
-                                                <div>
-                                                    <input id="user" type="text" class="form-control" pInputText
-                                                        [(ngModel)]="persona.edad" name="edad"></div>
-                                            </ng-template>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Pais:</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <ng-template [ngIf]="mostrar">
-                                                <div>
-                                                    <p>{{personas.pais}}</p>
-                                                </div>
-                                            </ng-template>
-                                            <ng-template [ngIf]="!mostrar">
-                                                <div>
-                                                    <input id="user" type="text" class="form-control" pInputText
-                                                        [(ngModel)]="persona.pais" name="pais"></div>
-                                            </ng-template>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <ng-template [ngIf]="!mostrar">
-                                <button type="button" style="align-content: center;" (click)='EditarUsuario()'
-                                    class="btn btn-primary btn-sm">Actualizar</button>
-                            </ng-template>
+                                                <div class="row">
+                                                    <div class="col-md-6 pr-1">
+                                                        <div class="form-group">
+                                                            <label>Contraseña</label>
+                                                            <ng-template [ngIf]="mostrar">
+                                                                <div><label type="password">*******</label> </div>
 
+                                                            </ng-template>
+                                                            <ng-template [ngIf]="!mostrar">
+                                                                <input type="password" class="form-control"
+                                                                    placeholder="Contraseña"
+                                                                    [(ngModel)]="persona.usuario[0].contrasenia"
+                                                                    name="contraseña">
+                                                            </ng-template>
 
-                        </tr>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Experience</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Expert</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 pl-1">
+                                                        <div class="form-group">
+                                                            <label>Edad</label>
+                                                            <ng-template [ngIf]="mostrar">
+                                                                <div><label>{{personas.edad}}</label> </div>
+
+                                                            </ng-template>
+                                                            <ng-template [ngIf]="!mostrar">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Edad" [(ngModel)]="persona.edad"
+                                                                    name="edad">
+                                                            </ng-template>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Correo</label>
+                                                            <ng-template [ngIf]="mostrar">
+                                                                <div> <label>{{personas.email}}</label></div>
+
+                                                            </ng-template>
+                                                            <ng-template [ngIf]="!mostrar">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Home Address"
+                                                                    [(ngModel)]="persona.email" name="correo">
+                                                            </ng-template>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 pr-1">
+                                                        <div class="form-group">
+                                                            <label>Pais</label>
+                                                            <ng-template [ngIf]="mostrar">
+                                                                <div><label>{{personas.pais}}</label> </div>
+
+                                                            </ng-template>
+                                                            <ng-template [ngIf]="!mostrar">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Pais" [(ngModel)]="persona.pais"
+                                                                    name="paiss">
+                                                            </ng-template>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>About Me</label>
+                                                            <textarea rows="4" cols="80" class="form-control"
+                                                                placeholder="Here can be your description"
+                                                                value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Hourly Rate</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>10$/hr</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Total Projects</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>230</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>English Level</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Expert</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Availability</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>6 months</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Your Bio</label><br />
-                                    <p>Your detail description</p>
+                        </div>
+                        <div class="col-md-4">
+
+                            <div *ngFor="let personas of ListaPersonas">
+                                <div *ngFor="let usuarios of personas.usuario">
+                                    <div class="card card-user">
+                                        <div class="image">
+                                            <img src="../assets/img/bg5.jpg" alt="...">
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="author">
+                                                <a href="#">
+                                                    <img class="avatar border-gray" src="../../../" alt="...">
+                                                    <ng-template [ngIf]="mostrar">
+                                                        <h5 class="title">{{personas.nombre}} {{personas.apellido}}</h5>
+                                                    </ng-template>
+                                                    <ng-template [ngIf]="!mostrar">
+                                                        <input type="text" class="form-control" placeholder="Pais"
+                                                            [(ngModel)]="persona.nombre" name="nombre1">
+                                                    </ng-template>
+
+                                                </a>
+                                                <p class="description">
+                                                    <ng-template [ngIf]="mostrar">
+                                                        {{usuarios.usuario}}
+                                                    </ng-template>
+                                                    <ng-template [ngIf]="!mostrar">
+                                                        <div> <input type="text" class="form-control" placeholder="Pais"
+                                                                [(ngModel)]="persona.usuario[0].usuario"
+                                                                name="usuario1"> </div>
+
+                                                    </ng-template>
+                                                </p>
+                                            </div>
+                                            <p class="description text-center">
+                                                "Lamborghini Mercy <br>
+                                                Your chick she so thirsty <br>
+                                                I'm in that two seat Lambo"
+                                            </p>
+                                        </div>
+
+                                        <div class="button-container">
+                                            <ng-template [ngIf]="!mostrar">
+
+                                                <div> <button (click)='navegarpublicaion()'
+                                                    class="btn btn-primary btn-round"
+                                                    style="display: block; margin-left: auto; margin-right: auto;"
+                                                    type="button">
+                                                    <i class="now-ui-icons ui-2_favourite-28"></i> Añadir Publicacion
+                                                </button></div>
+                                            </ng-template>
+                                            
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-        </form>
+        </div>
+
     </div>
 </div>
