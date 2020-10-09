@@ -84,7 +84,20 @@ export class PrefilUsuarioComponent implements OnInit {
     this.persona.usuario[0].usuario = localStorage.getItem('user')
     // tslint:disable-next-line: max-line-length
     this.personaServicio.editarUsuarioUsingPUT(this.persona.apellido,this.persona.edad,this.persona.email,this.persona.foto,this.persona.nombre,this.persona.pais,this.persona.usuario[0].usuario).subscribe(data=>{
-          alert('se ha actualizado correctamente')
+          this.mostrarToastPubli();
+
     })
+  }
+
+  mostrarToastPubli() {
+    var toast = document.getElementById("mitoast");
+    toast.className = "mostrar";
+    setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 6000);
+  }
+
+  cerrarToast() {
+    var toast = document.getElementById("mitoast");
+    toast.className = "cerrar";
+    toast.className = toast.className.replace("cerrar", "");
   }
 }

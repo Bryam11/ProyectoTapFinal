@@ -1,5 +1,5 @@
 
-<div class="navigation-example" style="background: rgba(252, 205, 183, 0.664);">
+<div class="navigation-example" style="background-image:url('assets/img/header.jpg'); background-attachment: fixed;">
   <br>
   <br>
   <br>
@@ -19,7 +19,7 @@
     </div>
   </div>
   
-  <div class="container" >
+  <div class="container" style="color: rgb(255, 255, 255);" >
     <div class="row">
       <div class="col-md-8 blog-main">
   
@@ -39,15 +39,15 @@
           <div *ngFor="let objpublicacion of publicaciones.publicaciones">
             <div *ngFor="let objusuario of publicaciones.usuario">
               <hr style="background: orangered;">
-              <div class="blog-post">
-                <h2 class="blog-post-title">{{objpublicacion.titulo}}</h2>
+              <div class="blog-post" >
+                <h2 class="blog-post-title" >{{objpublicacion.titulo}}</h2>
   
                 <p class="blog-post-meta">{{objpublicacion.fecha}} <a style="color: rgb(0, 162, 255)"
                     (click)="VerUsuario(objusuario.usuario)"><strong>{{objusuario.usuario}}</strong></a></p>
-                <h3>Codigo</h3>
+                <h3 >Codigo</h3>
   
   
-                <pre><code id="p1">{{objpublicacion.codigo}}</code></pre>
+                <pre style="color: white;"><code id="p1">{{objpublicacion.codigo}}</code></pre>
                 <!--input type="submit" class="button" (click)="copiarAlPortapapeles('p1')" value="COPY"-->
                 <br />
   
@@ -89,5 +89,4 @@
       </aside>
     </div>
   </div>
-  <a routerLink="/Blog" routerLinkActive="active">First Component</a>
 </div>
