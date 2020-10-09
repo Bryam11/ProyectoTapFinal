@@ -44,13 +44,13 @@
                     </div>
                 </nav>
                 <!-- End Navbar -->
-                <div class="panel-header panel-header-sm">
+                <div class="panel-header panel-header-sm" >
                 </div>
-                <div class="content">
+                <div class="content" >
                     <div class="row">
                         <div class="col-md-8">
-                            <div class="card">
-                                <div class="card-header">
+                            <div class="card" style="background: rgba(1, 68, 57, 0.568);" >
+                                <div class="card-header" style="color: cornsilk;">
                                     <h5 class="title">Edit Profile</h5>
                                 </div>
 
@@ -58,18 +58,18 @@
                                     <div *ngFor="let usuarios of personas.usuario">
                                         <div class="card-body">
                                             <form>
-                                                <div class="row">
-                                                    <div class="col-md-5 pr-1">
-                                                        <div class="form-group">
+                                                <div class="row" style="color: cornsilk;">
+                                                    <div class="col-md-5 pr-1" >
+                                                        <div class="form-group" >
                                                             <label>Usuario (disabled)</label>
-                                                            <ng-template [ngIf]="mostrar">
+                                                            <ng-template [ngIf]="mostrar" >
                                                                 <div>
                                                                     <label> {{usuarios.usuario}}</label>
                                                                 </div>
 
-                                                            </ng-template>
-                                                            <ng-template [ngIf]="!mostrar">
-                                                                <div> <input type="text" class="form-control"
+                                                            </ng-template >
+                                                            <ng-template [ngIf]="!mostrar" >
+                                                                <div > <input style="color: cornsilk; background-color: transparent;" type="text" class="form-control"
                                                                         disabled="" placeholder="Usuario"
                                                                         [(ngModel)]="persona.usuario[0].usuario"
                                                                         name="usuario"></div>
@@ -83,8 +83,8 @@
                                                             <ng-template [ngIf]="mostrar">
                                                                 <div><label>{{personas.nombre}}</label> </div>
                                                             </ng-template>
-                                                            <ng-template [ngIf]="!mostrar">
-                                                                <input type="text" class="form-control"
+                                                            <ng-template [ngIf]="!mostrar" >
+                                                                <input style="color: cornsilk; background-color: transparent;"type="text" class="form-control"
                                                                     placeholder="Username" [(ngModel)]="persona.nombre"
                                                                     name="nombre">
                                                             </ng-template>
@@ -98,7 +98,7 @@
 
                                                             </ng-template>
                                                             <ng-template [ngIf]="!mostrar">
-                                                                <input type="email" class="form-control"
+                                                                <input style="color: cornsilk; background-color: transparent;" type="email" class="form-control"
                                                                     placeholder="Apellido"
                                                                     [(ngModel)]="persona.apellido" name="aplellido">
                                                             </ng-template>
@@ -106,7 +106,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row"style="color: cornsilk;">
                                                     <div class="col-md-6 pr-1">
                                                         <div class="form-group">
                                                             <label>Contraseña</label>
@@ -115,7 +115,7 @@
 
                                                             </ng-template>
                                                             <ng-template [ngIf]="!mostrar">
-                                                                <input type="password" class="form-control"
+                                                                <input style="color: cornsilk; background-color: transparent;" type="password" class="form-control"
                                                                     placeholder="Contraseña"
                                                                     [(ngModel)]="persona.usuario[0].contrasenia"
                                                                     name="contraseña">
@@ -131,7 +131,7 @@
 
                                                             </ng-template>
                                                             <ng-template [ngIf]="!mostrar">
-                                                                <input type="number" class="form-control"
+                                                                <input style="color: cornsilk; background-color: transparent;" type="number" class="form-control"
                                                                     placeholder="Edad" [(ngModel)]="persona.edad"
                                                                     name="edad">
                                                             </ng-template>
@@ -139,7 +139,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row" style="color: cornsilk;">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>Correo</label>
@@ -148,14 +148,14 @@
 
                                                             </ng-template>
                                                             <ng-template [ngIf]="!mostrar">
-                                                                <input type="text" class="form-control"
+                                                                <input style="color: cornsilk; background-color: transparent;" type="text" class="form-control"
                                                                     placeholder="Home Address"
                                                                     [(ngModel)]="persona.email" name="correo">
                                                             </ng-template>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row" style="color: cornsilk;">
                                                     <div class="col-md-4 pr-1">
                                                         <div class="form-group">
                                                             <label>Pais</label>
@@ -164,7 +164,7 @@
 
                                                             </ng-template>
                                                             <ng-template [ngIf]="!mostrar">
-                                                                <input type="text" class="form-control"
+                                                                <input style="color: cornsilk; background-color: transparent;" type="text" class="form-control"
                                                                     placeholder="Pais" [(ngModel)]="persona.pais"
                                                                     name="paiss">
                                                             </ng-template>
@@ -191,29 +191,28 @@
 
                             <div *ngFor="let personas of ListaPersonas">
                                 <div *ngFor="let usuarios of personas.usuario">
-                                    <div class="card card-user">
+                                    <div class="card card-user" style="background: rgba(1, 68, 57, 0.568);">
                                         <div class="image">
-                                            <img src="../assets/img/bg5.jpg" alt="...">
+                                            <img style="border-radius: 50%;" src="https://xoxo.news/__export/1586654174108/sites/xoxo/img/2020/04/11/sech.jpg_1362836701.jpg" alt="...">
                                         </div>
                                         <div class="card-body">
                                             <div class="author">
-                                                <a href="#">
-                                                    <img class="avatar border-gray" src="../../../" alt="...">
+                                               
+                                                    <!-- <img class="avatar border-gray" src="../../../" alt="..."> -->
                                                     <ng-template [ngIf]="mostrar">
                                                         <h5 class="title">{{personas.nombre}} {{personas.apellido}}</h5>
                                                     </ng-template>
                                                     <ng-template [ngIf]="!mostrar">
-                                                        <input type="text" class="form-control" placeholder="Pais"
+                                                        <input disabled="" style="color: cornsilk; background-color: transparent;border: transparent;" type="text" class="form-control" placeholder="Pais"
                                                             [(ngModel)]="persona.nombre" name="nombre1">
                                                     </ng-template>
 
-                                                </a>
                                                 <p class="description">
                                                     <ng-template [ngIf]="mostrar">
                                                         {{usuarios.usuario}}
                                                     </ng-template>
                                                     <ng-template [ngIf]="!mostrar">
-                                                        <div> <input type="text" class="form-control" placeholder="Pais"
+                                                        <div> <input disabled="" style="color: cornsilk; background-color: transparent;border: 0;" type="text" class="form-control" placeholder="Pais"
                                                                 [(ngModel)]="persona.usuario[0].usuario"
                                                                 name="usuario1"> </div>
 

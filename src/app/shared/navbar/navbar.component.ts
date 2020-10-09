@@ -12,8 +12,9 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
-    mostrar;
-  
+
+   
+
     nombreusuario= '';
 
     // tslint:disable-next-line: max-line-length
@@ -74,4 +75,8 @@ export class NavbarComponent implements OnInit {
         return !!localStorage.getItem('user');
         
     }
+
+    VerUsuario( nombre: string) {
+        this.router.navigate(['Perfildeusuario',nombre,'usuario']);
+       }
 }

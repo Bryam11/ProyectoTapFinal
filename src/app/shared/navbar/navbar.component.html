@@ -4,14 +4,25 @@
             <div class="navbar-translate">
                 <img class="" style="width: 35px;height: 35px;
                   border-radius: 50%"
-                    src="https://scontent.fcue1-1.fna.fbcdn.net/v/t1.0-9/50936364_1502469486552156_6216291525404393472_n.jpg?_nc_cat=110&_nc_sid=09cbfe&_nc_ohc=oSqPR4XAQk8AX_ajOxd&_nc_ht=scontent.fcue1-1.fna&oh=9201139e41646b010833923d09d970a6&oe=5FA8151C"
+                    src="https://xoxo.news/__export/1586654174108/sites/xoxo/img/2020/04/11/sech.jpg_1362836701.jpg"
                     alt="">
-                <a class="navbar-brand" [routerLink]="['/home']" placement="bottom"
+                <a class="navbar-brand" (click)="VerUsuario(objusuario.usuario)"  placement="bottom"
                     ngbTooltip="Aqui podra ver todas las publicaciones"
                     style="margin-left:10px ; text-shadow:0.1em 0.1em 0.2em black;font-size: 16px;font-family:Verdana;">
                     <strong>{{nombreusuario}} </strong>
                 </a>
             </div>
+        </div>
+
+        <div *ngIf="loggedIn()">
+            <a class="nav-link btn btn-neutral" style="cursor:pointe;background: transparent;"
+                routerLinkActive="active" href="ingreso/Publicaciones">
+                <i class="now-ui-icons objects_key-25"
+                    style="text-shadow:0.1em 0.1em 0.2em black;color:white;"></i>
+                <p style="text-shadow:0.1em 0.1em 0.2em black;color:white;"><strong>Crear Publicacion</strong>
+                </p>
+
+            </a>
         </div>
 
 
