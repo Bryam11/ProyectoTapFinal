@@ -4,48 +4,52 @@
 	<br>
 	<br>
 	<div role="alert" id="mitoast" aria-live="assertive" aria-atomic="true" class="toast">
- 
+
 		<div class="toast-header">
-	 
+
 			<!-- Icono / Logo de la Aplicación -->
-			<img src="https://image.flaticon.com/icons/png/512/20/20173.png" width="20" height="20" class="rounded mr-2" alt="Logo Nube Colectiva">
-			
+			<img src="https://image.flaticon.com/icons/png/512/20/20173.png" width="20" height="20" class="rounded mr-2"
+				alt="Logo Nube Colectiva">
+
 			<!-- Nombre de la Aplicación -->
 			<strong style="color: #ffffff;" class="mr-auto">Mensaje</strong>
 
 
 			<!-- Botón para Cerrar el Toast -->
-			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar" onclick="cerrarToast()">
+			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar"
+				onclick="cerrarToast()">
 				<span aria-hidden="true">×</span>
 			</button>
 
 			<!-- Mensaje -->
 			<hr>
-			<h5 style="color: #ffffff;">Bienvenido {{nombreusuario}} aquí podras crear tu publicación. Suerte! 😀</h5>		 
-		</div> 
+			<h5 style="color: #ffffff;">Bienvenido {{nombreusuario}} aquí podras crear tu publicación. Suerte! 😀</h5>
+		</div>
 	</div>
 
 
 	<div role="alert" id="mitoastpubli" aria-live="assertive" aria-atomic="true" class="toastpubli">
- 
+
 		<div class="toast-header">
-	 
+
 			<!-- Icono / Logo de la Aplicación -->
-			<img src="https://image.flaticon.com/icons/png/512/20/20173.png" width="20" height="20" class="rounded mr-2" alt="Logo Nube Colectiva">
-			
+			<img src="https://image.flaticon.com/icons/png/512/20/20173.png" width="20" height="20" class="rounded mr-2"
+				alt="Logo Nube Colectiva">
+
 			<!-- Nombre de la Aplicación -->
 			<strong style="color: #ffffff;" class="mr-auto">Mensaje</strong>
 
 
 			<!-- Botón para Cerrar el Toast -->
-			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar" onclick="cerrarToast()">
+			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar"
+				onclick="cerrarToast()">
 				<span aria-hidden="true">×</span>
 			</button>
 
 			<!-- Mensaje -->
 			<hr>
-			<h5 style="color: #ffffff;">Se a creador correctamente la publicacion 😀</h5>		 
-		</div> 
+			<h5 style="color: #ffffff;">Se a creador correctamente la publicacion 😀</h5>
+		</div>
 	</div>
 
 	<div class="container">
@@ -53,74 +57,122 @@
 	</div>
 
 
-    <div class="container">
+	<div class="container">
 		<div class="login-wrap">
 			<div class="login-html">
-				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Registrar Publicacion</label>
+				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
+					class="tab">Registrar Publicacion</label>
 				<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
 				<div class="login-form">
 					<div class="sign-in-htm">
-						
+
 						<div class="group">
 							<label for="titulo" class="label">TITULO</label>
-							<input id="titulo" type="text" class="input" pInputText
-								[(ngModel)]="publicacion.titulo">
-						</div>
-
-                        <div class="group">
-							<label for="ide" class="label">IDE</label>
-							<input id="ide" type="text" class="input" pInputText
-								[(ngModel)]="publicacion.ide">
+							<input id="titulo" type="text" class="input" pInputText [(ngModel)]="publicacion.titulo">
 						</div>
 
 						<div class="group">
-                            <label for="descripcion" class="label">DESCRIPTION</label>
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-                            <div class="col-md-12">
-                                <textarea [(ngModel)]="publicacion.descripcion" class="input" style="background:rgba(174, 171, 175, 0.185); color: blanchedalmond;" id="descripcion" name="descripcion" placeholder="Enter your description" rows="3"></textarea>
+							<label for="ide" class="label">IDE</label>
+							<input id="ide" type="text" class="input" pInputText [(ngModel)]="publicacion.ide">
+						</div>
+
+						<div class="group">
+							<label for="descripcion" class="label">DESCRIPTION</label>
+							<span class="col-md-1 col-md-offset-2 text-center"><i
+									class="fa fa-pencil-square-o bigicon"></i></span>
+							<div class="col-md-12">
+								<textarea [(ngModel)]="publicacion.descripcion" class="input"
+									style="background:rgba(174, 171, 175, 0.185); color: blanchedalmond;"
+									id="descripcion" name="descripcion" placeholder="Enter your description"
+									rows="3"></textarea>
 							</div>
 
-						<div class="group">
-							<label for="date" class="label">DATE</label>
-							<input id="date" type="date" class="input" pInputText [(ngModel)]="publicacion.fecha">
-						</div>
+							<div class="group">
+								<label for="date" class="label">DATE</label>
+								<input id="date" type="date" class="input" pInputText [(ngModel)]="publicacion.fecha">
+							</div>
 
-						<div class="group">
-							<label for="lenguaje" class="label">LENGUAJE</label>
-              <select class="btn btn-outline-neutral btn-round btn-lg" style="background: #77757565;"[(ngModel)]="LenguajeSeleccionado"
-              (change)="lenguajesChangeListener()">
-              <option style="background-color: #4d4b4b;;" *ngFor="let lenguaje of listaLenguajes" >{{lenguaje.lenguajes}}</option>
-            </select>
-						</div>
-						<div class="group">
-							<label for="user" class="label">USER</label>
-							<input id="user" type="text" class="input" pInputText [(ngModel)]="usuario.usuario">
-                        </div>
-                        
-                        <div class="group">
-                            <label for="codigo" class="label">CODE</label>
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-                            <div class="col-md-12">
-                                <textarea [(ngModel)]="publicacion.codigo" class="input" style="background:rgba(174, 171, 175, 0.185); color: blanchedalmond;" id="codigo" name="codigo" placeholder="Enter your code" rows="7"></textarea>
-                            </div>
-                        </div>
-                        
-                       
-                          <div class="group">
-							<input type="submit" class="button" (click)="guardarPublicacion()" value="REGISTER">
-                        </div>
-                       
-						<div class="hr"></div>
-						<div class="foot-lnk">
+							<div class="group">
+								<label for="lenguaje" class="label">LENGUAJE</label>
+								<select class="btn btn-outline-neutral btn-round btn-lg" style="background: #77757565;"
+									[(ngModel)]="LenguajeSeleccionado" (change)="lenguajesChangeListener()">
+									<option style="background-color: #4d4b4b;;" *ngFor="let lenguaje of listaLenguajes">
+										{{lenguaje.lenguajes}}</option>
+								</select>
+							</div>
+							<div class="group">
+								<label for="user" class="label">USER</label>
+								<input id="user" type="text"  disabled="" class="input" pInputText [(ngModel)]="usuario.usuario">
+							</div>
 
+							<div class="group">
+								<label for="codigo" class="label">CODE</label>
+								<span class="col-md-1 col-md-offset-2 text-center"><i
+										class="fa fa-pencil-square-o bigicon"></i></span>
+								<div class="col-md-12">
+									<textarea [(ngModel)]="publicacion.codigo" class="input"
+										style="background:rgba(174, 171, 175, 0.185); color: blanchedalmond;"
+										id="codigo" name="codigo" placeholder="Enter your code" rows="7"></textarea>
+								</div>
+							</div>
+
+
+							<div class="group">
+								<!-- Large modal -->
+								<button  type="submit" class="button1"   (click)="open(classic)">Vista Previa</button>
+								<br>
+								<ng-template #classic let-c="close" let-d="dismiss">
+									<div class="modal-header">
+										<h5 class="modal-title text-center">Vista Preview</h5>
+										<button type="button" class="close" (click)="d('Cross click')">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div>
+										<div class="blog-post">
+											<h2 class="blog-post-title">{{publicacion.titulo}}</h2>
+
+											<p class="blog-post-meta">{{publicacion.fecha}} <a
+													style="color: rgb(0, 162, 255)"><strong>{{usuario.usuario}}</strong></a>
+											</p>
+											<h3>Codigo</h3>
+
+
+											<pre style="color: rgb(3, 3, 3);"><code >{{publicacion.codigo}}</code></pre>
+
+											<br />
+
+
+											<h3>Descripcion</h3>
+
+											<p>{{publicacion.descripcion}}</p>
+											<h3>Caracteristicas</h3>
+											<p>El siguente codigo se encuentra desarrolado en el siguinete lenguaje y el
+												IDE.</p>
+											<ul>
+												<li>{{LenguajeSeleccionado}}</li>
+												<li>{{publicacion.ide}}</li>
+											</ul>
+										</div>
+									</div>
+
+								</ng-template>
+
+								<input type="submit" class="button" (click)="guardarPublicacion()" value="REGISTER">
+							</div>
+
+							<div class="hr"></div>
+							<div class="foot-lnk">
+
+							</div>
+
+						</div>
 					</div>
-					
+
 				</div>
 			</div>
 
-		</div>
-    </div>
-    
 
-  
-</div>
+
+
+		</div>
