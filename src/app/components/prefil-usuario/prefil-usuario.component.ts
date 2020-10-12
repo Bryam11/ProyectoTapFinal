@@ -35,9 +35,6 @@ export class PrefilUsuarioComponent implements OnInit {
 
   // Variable para validar la visibilidad de los inputs y labels
   mostrar: any;
-
-  PaisSeleccionado = '';
-
   
 
   constructor(private personaServicio: PersonaControllerService, private routes: ActivatedRoute, private router: Router) {
