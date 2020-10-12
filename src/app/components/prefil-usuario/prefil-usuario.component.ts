@@ -29,12 +29,16 @@ export class PrefilUsuarioComponent implements OnInit {
   // lista Para cargar los datos en los labels
   ListaPersonas: any = [];
 
+
   // Instancia de objeto para cargar en los inputs y editar
   persona: Persona = {};
 
   // Variable para validar la visibilidad de los inputs y labels
   mostrar: any;
 
+  PaisSeleccionado = '';
+
+  
 
   constructor(private personaServicio: PersonaControllerService, private routes: ActivatedRoute, private router: Router) {
 
@@ -73,7 +77,6 @@ export class PrefilUsuarioComponent implements OnInit {
   // metodo para consultar el usuario y cargar en los inputs
   cargarUsuario() {
     this.persona.usuario[0].usuario = localStorage.getItem('user')
-    console.log(this.persona.usuario[0].usuario, 'este nombre va entrar en el metodo');
 
     this.personaServicio.cargarUsuarioUsingGET(this.persona.usuario[0].usuario).subscribe(data => {
       this.persona = data;
@@ -100,4 +103,5 @@ export class PrefilUsuarioComponent implements OnInit {
     toast.className = "cerrar";
     toast.className = toast.className.replace("cerrar", "");
   }
+  
 }
