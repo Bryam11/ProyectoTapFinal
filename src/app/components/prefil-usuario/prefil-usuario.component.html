@@ -85,7 +85,7 @@
                                                         <div class="form-group" >
                                                             <label>Usuario (disabled)</label>
                                                             <ng-template [ngIf]="mostrar" >
-                                                                <div>
+                                                                <div style="color: rgb(180, 175, 153);">
                                                                     <label> {{usuarios.usuario}}</label>
                                                                 </div>
 
@@ -103,7 +103,7 @@
                                                         <div class="form-group">
                                                             <label>Nombre</label>
                                                             <ng-template [ngIf]="mostrar">
-                                                                <div><label>{{personas.nombre}}</label> </div>
+                                                                <div style="color: rgb(180, 175, 153);"><label>{{personas.nombre}}</label> </div>
                                                             </ng-template>
                                                             <ng-template [ngIf]="!mostrar" >
                                                                 <input style="color: cornsilk; background-color: transparent;"type="text" class="form-control"
@@ -116,7 +116,7 @@
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Apellido</label>
                                                             <ng-template [ngIf]="mostrar">
-                                                                <div><label>{{personas.apellido}}</label> </div>
+                                                                <div style="color: rgb(180, 175, 153);"><label>{{personas.apellido}}</label> </div>
 
                                                             </ng-template>
                                                             <ng-template [ngIf]="!mostrar">
@@ -129,11 +129,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="row"style="color: cornsilk;">
-                                                    <div class="col-md-6 pr-1">
+                                                    <div class="col-md-5 pr-1">
                                                         <div class="form-group">
                                                             <label>Contraseña</label>
                                                             <ng-template [ngIf]="mostrar">
-                                                                <div><label type="password">*******</label> </div>
+                                                                <div style="color: rgb(180, 175, 153);"><label type="password">*****</label> </div>
 
                                                             </ng-template>
                                                             <ng-template [ngIf]="!mostrar">
@@ -149,7 +149,7 @@
                                                         <div class="form-group">
                                                             <label>Edad</label>
                                                             <ng-template [ngIf]="mostrar">
-                                                                <div><label>{{personas.edad}}</label> </div>
+                                                                <div style="color: rgb(180, 175, 153);"><label>{{personas.edad}}</label> </div>
 
                                                             </ng-template>
                                                             <ng-template [ngIf]="!mostrar">
@@ -166,7 +166,7 @@
                                                         <div class="form-group">
                                                             <label>Correo</label>
                                                             <ng-template [ngIf]="mostrar">
-                                                                <div> <label>{{personas.email}}</label></div>
+                                                                <div style="color: rgb(180, 175, 153);"> <label>{{personas.email}}</label></div>
 
                                                             </ng-template>
                                                             <ng-template [ngIf]="!mostrar">
@@ -182,7 +182,7 @@
                                                         <div class="form-group">
                                                             <label>Pais</label>
                                                             <ng-template [ngIf]="mostrar">
-                                                                <div><label>{{personas.pais}}</label> </div>
+                                                                <div style="color: rgb(180, 175, 153);"><label>{{personas.pais}}</label> </div>
 
                                                             </ng-template>
                                                             <ng-template [ngIf]="!mostrar">
@@ -226,27 +226,33 @@
                                         <div class="card-body">
                                             <div class="author">
                                                
-                                                    <!-- <img class="avatar border-gray" src="../../../" alt="..."> -->
-                                                    <ng-template [ngIf]="mostrar">
-                                                        <h5 class="title">{{personas.nombre}} {{personas.apellido}}</h5>
-                                                    </ng-template>
-                                                    <ng-template [ngIf]="!mostrar">
-                                                        <input disabled="" style="color: cornsilk; background-color: transparent;border: transparent;" type="text" class="form-control" placeholder="Pais"
-                                                            [(ngModel)]="persona.nombre" name="nombre1">
-                                                    </ng-template>
-
                                                 <p class="description">
                                                     <ng-template [ngIf]="mostrar">
-                                                        {{usuarios.usuario}}
+                                                        <h3 style="color:white;">{{usuarios.usuario}}</h3>
+                                                    </ng-template> 
+                                                </p>
+                                                    <!-- <img class="avatar border-gray" src="../../../" alt="..."> -->
+                                                    <ng-template [ngIf]="mostrar">
+                                                        <h5 style="color: rgb(180, 175, 153);" class="title">{{personas.nombre}} {{personas.apellido}}</h5>
                                                     </ng-template>
                                                     <ng-template [ngIf]="!mostrar">
+                                                        <ng-template [ngIf]="!mostrar">
+                                                            <h3 style="color:white;">{{usuarios.usuario}}</h3>
+                                                        </ng-template> 
+                                                        <!-- <input disabled="" style="color: cornsilk; background-color: transparent;border: transparent;" type="text" class="form-control" placeholder="Pais"
+                                                            [(ngModel)]="persona.nombre" name="nombre1"> -->
+                                                            <h5 style="color: rgb(180, 175, 153);">{{personas.nombre}} {{personas.apellido}}</h5>
+                                                    </ng-template>
+
+                                              
+                                                    <!-- <ng-template [ngIf]="!mostrar">
                                                         <div> <input disabled="" style="color: cornsilk; background-color: transparent;border: 0;" type="text" class="form-control" placeholder="Pais"
                                                                 [(ngModel)]="persona.usuario[0].usuario"
                                                                 name="usuario1"> 
                                                             </div>
 
-                                                    </ng-template>
-                                                </p>
+                                                    </ng-template> -->
+                                                
                                             </div>
                                             <p class="description text-center">
                                                 "Lamborghini Mercy <br>
