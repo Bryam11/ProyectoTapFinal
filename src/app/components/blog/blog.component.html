@@ -1,16 +1,16 @@
+<div class="navigation-example"
+  style="background-image:url('https://www.hostinger.es/tutoriales/wp-content/uploads/sites/7/2019/02/que-es-un-blog-1280x720.jpg'); background-attachment: fixed;">
+  <br>
+  <br>
+  <br>
 
-<div class="navigation-example" style="background-image:url('https://www.hostinger.es/tutoriales/wp-content/uploads/sites/7/2019/02/que-es-un-blog-1280x720.jpg'); background-attachment: fixed;">
-  <br>
-  <br>
-  <br>
-  
   <div class="container">
     <h1 style="text-align:center; color: rgb(255, 227, 217);" class="display-4 font-italic ">
-    <strong>Snippets Desarrollo de Software</strong>  
+      <strong>Snippets Desarrollo de Software</strong>
     </h1>
-  
-    <div  style="background:rgba(247, 200, 98, 0.219);"  class="jumbotron p-4 p-md-3 text-white rounded">
-      <div class="col-md-10 px-0" >
+
+    <div style="background:rgba(247, 200, 98, 0.219);" class="jumbotron p-4 p-md-3 text-white rounded">
+      <div class="col-md-10 px-0">
         <h1 class="pb-4 mb-4 font-italic border-bottom">Blog Para compartir conocimiento</h1>
         <p class="lead my-3">Este blog esta pensado para los progrmadores que necesitan ayuda a la hora de
           codificar.</p>
@@ -18,42 +18,42 @@
       </div>
     </div>
   </div>
-  
-  <div class="container" style="color: rgb(255, 255, 255);" >
+
+  <div class="container" style="color: rgb(255, 255, 255);">
     <div class="row">
       <div class="col-md-8 blog-main">
-  
+
         <div class="search">
           <h2 style="color: rgb(255, 255, 255);">🔎Buscar:</h2>
           <form>
             <input style="BORDER:  rgb(252, 88, 28) 1px solid;FONT-SIZE: 10pt; width: 350px;" [(ngModel)]="searchCodigo"
               name="publicacionCodigo" autofocus type="text" placeholder="Enter the code to search">
-            <button style=" FONT-SIZE: 11pt;background: rgb(252, 88, 28);" (click)="buscarByCodigo();buscarByDescripcion()"><i
-                class="fa fa-search"></i>
+            <button style=" FONT-SIZE: 11pt;background: rgb(252, 88, 28);"
+              (click)="buscarByCodigo();buscarByDescripcion()"><i class="fa fa-search"></i>
             </button>
           </form>
         </div>
         <br>
-  
+
         <tr *ngFor="let publicaciones of ListaPersonas">
           <div *ngFor="let objpublicacion of publicaciones.publicaciones">
             <div *ngFor="let objusuario of publicaciones.usuario">
               <hr style="background: orangered;">
-              <div class="blog-post" >
-                <h2 class="blog-post-title" >{{objpublicacion.titulo}}</h2>
-  
+              <div class="blog-post">
+                <h2 class="blog-post-title">{{objpublicacion.titulo}}</h2>
+
                 <p class="blog-post-meta">{{objpublicacion.fecha}} <a style="color: rgb(0, 162, 255)"
                     (click)="VerUsuario(objusuario.usuario)"><strong>{{objusuario.usuario}}</strong></a></p>
-                <h3 >Codigo</h3>
-  
-  
+                <h3>Codigo</h3>
+
+
                 <pre style="color: white;"><code id="p1">{{objpublicacion.codigo}}</code></pre>
                 <!--input type="submit" class="button" (click)="copiarAlPortapapeles('p1')" value="COPY"-->
                 <br />
-  
-  
+
+
                 <h3>Descripcion</h3>
-  
+
                 <p>{{objpublicacion.descripcion}}</p>
                 <h3>Caracteristicas</h3>
                 <p>El siguente codigo se encuentra desarrolado en el siguinete lenguaje y el IDE.</p>
@@ -66,7 +66,7 @@
           </div>
         </tr>
       </div>
-  
+
       <aside class="col-md-4 blog-sidebar">
         <div class="p-4 mb-3 bg-light rounded">
           <div class="container" style="background: rgb(255, 204, 175);" >
@@ -82,6 +82,7 @@
                 class="fa fa-search"></i>
             </button>
              
+      
               </div>
             </div>
             <br>

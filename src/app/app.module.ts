@@ -24,6 +24,7 @@ import { LenguajeControllerService } from './Rest';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { PrefilUsuarioComponent } from './components/prefil-usuario/prefil-usuario.component';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -47,7 +48,8 @@ import { PrefilUsuarioComponent } from './components/prefil-usuario/prefil-usuar
         CommonModule,
         NouisliderModule,
         JwBootstrapSwitchNg2Module,
-        AutocompleteLibModule
+        AutocompleteLibModule,
+        
     ],
     providers: [PersonaControllerService,LenguajeControllerService],
     bootstrap: [AppComponent]
