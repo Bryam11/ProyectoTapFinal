@@ -11,25 +11,24 @@ export class BlogComponent implements OnInit {
 
   page = 1;
 
-  mostrar= false;
-  @Input() persona: any = {}
-  @Input() indice: number;
+  mostrar = false;
+
 
   listaLenguajes = [];
 
-  personas: Persona={};
-  lenguaje:Lenguajes={};
+  personas: Persona = {};
+  lenguaje: Lenguajes = {};
   ListaPersonas = [];
-  objPubli: [{}];
+
 
   searchCodigo = '';
   usuarios = '';
-  LenguajeSeleccionado='';
+  LenguajeSeleccionado = '';
 
 
   constructor(private personaServicio: PersonaControllerService, private listarlenguaje: LenguajeControllerService, private router: Router) {
     this.personas.publicaciones = [{}];
-   }
+  }
 
   ngOnInit(): void {
     this.listarpublicaciones();
@@ -38,8 +37,8 @@ export class BlogComponent implements OnInit {
 
 
 
-  VerUsuario( nombre: string) {
-   this.router.navigate(['Perfildeusuario',nombre,'usuario']);
+  VerUsuario(nombre: string) {
+    this.router.navigate(['Perfildeusuario', nombre, 'usuario']);
   }
 
 
@@ -57,13 +56,13 @@ export class BlogComponent implements OnInit {
       this.ListaPersonas = data;
     })
   }
-  buscarByCodigo(){
+  buscarByCodigo() {
     this.personaServicio.likeByCodigoUsingGET(this.searchCodigo).subscribe(data => {
       this.ListaPersonas = data;
     })
   }
 
-  buscarByDescripcion(){
+  buscarByDescripcion() {
     this.personaServicio.likeByDescripcionUsingGET(this.searchCodigo).subscribe(data => {
       this.ListaPersonas = data;
     })
@@ -76,7 +75,7 @@ export class BlogComponent implements OnInit {
     })
   }
 
-  buscarByLenguaje(){
+  buscarByLenguaje() {
     console.log(this.LenguajeSeleccionado)
     this.personaServicio.listarPersonasbylenguajeUsingGET(this.LenguajeSeleccionado).subscribe(data => {
       this.ListaPersonas = data;
