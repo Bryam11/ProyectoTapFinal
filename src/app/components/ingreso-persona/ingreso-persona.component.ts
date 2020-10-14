@@ -91,17 +91,22 @@ export class IngresoPersonaComponent implements OnInit {
 
   validaciondeLogueo(nombre: string) {
 
-    this.PaisSeleccionado = this.persona.pais;
+    if(this.persona.usuario[0].contrasenia == undefined || this.persona.usuario[0].usuario == undefined){
+this.mostrarToastValidacion();
+    }else{
+      this.PaisSeleccionado = this.persona.pais;
 
-    this.personaServicio.comprobarLogueoUsingGET(this.persona.usuario[0].contrasenia, this.persona.usuario[0].usuario).subscribe(data => {
-      this.persona = data
-      localStorage.setItem('photo', this.persona.foto)
-      localStorage.setItem('user', this.persona.usuario[0].usuario)
-      this.router.navigate(['Perfildeusuario', nombre, 'usuario']);
-      console.log(this.persona.foto)
-    }, (err) => {
-      this.mostrarToastFail();
-    })
+      this.personaServicio.comprobarLogueoUsingGET(this.persona.usuario[0].contrasenia, this.persona.usuario[0].usuario).subscribe(data => {
+        this.persona = data
+        localStorage.setItem('photo', this.persona.foto)
+        localStorage.setItem('user', this.persona.usuario[0].usuario)
+        this.router.navigate(['Perfildeusuario', nombre, 'usuario']);
+        console.log(this.persona.foto)
+      }, (err) => {
+        this.mostrarToastFail();
+      })
+    }
+   
 
   }
 
@@ -110,26 +115,33 @@ export class IngresoPersonaComponent implements OnInit {
   }
 
   insertPersona() {
+    if (this.persona.usuario[0].usuario === undefined || this.persona.usuario[0].contrasenia === undefined ||
+      this.persona.nombre === undefined || this.persona.apellido === undefined || this.persona.edad === undefined
+      || this.persona.email == '' || this.persona.foto == '' || this.persona.pais == '') {
+      this.mostrarToastValidacion()
+    } else {
+      this.personaServicio.findMaxIdPersonaUsingGET().subscribe(data => {
 
-    this.personaServicio.findMaxIdPersonaUsingGET().subscribe(data => {
-
-      // autoincrementar el id
-      if (data == null) {
-        this.persona.id = 1;
-      } else {
-        this.persona.id = data + 1;
-      }
+        // autoincrementar el id
+        if (data == null) {
+          this.persona.id = 1;
+        } else {
+          this.persona.id = data + 1;
+        }
 
 
-      this.persona.pais = this.PaisSeleccionado;
-      // Guardamos la persona
-      this.personaServicio.guardarPersonaUsingPOST(this.persona).subscribe(data => {
-        console.log(data);
-        this.mostrarToast();
-      }, (err) => {
-        this.mostrarToastRepeat();
+        this.persona.pais = this.PaisSeleccionado;
+        // Guardamos la persona
+        this.personaServicio.guardarPersonaUsingPOST(this.persona).subscribe(data => {
+          console.log(data);
+          this.mostrarToast();
+        }, (err) => {
+          this.mostrarToastRepeat();
+        })
       })
-    })
+    }
+
+
 
   }
 
@@ -140,6 +152,12 @@ export class IngresoPersonaComponent implements OnInit {
     setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 5000);
   }
 
+  mostrarToastValidacion() {
+    // tslint:disable-next-line: prefer-const
+    var toast = document.getElementById('mitoastvali');
+    toast.className = 'mostrar';
+    setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 5000);
+  }
 
   mostrarToastFail() {
     var toast = document.getElementById('mitoastfail');
@@ -187,7 +205,7 @@ export class IngresoPersonaComponent implements OnInit {
         }, 2000);
       }
     } else {
-      alert('SELECCIONE UN ARCHIVO');
+      this.mostrarToastValidacion();
     }
   };
   //Metdo para cargar foto

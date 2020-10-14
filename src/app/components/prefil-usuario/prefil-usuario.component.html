@@ -196,15 +196,33 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <ng-template [ngIf]="!mostrar">
-                                                                <div> <button (click)="onClickSubir($event)"
-                                                                        class="btn btn-primary btn-round"
-                                                                        style="display: block; margin-left: auto; margin-right: auto;"
-                                                                        type="button">
-                                                                        <i class="now-ui-icons ui-2_favourite-28"></i>
-                                                                        Guardar Edicion
-                                                                    </button></div>
-                                                            </ng-template>
+                                                            <div *ngIf="condicionfoto">
+                                                                <ng-template [ngIf]="!mostrar">
+                                                                    <div> <button (click)="onClickSubir($event)"
+                                                                            class="btn btn-primary btn-round"
+                                                                            style="display: block; margin-left: auto; margin-right: auto;"
+                                                                            type="button">
+                                                                            <i
+                                                                                class="now-ui-icons ui-2_favourite-28"></i>
+                                                                            Guardar Foto
+                                                                        </button></div>
+                                                                </ng-template>
+                                                            </div>
+
+
+                                                            <div *ngIf="!condicionfoto">
+                                                                <ng-template [ngIf]="!mostrar">
+                                                                    <div> <button (click)="EditarUsuario()"
+                                                                            class="btn btn-primary btn-round"
+                                                                            style="display: block; margin-left: auto; margin-right: auto;"
+                                                                            type="button">
+                                                                            <i
+                                                                                class="now-ui-icons ui-2_favourite-28"></i>
+                                                                            Guardar Edicion
+                                                                        </button></div>
+                                                                </ng-template>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -257,6 +275,9 @@
                                                 </div>
                                             </ng-template>
                                         </div>
+
+
+
                                         <div class="button-container">
                                             <ng-template [ngIf]="!mostrar">
                                                 <div> <button (click)='navegarpublicaion()'
