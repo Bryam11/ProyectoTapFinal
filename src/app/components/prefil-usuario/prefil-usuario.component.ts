@@ -35,7 +35,7 @@ export class PrefilUsuarioComponent implements OnInit {
 
   // Variable para validar la visibilidad de los inputs y labels
   mostrar: any;
-  
+
 
   constructor(private personaServicio: PersonaControllerService, private routes: ActivatedRoute, private router: Router) {
 
@@ -66,7 +66,7 @@ export class PrefilUsuarioComponent implements OnInit {
 
     this.cargarUsuario();
   }
-  
+
   navegarpublicaion() {
     this.router.navigate(['ingreso/Publicaciones'])
   }
@@ -80,11 +80,11 @@ export class PrefilUsuarioComponent implements OnInit {
     })
   }
 
-  EditarUsuario(){
+  EditarUsuario() {
     this.persona.usuario[0].usuario = localStorage.getItem('user')
     // tslint:disable-next-line: max-line-length
-    this.personaServicio.editarUsuarioUsingPUT(this.persona.apellido,this.persona.edad,this.persona.email,this.persona.foto,this.persona.nombre,this.persona.pais,this.persona.usuario[0].usuario).subscribe(data=>{
-          this.mostrarToastPubli();
+    this.personaServicio.editarUsuarioUsingPUT(this.persona.apellido, this.persona.edad, this.persona.email, this.persona.foto, this.persona.nombre, this.persona.pais, this.persona.usuario[0].usuario).subscribe(data => {
+      this.mostrarToastPubli();
 
     })
   }
@@ -92,7 +92,7 @@ export class PrefilUsuarioComponent implements OnInit {
   mostrarToastPubli() {
     var toast = document.getElementById("mitoast");
     toast.className = "mostrar";
-    setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 6000);
+    setTimeout(function () { toast.className = toast.className.replace("mostrar", ""); }, 6000);
   }
 
   cerrarToast() {
@@ -100,5 +100,5 @@ export class PrefilUsuarioComponent implements OnInit {
     toast.className = "cerrar";
     toast.className = toast.className.replace("cerrar", "");
   }
-  
+
 }
