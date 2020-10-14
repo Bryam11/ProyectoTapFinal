@@ -3,75 +3,81 @@
 	<br>
 	<br>
 	<br>
-	
+
 	<div role="alert" id="mitoast" aria-live="assertive" aria-atomic="true" class="toast">
- 
+
 		<div class="toast-header">
-	 
+
 			<!-- Icono / Logo de la Aplicación -->
-			<img src="https://image.flaticon.com/icons/png/512/20/20173.png" width="20" height="20" class="rounded mr-2" alt="Logo Nube Colectiva">
-			
+			<img src="https://image.flaticon.com/icons/png/512/20/20173.png" width="20" height="20" class="rounded mr-2"
+				alt="Logo Nube Colectiva">
+
 			<!-- Nombre de la Aplicación -->
 			<strong style="color: #ffffff;" class="mr-auto">Mensaje</strong>
 
 
 			<!-- Botón para Cerrar el Toast -->
-			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar" onclick="cerrarToast()">
+			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar"
+				onclick="cerrarToast()">
 				<span aria-hidden="true">×</span>
 			</button>
 
 			<!-- Mensaje -->
 			<hr>
-			<h5 style="color: #ffffff;">Se a registrado el usuario correctamente 😀</h5>		 
-		</div> 
+			<h5 style="color: #ffffff;">Se a registrado el usuario correctamente 😀</h5>
+		</div>
 	</div>
 
 
 	<div role="alert" id="mitoastfail" aria-live="assertive" aria-atomic="true" class="toast">
- 
+
 		<div class="toast-header">
-	 
+
 			<!-- Icono / Logo de la Aplicación -->
-			<img src="https://image.flaticon.com/icons/png/512/20/20173.png" width="20" height="20" class="rounded mr-2" alt="Logo Nube Colectiva">
-			
+			<img src="https://image.flaticon.com/icons/png/512/20/20173.png" width="20" height="20" class="rounded mr-2"
+				alt="Logo Nube Colectiva">
+
 			<!-- Nombre de la Aplicación -->
 			<strong style="color: #ffffff;" class="mr-auto">Mensaje</strong>
 
 			<!-- Botón para Cerrar el Toast -->
-			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar" onclick="cerrarToast()">
+			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar"
+				onclick="cerrarToast()">
 				<span aria-hidden="true">×</span>
 			</button>
 
 			<!-- Mensaje -->
 			<hr>
-			<h5 style="color: #ffffff;" >Verifique bien sus credenciales porfavor 🥺</h5>		 
-		</div> 
+			<h5 style="color: #ffffff;">Verifique bien sus credenciales porfavor 🥺</h5>
+		</div>
 	</div>
 
 
 	<div role="alert" id="mitoastrepeat" aria-live="assertive" aria-atomic="true" class="toast">
- 
+
 		<div class="toast-header">
-	 
+
 			<!-- Icono / Logo de la Aplicación -->
-			<img src="https://image.flaticon.com/icons/png/512/20/20173.png" width="20" height="20" class="rounded mr-2" alt="Logo Nube Colectiva">
-			
+			<img src="https://image.flaticon.com/icons/png/512/20/20173.png" width="20" height="20" class="rounded mr-2"
+				alt="Logo Nube Colectiva">
+
 			<!-- Nombre de la Aplicación -->
 			<strong style="color: #ffffff;" class="mr-auto">Mensaje</strong>
 
 
 			<!-- Botón para Cerrar el Toast -->
-			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar" onclick="cerrarToast()">
+			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar"
+				onclick="cerrarToast()">
 				<span aria-hidden="true">×</span>
 			</button>
 
 			<!-- Mensaje -->
 			<hr>
-			<h5 style="color: #ffffff;">El nombre de usuario ya existe. Porfavor ingrese uno nuevo 🙄</h5>		 
-		</div> 
+			<h5 style="color: #ffffff;">El nombre de usuario ya existe. Porfavor ingrese uno nuevo 🙄</h5>
+		</div>
 	</div>
 
-	
+
 	<div class="container">
 		<h1 style="text-align: center;"><strong><span style="color: #ffffff;">POST OF PERSON</span></strong></h1>
 	</div>
@@ -99,7 +105,8 @@
 							<label for="check"><span class="icon"></span> Keep me Signed in</label>
 						</div>
 						<div class="group">
-							<input type="submit" class="button" (click)="validaciondeLogueo(persona.usuario[0].usuario)" value="Sign In">
+							<input type="submit" class="button" (click)="validaciondeLogueo(persona.usuario[0].usuario)"
+								value="Sign In">
 						</div>
 						<div class="hr"></div>
 						<div class="foot-lnk">
@@ -138,18 +145,42 @@
 						</div>
 						<div class="group">
 							<label for="coutry" class="label">Country</label>
-							<select class="btn btn-outline-neutral btn-round" style="background: #77757565;" [(ngModel)]="PaisSeleccionado"
-								(change)="CountryChangeListener()">
-								<option style="background-color: #4d4b4b;;" *ngFor="let pais of listaofPaises">{{pais}}</option>
+							<select class="btn btn-outline-neutral btn-round" style="background: #77757565;"
+								[(ngModel)]="PaisSeleccionado" (change)="CountryChangeListener()">
+								<option style="background-color: #4d4b4b;;" *ngFor="let pais of listaofPaises">{{pais}}
+								</option>
 							</select>
 						</div>
 						<div class="group">
 							<label for="photo" class="label">Photo</label>
-							<input id="photo" type="text" class="input" [(ngModel)]="persona.foto">
+							<!-- <form>
+								<input class="input"  type="file" name="archivo" (change)="onChange($event)" />
+								<h5 *ngIf="subiendo">Subiendo imagen...</h5>
+								<br />
+								<br />
+								<button type="submit" class="button" (click)="onClickSubir($event)">Sign Up</button>
+							</form> -->
+							<form>
+								<div class="fileinputs">
+
+									<input name="archivo" size="0px" style="height: auto;" (change)="onChange($event)" type="file"
+										class="file" />
+									<div class="fakefile">
+										<img src="https://i.pinimg.com/originals/c2/4b/11/c24b1132d7cb060da9738c28a83ec6c4.png"
+											width="50" height="50"
+											style="display: block;margin-top:0px; margin-left: 155px; margin-right: auto;color: #000000;" />
+									</div>
+								</div>
+								<br><br><br><br>
+								<button type="submit" class="button" (click)="onClickSubir($event)">Sign Up</button>
+							</form>
+							<div class="error" *ngIf="error">
+								<h1>Ha ocurrido un error</h1>
+							</div>
 						</div>
-						<div class="group">
-							<input type="submit" class="button" (click)="insertPersona()" value="Sign Up">
-						</div>
+
+
+
 						<div class="hr"></div>
 						<div class="foot-lnk">
 

@@ -16,11 +16,14 @@ export class NavbarComponent implements OnInit {
    
 
     nombreusuario= '';
+    fotousuario= '';
+
 
     // tslint:disable-next-line: max-line-length
     constructor(public location: Location, private element: ElementRef, private router: Router) {
         this.sidebarVisible = false;
         this.nombreusuario = localStorage.getItem('user');
+        this.fotousuario = localStorage.getItem('photo');
 
     }
 
@@ -69,10 +72,12 @@ export class NavbarComponent implements OnInit {
 
     logout() {
         localStorage.removeItem('user');
+        localStorage.removeItem('photo');
         this.router.navigate(['blog'])
     }
     loggedIn() {
         return !!localStorage.getItem('user');
+        
         
     }
 
