@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { PersonaControllerService } from './Rest/api/personaController.service';
 import { HttpClientModule } from '@angular/common/http';
-import { FooterComponent } from './components/footer/footer.component';
+
 import { BodyComponent } from './components/body/body.component';
 
 import { IngresoPersonaComponent } from './components/ingreso-persona/ingreso-persona.component';
@@ -21,16 +21,17 @@ import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { IngresoPublicacioComponent } from './components/ingreso-publicacio/ingreso-publicacio.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { LenguajeControllerService } from './Rest';
-import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { PrefilUsuarioComponent } from './components/prefil-usuario/prefil-usuario.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
-        FooterComponent,
         BodyComponent,
+        FooterComponent,
         IngresoPersonaComponent,
         IngresoPublicacioComponent,
         NavigationComponent,
@@ -49,9 +50,9 @@ import { PrefilUsuarioComponent } from './components/prefil-usuario/prefil-usuar
         NouisliderModule,
         JwBootstrapSwitchNg2Module,
         AutocompleteLibModule,
-        
+
     ],
-    providers: [PersonaControllerService,LenguajeControllerService],
+    providers: [PersonaControllerService, LenguajeControllerService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
