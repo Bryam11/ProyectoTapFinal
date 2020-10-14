@@ -19,6 +19,7 @@ export class IngresoPersonaComponent implements OnInit {
   urlImagen = null;
   showImagen = false;
 
+  // instanciamos de la calse interfaz para poder hacer el Post
   persona: Persona = {
     apellido: '',
     edad: '',
@@ -30,21 +31,15 @@ export class IngresoPersonaComponent implements OnInit {
     publicaciones: []
   };
 
-  message: string;
 
-  publi: Publicaciones = {
-    codigo: '',
-    descripcion: '',
-    fecha: '',
-    ide: '',
-    lenguajeProgra: ''
-  }
-
-
+  // validar el combo box
   showMensaje = false;
 
+  // variable para almacenar el pais seleccionado del combo box
   PaisSeleccionado = '';
 
+
+  // Creacion de una lista de paises
   listaofPaises = ['Seleccione...',
     'Argentina',
     'Bolivia',
@@ -80,6 +75,7 @@ export class IngresoPersonaComponent implements OnInit {
   }
 
 
+  // metodo para validar el combo box
   CountryChangeListener() {
     // tslint:disable-next-line: triple-equals
     if (this.PaisSeleccionado != null && this.PaisSeleccionado != 'Seleccione...') {
@@ -89,11 +85,13 @@ export class IngresoPersonaComponent implements OnInit {
     }
   }
 
+
+  // Metodo para inicio de sesion 
   validaciondeLogueo(nombre: string) {
 
-    if(this.persona.usuario[0].contrasenia == undefined || this.persona.usuario[0].usuario == undefined){
-this.mostrarToastValidacion();
-    }else{
+    if (this.persona.usuario[0].contrasenia == undefined || this.persona.usuario[0].usuario == undefined) {
+      this.mostrarToastValidacion();
+    } else {
       this.PaisSeleccionado = this.persona.pais;
 
       this.personaServicio.comprobarLogueoUsingGET(this.persona.usuario[0].contrasenia, this.persona.usuario[0].usuario).subscribe(data => {
@@ -106,15 +104,14 @@ this.mostrarToastValidacion();
         this.mostrarToastFail();
       })
     }
-   
+
 
   }
 
-  cambiardeVentana() {
-    this.router.navigate(['ingreso/Publicaciones']);
-  }
 
+  // Metodo para Guardar una persona
   insertPersona() {
+
     if (this.persona.usuario[0].usuario === undefined || this.persona.usuario[0].contrasenia === undefined ||
       this.persona.nombre === undefined || this.persona.apellido === undefined || this.persona.edad === undefined
       || this.persona.email == '' || this.persona.foto == '' || this.persona.pais == '') {
@@ -128,8 +125,6 @@ this.mostrarToastValidacion();
         } else {
           this.persona.id = data + 1;
         }
-
-
         this.persona.pais = this.PaisSeleccionado;
         // Guardamos la persona
         this.personaServicio.guardarPersonaUsingPOST(this.persona).subscribe(data => {
@@ -145,6 +140,7 @@ this.mostrarToastValidacion();
 
   }
 
+  // Mostramos la ventana de mensaje
   mostrarToast() {
     // tslint:disable-next-line: prefer-const
     var toast = document.getElementById('mitoast');
@@ -152,6 +148,7 @@ this.mostrarToastValidacion();
     setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 5000);
   }
 
+  // mensaje para validar los campos llenos
   mostrarToastValidacion() {
     // tslint:disable-next-line: prefer-const
     var toast = document.getElementById('mitoastvali');
@@ -159,12 +156,14 @@ this.mostrarToastValidacion();
     setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 5000);
   }
 
+  // mensaje cuando los datos para el logue son incorrectos
   mostrarToastFail() {
     var toast = document.getElementById('mitoastfail');
     toast.className = 'mostrar';
     setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 5000);
   }
 
+  // Mensaje cuando el nombre de usuario estan repetidos
   mostrarToastRepeat() {
     var toast = document.getElementById('mitoastrepeat');
     toast.className = 'mostrar';
