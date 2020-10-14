@@ -18,6 +18,7 @@ export class PrefilUsuarioComponent implements OnInit {
   archivo: any;
   urlImagen = null;
   showImagen = false;
+  condicionfoto: any;
 
   // Instacia del S3 Bucket 
   albumBucketName = 'eteblog';
@@ -110,7 +111,7 @@ export class PrefilUsuarioComponent implements OnInit {
     // tslint:disable-next-line: max-line-length
     this.personaServicio.editarUsuarioUsingPUT(this.persona.apellido, this.persona.edad, this.persona.email, this.persona.foto, this.persona.nombre, this.persona.pais, this.persona.usuario[0].usuario).subscribe(data => {
       this.mostrarToastPubli();
-
+      
     })
   }
 
@@ -148,7 +149,10 @@ export class PrefilUsuarioComponent implements OnInit {
         localStorage.removeItem('photo');
         localStorage.setItem('photo', this.persona.foto)
         this.EditarUsuario();
-        location.reload();
+        this.mostrarToastPubli();
+        setTimeout(() => {
+          location.reload()
+         }, 4000);  
       } catch (error) {
         this.error = true;
         const bucle = setInterval(() => {
@@ -165,6 +169,7 @@ export class PrefilUsuarioComponent implements OnInit {
     if (event.target.files.length > 0) {
       this.archivo = event.target.files[0];
       console.log(this.archivo)
+      this.condicionfoto=true;
     }
   }
 
