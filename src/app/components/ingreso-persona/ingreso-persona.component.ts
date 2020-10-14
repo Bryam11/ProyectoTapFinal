@@ -3,6 +3,7 @@ import { Persona } from '../../Rest/model/persona';
 import { PersonaControllerService } from '../../Rest/api/personaController.service';
 import { Router } from '@angular/router';
 import { Publicaciones } from 'app/Rest';
+import * as AWS from 'aws-sdk';
 
 @Component({
   selector: 'app-ingreso-persona',
@@ -10,6 +11,13 @@ import { Publicaciones } from 'app/Rest';
   styleUrls: ['./ingreso-persona.component.css']
 })
 export class IngresoPersonaComponent implements OnInit {
+
+  //VARIABLES PARA METODO SUBIR FOTO
+  error = false;
+  subiendo = false;
+  archivo: any;
+  urlImagen = null;
+  showImagen = false;
 
   persona: Persona = {
     apellido: '',
@@ -31,7 +39,7 @@ export class IngresoPersonaComponent implements OnInit {
     ide: '',
     lenguajeProgra: ''
   }
-
+ 
 
   showMensaje = false;
 
@@ -52,8 +60,19 @@ export class IngresoPersonaComponent implements OnInit {
     'Uruguay',
     'Venezuela'];
 
+// Instacia del S3 Bucket 
+albumBucketName = 'eteblog';
+s3 = new AWS.S3({
+ apiVersion: '2006-03-01',
+ params: { Bucket: 'eteblog' },
+});
+
   constructor(private personaServicio: PersonaControllerService, private router: Router) {
     this.persona.usuario = [{}];
+    AWS.config.region = 'us-east-1'; // Región
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: 'us-east-1:3084bad0-56af-41ce-b304-25579aed16ec',
+});
   }
 
 
@@ -75,12 +94,11 @@ export class IngresoPersonaComponent implements OnInit {
     this.PaisSeleccionado = this.persona.pais;
 
     this.personaServicio.comprobarLogueoUsingGET(this.persona.usuario[0].contrasenia, this.persona.usuario[0].usuario).subscribe(data => {
-
-
+this.persona=data
+      localStorage.setItem('photo',this.persona.foto)
       localStorage.setItem('user', this.persona.usuario[0].usuario)
       this.router.navigate(['Perfildeusuario', nombre, 'usuario']);
-      this.message = 'Login Sucesfull';
-
+console.log(this.persona.foto)
     }, (err) => {
       this.mostrarToastFail();
     })
@@ -140,6 +158,44 @@ export class IngresoPersonaComponent implements OnInit {
     var toast = document.getElementById('mitoast');
     toast.className = 'cerrar';
     toast.className = toast.className.replace('cerrar', '');
+  }
+
+  //Metodo para guardar la foto en el Bucket
+  onClickSubir = async (event) => {
+    event.preventDefault();
+    if (this.archivo) {
+      try {
+        console.log(this.archivo);
+        this.subiendo = true;
+        const data = await new AWS.S3.ManagedUpload({
+          params: {
+            Bucket: this.albumBucketName,
+            Key: this.archivo.name,
+            Body: this.archivo,
+            ACL: 'public-read',
+          },
+        }).promise();
+        this.persona.foto = data.Location;
+        this.subiendo = false;
+        this.showImagen = true;
+        this.insertPersona();
+      } catch (error) {
+        this.error = true;
+        const bucle = setInterval(() => {
+          this.error = false;
+          clearInterval(bucle);
+        }, 2000);
+      }
+    } else {
+      alert('SELECCIONE UN ARCHIVO');
+    }
+  };
+//Metdo para cargar foto
+  onChange = (event) => {
+    if (event.target.files.length > 0) {
+      this.archivo = event.target.files[0];
+      console.log(this.archivo)
+    }
   }
 
   
