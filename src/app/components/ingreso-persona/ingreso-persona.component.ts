@@ -39,7 +39,7 @@ export class IngresoPersonaComponent implements OnInit {
     ide: '',
     lenguajeProgra: ''
   }
- 
+
 
   showMensaje = false;
 
@@ -60,19 +60,19 @@ export class IngresoPersonaComponent implements OnInit {
     'Uruguay',
     'Venezuela'];
 
-// Instacia del S3 Bucket 
-albumBucketName = 'eteblog';
-s3 = new AWS.S3({
- apiVersion: '2006-03-01',
- params: { Bucket: 'eteblog' },
-});
+  // Instacia del S3 Bucket 
+  albumBucketName = 'eteblog';
+  s3 = new AWS.S3({
+    apiVersion: '2006-03-01',
+    params: { Bucket: 'eteblog' },
+  });
 
   constructor(private personaServicio: PersonaControllerService, private router: Router) {
     this.persona.usuario = [{}];
     AWS.config.region = 'us-east-1'; // Región
-AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'us-east-1:3084bad0-56af-41ce-b304-25579aed16ec',
-});
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: 'us-east-1:3084bad0-56af-41ce-b304-25579aed16ec',
+    });
   }
 
 
@@ -94,11 +94,11 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     this.PaisSeleccionado = this.persona.pais;
 
     this.personaServicio.comprobarLogueoUsingGET(this.persona.usuario[0].contrasenia, this.persona.usuario[0].usuario).subscribe(data => {
-this.persona=data
-      localStorage.setItem('photo',this.persona.foto)
+      this.persona = data
+      localStorage.setItem('photo', this.persona.foto)
       localStorage.setItem('user', this.persona.usuario[0].usuario)
       this.router.navigate(['Perfildeusuario', nombre, 'usuario']);
-console.log(this.persona.foto)
+      console.log(this.persona.foto)
     }, (err) => {
       this.mostrarToastFail();
     })
@@ -190,7 +190,7 @@ console.log(this.persona.foto)
       alert('SELECCIONE UN ARCHIVO');
     }
   };
-//Metdo para cargar foto
+  //Metdo para cargar foto
   onChange = (event) => {
     if (event.target.files.length > 0) {
       this.archivo = event.target.files[0];
@@ -198,5 +198,5 @@ console.log(this.persona.foto)
     }
   }
 
-  
+
 }

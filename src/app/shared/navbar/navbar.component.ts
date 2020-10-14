@@ -30,6 +30,9 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+        this.nombreusuario = localStorage.getItem('user');
+        this.fotousuario = localStorage.getItem('photo');
+
     }
 
 
@@ -77,8 +80,6 @@ export class NavbarComponent implements OnInit {
     }
     loggedIn() {
         return !!localStorage.getItem('user');
-        
-        
     }
 
     VerUsuario( nombre: string) {

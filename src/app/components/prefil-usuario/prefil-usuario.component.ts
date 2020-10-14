@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PersonaControllerService } from 'app/Rest';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Persona } from '../../Rest/model/persona';
+import * as AWS from 'aws-sdk';
 
 @Component({
   selector: 'app-prefil-usuario',
@@ -9,6 +10,22 @@ import { Persona } from '../../Rest/model/persona';
   styleUrls: ['./prefil-usuario.component.css']
 })
 export class PrefilUsuarioComponent implements OnInit {
+
+
+  //VARIABLES PARA METODO SUBIR FOTO
+  error = false;
+  subiendo = false;
+  archivo: any;
+  urlImagen = null;
+  showImagen = false;
+
+  // Instacia del S3 Bucket 
+  albumBucketName = 'eteblog';
+  s3 = new AWS.S3({
+    apiVersion: '2006-03-01',
+    params: { Bucket: 'eteblog' },
+  });
+
 
   // lista para cargar los Paises
   listaofPaises = ['Seleccione...',
@@ -40,6 +57,11 @@ export class PrefilUsuarioComponent implements OnInit {
   constructor(private personaServicio: PersonaControllerService, private routes: ActivatedRoute, private router: Router) {
 
     this.persona.usuario = [{}]; // inicializamos el objeto de usuario
+
+    AWS.config.region = 'us-east-1'; // Región
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: 'us-east-1:3084bad0-56af-41ce-b304-25579aed16ec',
+    });
 
   }
 
@@ -80,8 +102,11 @@ export class PrefilUsuarioComponent implements OnInit {
     })
   }
 
-  EditarUsuario() {
+  EditarUsuario(){
     this.persona.usuario[0].usuario = localStorage.getItem('user')
+
+    // tslint:disable-next-line: no-unused-expression
+  
     // tslint:disable-next-line: max-line-length
     this.personaServicio.editarUsuarioUsingPUT(this.persona.apellido, this.persona.edad, this.persona.email, this.persona.foto, this.persona.nombre, this.persona.pais, this.persona.usuario[0].usuario).subscribe(data => {
       this.mostrarToastPubli();
@@ -99,6 +124,48 @@ export class PrefilUsuarioComponent implements OnInit {
     var toast = document.getElementById("mitoast");
     toast.className = "cerrar";
     toast.className = toast.className.replace("cerrar", "");
+  }
+
+  //Metodo para guardar la foto en el Bucket
+  onClickSubir = async (event) => {
+    event.preventDefault();
+    if (this.archivo) {
+      try {
+        console.log(this.archivo);
+        this.subiendo = true;
+        const data = await new AWS.S3.ManagedUpload({
+          params: {
+            Bucket: this.albumBucketName,
+            Key: this.archivo.name,
+            Body: this.archivo,
+            ACL: 'public-read',
+          },
+        }).promise();
+        this.persona.foto = data.Location;
+        console.log(this.persona.foto);
+        this.subiendo = false;
+        this.showImagen = true;
+        localStorage.removeItem('photo');
+        localStorage.setItem('photo', this.persona.foto)
+        this.EditarUsuario();
+        location.reload();
+      } catch (error) {
+        this.error = true;
+        const bucle = setInterval(() => {
+          this.error = false;
+          clearInterval(bucle);
+        }, 2000);
+      }
+    } else {
+      alert('SELECCIONE UN ARCHIVO');
+    }
+  };
+  //Metdo para cargar foto
+  onChange = (event) => {
+    if (event.target.files.length > 0) {
+      this.archivo = event.target.files[0];
+      console.log(this.archivo)
+    }
   }
 
 }

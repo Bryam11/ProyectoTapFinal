@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
         }
 
         this.loggedInUser = localStorage.getItem('loggedInUser');
-        console.log(this.loggedInUser);
+     
 
         // tslint:disable-next-line: triple-equals
         if (this.loggedInUser == '') {
