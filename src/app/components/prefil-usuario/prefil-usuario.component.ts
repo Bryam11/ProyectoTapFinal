@@ -3,6 +3,7 @@ import { PersonaControllerService } from 'app/Rest';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Persona } from '../../Rest/model/persona';
 import * as AWS from 'aws-sdk';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-prefil-usuario',
@@ -19,6 +20,8 @@ export class PrefilUsuarioComponent implements OnInit {
   urlImagen = null;
   showImagen = false;
   condicionfoto: any;
+
+  closeResult: string;
 
   // Instacia del S3 Bucket 
   albumBucketName = 'eteblog';
@@ -55,7 +58,8 @@ export class PrefilUsuarioComponent implements OnInit {
   mostrar: any;
 
 
-  constructor(private personaServicio: PersonaControllerService, private routes: ActivatedRoute, private router: Router) {
+  constructor(private personaServicio: PersonaControllerService, private routes: ActivatedRoute, private router: Router, private modalService: NgbModal) {
+
 
     this.persona.usuario = [{}]; // inicializamos el objeto de usuario
 
@@ -77,8 +81,10 @@ export class PrefilUsuarioComponent implements OnInit {
           this.ListaPersonas = data;
           if (localStorage.getItem('user') != params.get('nombre')) {
             this.mostrar = true;
+
           } else {
             this.mostrar = false
+
           }
         })
       } else {
@@ -88,6 +94,8 @@ export class PrefilUsuarioComponent implements OnInit {
     })
 
     this.cargarUsuario();
+
+
   }
 
   navegarpublicaion() {
@@ -103,15 +111,15 @@ export class PrefilUsuarioComponent implements OnInit {
     })
   }
 
-  EditarUsuario(){
+  EditarUsuario() {
     this.persona.usuario[0].usuario = localStorage.getItem('user')
 
     // tslint:disable-next-line: no-unused-expression
-  
+
     // tslint:disable-next-line: max-line-length
     this.personaServicio.editarUsuarioUsingPUT(this.persona.apellido, this.persona.edad, this.persona.email, this.persona.foto, this.persona.nombre, this.persona.pais, this.persona.usuario[0].usuario).subscribe(data => {
       this.mostrarToastPubli();
-      
+
     })
   }
 
@@ -152,7 +160,7 @@ export class PrefilUsuarioComponent implements OnInit {
         this.mostrarToastPubli();
         setTimeout(() => {
           location.reload()
-         }, 4000);  
+        }, 4000);
       } catch (error) {
         this.error = true;
         const bucle = setInterval(() => {
@@ -169,7 +177,35 @@ export class PrefilUsuarioComponent implements OnInit {
     if (event.target.files.length > 0) {
       this.archivo = event.target.files[0];
       console.log(this.archivo)
-      this.condicionfoto=true;
+      this.condicionfoto = true;
+    }
+  }
+
+  open(content, type) {
+    if (type === 'sm') {
+      console.log('aici');
+      this.modalService.open(content, { size: 'sm' }).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    } else {
+      this.modalService.open(content).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+  }
+
+  // METODO PARA UTILIZAR EL ESC Y CERRARR LA VENTANA DE PREVISUALIZACION DE LA VENTANA
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
     }
   }
 
