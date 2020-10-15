@@ -14,28 +14,16 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./ingreso-publicacio.component.css']
 })
 export class IngresoPublicacioComponent implements OnInit {
-
+//DECLARACION DE VARIABLES
   showMensaje = false;
   tipoSeleccionada = '';
-  listaMensajes = ['Seleccione...', 'Urgente', 'Aviso', 'Chat']
   publicacion: Publicaciones = {};
   usuario: Usuario = {};
-
-  page = 1;
-
   nombreusuario = localStorage.getItem('user');
-
   LenguajeSeleccionado: '';
-
-  login = false;
-  logout = true;
-
   closeResult: string;
-
-
   listaLenguajes = [];
 
-  // tslint:disable-next-line: max-line-length
   constructor(private personaservice: PersonaControllerService, private router: Router, private lenguajeservice: LenguajeControllerService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -44,8 +32,8 @@ export class IngresoPublicacioComponent implements OnInit {
     this.usuario.usuario = localStorage.getItem('user');
   }
 
+  //VALIDAR COMBO BOX DE COUNTRY
   lenguajesChangeListener() {
-    // tslint:disable-next-line: triple-equals
     if (this.tipoSeleccionada != null && this.tipoSeleccionada != 'Seleccione...') {
       this.showMensaje = true;
     } else {
@@ -53,48 +41,55 @@ export class IngresoPublicacioComponent implements OnInit {
     }
   }
 
+  //METODO PARA LISTAR LENGUAJES DE PROGRAMACION
   Listarlenjuages() {
     this.mostrarToast();
     this.lenguajeservice.listarlenguajesUsingGET().subscribe(data => {
-      // tslint:disable-next-line: no-unused-expression
-      this.listaLenguajes = data;
+    this.listaLenguajes = data;
     })
   }
 
-
+//METODO PARA MOSTRAR MENSAJE TOAST DE BIENVENIDA (BIENVENIDO PARA CREAR PUBLICACION)
   mostrarToast() {
     var toast = document.getElementById('mitoast');
     toast.className = 'mostrar';
     setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 6000);
   }
 
+  //METODO PARA MOSTRAR MENSAJE TOAST DE CONFIRMACION (PUBLICACION CREADA CORRECTAMENTE)
   mostrarToastPubli() {
     var toast = document.getElementById('mitoastpubli');
     toast.className = 'mostrar';
     setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 6000);
   }
 
+  //METODO PARA MOSTRAR MENSJE TOAST DE VALIDACION (LLENAR TODOS LOS CAMPOS)
+  mostrarToastVali() {
+    var toast = document.getElementById('mitoastvali');
+    toast.className = 'mostrar';
+    setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 6000);
+  }
 
 
+//METODO PARA CERRAR EL MENSAJE TOAST
   cerrarToast() {
     var toast = document.getElementById('mitoast');
     toast.className = 'cerrar';
     toast.className = toast.className.replace('cerrar', '');
   }
 
+  //METODO PARA GUARDAR UNA PUBLICACION NUEVA
   guardarPublicacion() {
-
-
-    this.publicacion.lenguajeProgra = this.LenguajeSeleccionado;
-    this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide, this.publicacion.codigo, this.publicacion.descripcion, this.publicacion.fecha, this.publicacion.lenguajeProgra, this.publicacion.titulo, this.usuario.usuario).subscribe(data => {
-      this.mostrarToastPubli();
-
-
-    })
-  };
-
-  cambiarRuta() {
-    this.router.navigate(['ingreso/Persona'])
+if(this.publicacion.ide == undefined ||this.publicacion.codigo == undefined ||  this.publicacion.descripcion == undefined 
+||this.publicacion.fecha == undefined || this.publicacion.lenguajeProgra  == undefined || this.publicacion.titulo== undefined 
+|| this.usuario.usuario == undefined){
+this.mostrarToastVali();
+}else{
+  this.publicacion.lenguajeProgra = this.LenguajeSeleccionado;
+  this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide, this.publicacion.codigo, this.publicacion.descripcion, this.publicacion.fecha, this.publicacion.lenguajeProgra, this.publicacion.titulo, this.usuario.usuario).subscribe(data => {
+  this.mostrarToastPubli();
+  })
+}
   }
 
   open(content, type) {
