@@ -114,7 +114,7 @@ export class IngresoPersonaComponent implements OnInit {
 
     if (this.persona.usuario[0].usuario === undefined || this.persona.usuario[0].contrasenia === undefined ||
       this.persona.nombre === undefined || this.persona.apellido === undefined || this.persona.edad === undefined
-      || this.persona.email == '' || this.persona.foto == '' || this.persona.pais == '') {
+      || this.persona.email == ''|| this.PaisSeleccionado == '') {
       this.mostrarToastValidacion()
     } else {
       this.personaServicio.findMaxIdPersonaUsingGET().subscribe(data => {

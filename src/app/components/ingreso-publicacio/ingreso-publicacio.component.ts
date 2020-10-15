@@ -14,7 +14,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./ingreso-publicacio.component.css']
 })
 export class IngresoPublicacioComponent implements OnInit {
-//DECLARACION DE VARIABLES
+  //DECLARACION DE VARIABLES
   showMensaje = false;
   tipoSeleccionada = '';
   publicacion: Publicaciones = {};
@@ -31,25 +31,17 @@ export class IngresoPublicacioComponent implements OnInit {
     this.Listarlenjuages();
     this.usuario.usuario = localStorage.getItem('user');
   }
-
-  //VALIDAR COMBO BOX DE COUNTRY
-  lenguajesChangeListener() {
-    if (this.tipoSeleccionada != null && this.tipoSeleccionada != 'Seleccione...') {
-      this.showMensaje = true;
-    } else {
-      this.showMensaje = false;
-    }
-  }
+ 
 
   //METODO PARA LISTAR LENGUAJES DE PROGRAMACION
   Listarlenjuages() {
     this.mostrarToast();
     this.lenguajeservice.listarlenguajesUsingGET().subscribe(data => {
-    this.listaLenguajes = data;
+      this.listaLenguajes = data;
     })
   }
 
-//METODO PARA MOSTRAR MENSAJE TOAST DE BIENVENIDA (BIENVENIDO PARA CREAR PUBLICACION)
+  //METODO PARA MOSTRAR MENSAJE TOAST DE BIENVENIDA (BIENVENIDO PARA CREAR PUBLICACION)
   mostrarToast() {
     var toast = document.getElementById('mitoast');
     toast.className = 'mostrar';
@@ -71,7 +63,7 @@ export class IngresoPublicacioComponent implements OnInit {
   }
 
 
-//METODO PARA CERRAR EL MENSAJE TOAST
+  //METODO PARA CERRAR EL MENSAJE TOAST
   cerrarToast() {
     var toast = document.getElementById('mitoast');
     toast.className = 'cerrar';
@@ -80,16 +72,16 @@ export class IngresoPublicacioComponent implements OnInit {
 
   //METODO PARA GUARDAR UNA PUBLICACION NUEVA
   guardarPublicacion() {
-if(this.publicacion.ide == undefined ||this.publicacion.codigo == undefined ||  this.publicacion.descripcion == undefined 
-||this.publicacion.fecha == undefined || this.publicacion.lenguajeProgra  == undefined || this.publicacion.titulo== undefined 
-|| this.usuario.usuario == undefined){
-this.mostrarToastVali();
-}else{
-  this.publicacion.lenguajeProgra = this.LenguajeSeleccionado;
-  this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide, this.publicacion.codigo, this.publicacion.descripcion, this.publicacion.fecha, this.publicacion.lenguajeProgra, this.publicacion.titulo, this.usuario.usuario).subscribe(data => {
-  this.mostrarToastPubli();
-  })
-}
+    if (this.publicacion.ide == undefined || this.publicacion.codigo == undefined || this.publicacion.descripcion == undefined
+      || this.publicacion.fecha == undefined || this.LenguajeSeleccionado== undefined || this.publicacion.titulo == undefined
+      || this.usuario.usuario == undefined) {
+      this.mostrarToastVali();
+    } else {
+      this.publicacion.lenguajeProgra = this.LenguajeSeleccionado;
+      this.personaservice.anadirPublicacionPersonaUsingPUT(this.publicacion.ide, this.publicacion.codigo, this.publicacion.descripcion, this.publicacion.fecha, this.publicacion.lenguajeProgra, this.publicacion.titulo, this.usuario.usuario).subscribe(data => {
+        this.mostrarToastPubli();
+      })
+    }
   }
 
   open(content, type) {
