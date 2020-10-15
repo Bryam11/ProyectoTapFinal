@@ -13,9 +13,9 @@
       <div class="col-md-10 px-0">
         <h1 class="pb-4 mb-4 font-italic border-bottom">Blog Para compartir conocimiento</h1>
         <p class="lead my-3">Este blog esta pensado para los progrmadores que necesitan ayuda a la hora de
-          codificar.</p>
-        <!-- <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p> -->
-      </div>
+          codificar.
+        </p>
+    </div>
     </div>
   </div>
 
@@ -69,20 +69,24 @@
 
       <aside class="col-md-4 blog-sidebar">
         <div class="p-4 mb-3 bg-light rounded">
-          <div class="container" style="background: rgb(255, 204, 175);" >
+          <div class="container" style="background: rgb(255, 204, 175);">
             <br>
             <h5 style="color:rgb(0, 0, 0);">🔎Lenguaje de Programacion:</h5>
             <div class="ng-autocomplete">
               <div class="group">
                 <label for="lenguaje" class="label" style="color:rgb(0, 0, 0);">LENGUAJE</label>
-                <select  class="btn btn-outline-neutral btn-round btn-lg" style="BORDER:  rgb(252, 88, 28) 1px solid;FONT-SIZE: 10pt;width:100% ; background: transparent;color: black;" [(ngModel)]="LenguajeSeleccionado">
-                <option style="background-color:rgb(255, 192, 169)  " *ngFor="let lenguaje of listaLenguajes" >{{lenguaje.lenguajes}}</option>
-              </select>
-              <button class="btn btn-round" style=" FONT-SIZE: 11pt;background: rgb(252, 88, 28);display:block;margin-left: auto;margin-right: auto;" (click)="buscarByLenguaje()"><i
-                class="fa fa-search"></i>
-            </button>
-             
-      
+                <select class="btn btn-outline-neutral btn-round btn-lg"
+                  style="BORDER:  rgb(252, 88, 28) 1px solid;FONT-SIZE: 10pt;width:100% ; background: transparent;color: black;"
+                  [(ngModel)]="LenguajeSeleccionado">
+                  <option style="background-color:rgb(255, 192, 169)  " *ngFor="let lenguaje of listaLenguajes">
+                    {{lenguaje.lenguajes}}</option>
+                </select>
+                <button class="btn btn-round"
+                  style=" FONT-SIZE: 11pt;background: rgb(252, 88, 28);display:block;margin-left: auto;margin-right: auto;"
+                  (click)="buscarByLenguaje()"><i class="fa fa-search"></i>
+                </button>
+
+
               </div>
             </div>
             <br>

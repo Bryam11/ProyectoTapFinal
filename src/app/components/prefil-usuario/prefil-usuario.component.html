@@ -306,4 +306,19 @@
     <br>
     <br>
     <br> -->
+
+    <button type="submit" class="button1" (click)="open(classic)">Vista Previa</button>
+    <br>
+    <ng-template #classic let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h5 class="modal-title text-center">Vista Preview</h5>
+            <button type="button" class="close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div>
+            Bienvenido A su Dashboard aqui podra editar su usario o ingresar una nueva publicacion
+        </div>
+
+    </ng-template>
 </div>

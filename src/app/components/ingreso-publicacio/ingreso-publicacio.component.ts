@@ -14,7 +14,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./ingreso-publicacio.component.css']
 })
 export class IngresoPublicacioComponent implements OnInit {
-  //DECLARACION DE VARIABLES
+
+  // DECLARACION DE VARIABLES
   showMensaje = false;
   tipoSeleccionada = '';
   publicacion: Publicaciones = {};
@@ -31,9 +32,9 @@ export class IngresoPublicacioComponent implements OnInit {
     this.Listarlenjuages();
     this.usuario.usuario = localStorage.getItem('user');
   }
- 
 
-  //METODO PARA LISTAR LENGUAJES DE PROGRAMACION
+
+  // METODO PARA LISTAR LENGUAJES DE PROGRAMACION
   Listarlenjuages() {
     this.mostrarToast();
     this.lenguajeservice.listarlenguajesUsingGET().subscribe(data => {
@@ -41,21 +42,22 @@ export class IngresoPublicacioComponent implements OnInit {
     })
   }
 
-  //METODO PARA MOSTRAR MENSAJE TOAST DE BIENVENIDA (BIENVENIDO PARA CREAR PUBLICACION)
+
+  // METODO PARA MOSTRAR MENSAJE TOAST DE BIENVENIDA (BIENVENIDO PARA CREAR PUBLICACION)
   mostrarToast() {
     var toast = document.getElementById('mitoast');
     toast.className = 'mostrar';
     setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 6000);
   }
 
-  //METODO PARA MOSTRAR MENSAJE TOAST DE CONFIRMACION (PUBLICACION CREADA CORRECTAMENTE)
+  // METODO PARA MOSTRAR MENSAJE TOAST DE CONFIRMACION (PUBLICACION CREADA CORRECTAMENTE)
   mostrarToastPubli() {
     var toast = document.getElementById('mitoastpubli');
     toast.className = 'mostrar';
     setTimeout(function () { toast.className = toast.className.replace('mostrar', ''); }, 6000);
   }
 
-  //METODO PARA MOSTRAR MENSJE TOAST DE VALIDACION (LLENAR TODOS LOS CAMPOS)
+  // METODO PARA MOSTRAR MENSJE TOAST DE VALIDACION (LLENAR TODOS LOS CAMPOS)
   mostrarToastVali() {
     var toast = document.getElementById('mitoastvali');
     toast.className = 'mostrar';
@@ -63,17 +65,18 @@ export class IngresoPublicacioComponent implements OnInit {
   }
 
 
-  //METODO PARA CERRAR EL MENSAJE TOAST
+  // METODO PARA CERRAR EL MENSAJE TOAST
   cerrarToast() {
     var toast = document.getElementById('mitoast');
     toast.className = 'cerrar';
     toast.className = toast.className.replace('cerrar', '');
   }
 
-  //METODO PARA GUARDAR UNA PUBLICACION NUEVA
+  // METODO PARA GUARDAR UNA PUBLICACION NUEVA
   guardarPublicacion() {
     if (this.publicacion.ide == undefined || this.publicacion.codigo == undefined || this.publicacion.descripcion == undefined
       || this.publicacion.fecha == undefined || this.LenguajeSeleccionado== undefined || this.publicacion.titulo == undefined
+
       || this.usuario.usuario == undefined) {
       this.mostrarToastVali();
     } else {
@@ -84,6 +87,8 @@ export class IngresoPublicacioComponent implements OnInit {
     }
   }
 
+  
+  // METODO PARA ABRIR UNA VENTANA Y VISUALIZAR LA PUBLICACION ANTE DE GUARDARLA
   open(content, type) {
     if (type === 'sm') {
       console.log('aici');
@@ -101,6 +106,7 @@ export class IngresoPublicacioComponent implements OnInit {
     }
   }
 
+  // METODO PARA UTILIZAR EL ESC Y CERRARR LA VENTANA DE PREVISUALIZACION DE LA VENTANA
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
