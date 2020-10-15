@@ -50,6 +50,7 @@ export class BlogComponent implements OnInit {
     this.personaServicio.listarPersonasUsingGET().subscribe(data => {
       this.ListaPersonas = data;
     })
+    this.ListaPersonas = [];
   }
 
   // metodo para buscar por codigo y mostrar
@@ -57,6 +58,8 @@ export class BlogComponent implements OnInit {
     this.personaServicio.likeByCodigoUsingGET(this.searchCodigo).subscribe(data => {
       this.ListaPersonas = data;
     })
+
+    this.ListaPersonas = [];
   }
 
   // metodo para buscar por descripcion y mostrar
@@ -64,6 +67,8 @@ export class BlogComponent implements OnInit {
     this.personaServicio.likeByDescripcionUsingGET(this.searchCodigo).subscribe(data => {
       this.ListaPersonas = data;
     })
+
+    this.ListaPersonas = [];
   }
  
   // traemos todos los lenguajes existentes en la base 
@@ -81,6 +86,7 @@ export class BlogComponent implements OnInit {
     this.personaServicio.listarPersonasbylenguajeUsingGET(this.LenguajeSeleccionado).subscribe(data => {
       this.ListaPersonas = data;
     })
+    this.ListaPersonas = [];
   }
 
 }

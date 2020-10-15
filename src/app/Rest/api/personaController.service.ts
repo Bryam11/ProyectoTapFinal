@@ -10,19 +10,17 @@
  * Do not edit the class manually.
  *//* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional } from '@angular/core';
-import {
-    HttpClient, HttpHeaders, HttpParams,
-    HttpResponse, HttpEvent
-} from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec } from '../encoder';
+import { Inject, Injectable, Optional }                      from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams,
+         HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
-import { Observable } from 'rxjs';
+import { Observable }                                        from 'rxjs';
 
 import { Persona } from '../model/persona';
 
-import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
-import { Configuration } from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
+import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
@@ -32,7 +30,7 @@ export class PersonaControllerService {
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -73,7 +71,7 @@ export class PersonaControllerService {
     public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, titulo?: string, usuario?: string, observe?: 'body', reportProgress?: boolean): Observable<Persona>;
     public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, titulo?: string, usuario?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Persona>>;
     public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, titulo?: string, usuario?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Persona>>;
-    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, titulo?: string, usuario?: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public anadirPublicacionPersonaUsingPUT(IDE?: string, codigo?: string, descripcion?: string, fecha?: string, lenguaje?: string, titulo?: string, usuario?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -82,7 +80,7 @@ export class PersonaControllerService {
 
 
 
-        let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (IDE !== undefined && IDE !== null) {
             queryParameters = queryParameters.set('IDE', <any>IDE);
         }
@@ -120,7 +118,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Persona>('put', `${this.basePath}/persona/InsertarPublicacionByUsuario`,
+        return this.httpClient.request<Persona>('put',`${this.basePath}/persona/InsertarPublicacionByUsuario`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -141,10 +139,10 @@ export class PersonaControllerService {
     public cargarUsuarioUsingGET(usuario?: string, observe?: 'body', reportProgress?: boolean): Observable<Persona>;
     public cargarUsuarioUsingGET(usuario?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Persona>>;
     public cargarUsuarioUsingGET(usuario?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Persona>>;
-    public cargarUsuarioUsingGET(usuario?: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public cargarUsuarioUsingGET(usuario?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
-        let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (usuario !== undefined && usuario !== null) {
             queryParameters = queryParameters.set('usuario', <any>usuario);
         }
@@ -164,7 +162,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Persona>('get', `${this.basePath}/persona/VerUsuarioEditar`,
+        return this.httpClient.request<Persona>('get',`${this.basePath}/persona/VerUsuarioEditar`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -186,11 +184,11 @@ export class PersonaControllerService {
     public comprobarLogueoUsingGET(contrasea?: string, usuario?: string, observe?: 'body', reportProgress?: boolean): Observable<Persona>;
     public comprobarLogueoUsingGET(contrasea?: string, usuario?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Persona>>;
     public comprobarLogueoUsingGET(contrasea?: string, usuario?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Persona>>;
-    public comprobarLogueoUsingGET(contrasea?: string, usuario?: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public comprobarLogueoUsingGET(contrasea?: string, usuario?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
-        let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (contrasea !== undefined && contrasea !== null) {
             queryParameters = queryParameters.set('Contraseña', <any>contrasea);
         }
@@ -213,7 +211,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Persona>('get', `${this.basePath}/persona/Comprobarlogueo`,
+        return this.httpClient.request<Persona>('get',`${this.basePath}/persona/Comprobarlogueo`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -240,7 +238,7 @@ export class PersonaControllerService {
     public editarUsuarioUsingPUT(apellido?: string, edad?: string, email?: string, foto?: string, nombre?: string, pais?: string, usuario?: string, observe?: 'body', reportProgress?: boolean): Observable<Persona>;
     public editarUsuarioUsingPUT(apellido?: string, edad?: string, email?: string, foto?: string, nombre?: string, pais?: string, usuario?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Persona>>;
     public editarUsuarioUsingPUT(apellido?: string, edad?: string, email?: string, foto?: string, nombre?: string, pais?: string, usuario?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Persona>>;
-    public editarUsuarioUsingPUT(apellido?: string, edad?: string, email?: string, foto?: string, nombre?: string, pais?: string, usuario?: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public editarUsuarioUsingPUT(apellido?: string, edad?: string, email?: string, foto?: string, nombre?: string, pais?: string, usuario?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -249,7 +247,7 @@ export class PersonaControllerService {
 
 
 
-        let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (apellido !== undefined && apellido !== null) {
             queryParameters = queryParameters.set('apellido', <any>apellido);
         }
@@ -287,7 +285,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Persona>('put', `${this.basePath}/persona/EditarUsuario`,
+        return this.httpClient.request<Persona>('put',`${this.basePath}/persona/EditarUsuario`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -307,7 +305,7 @@ export class PersonaControllerService {
     public findMaxIdPersonaUsingGET(observe?: 'body', reportProgress?: boolean): Observable<number>;
     public findMaxIdPersonaUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<number>>;
     public findMaxIdPersonaUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<number>>;
-    public findMaxIdPersonaUsingGET(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public findMaxIdPersonaUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -324,7 +322,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<number>('get', `${this.basePath}/persona/findMaxIdPersona`,
+        return this.httpClient.request<number>('get',`${this.basePath}/persona/findMaxIdPersona`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -344,7 +342,7 @@ export class PersonaControllerService {
     public guardarPersonaUsingPOST(body: Persona, observe?: 'body', reportProgress?: boolean): Observable<Persona>;
     public guardarPersonaUsingPOST(body: Persona, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Persona>>;
     public guardarPersonaUsingPOST(body: Persona, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Persona>>;
-    public guardarPersonaUsingPOST(body: Persona, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public guardarPersonaUsingPOST(body: Persona, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling guardarPersonaUsingPOST.');
@@ -370,7 +368,7 @@ export class PersonaControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<Persona>('post', `${this.basePath}/persona`,
+        return this.httpClient.request<Persona>('post',`${this.basePath}/persona`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -391,10 +389,10 @@ export class PersonaControllerService {
     public likeByCodigoUsingGET(codigo?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
     public likeByCodigoUsingGET(codigo?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
     public likeByCodigoUsingGET(codigo?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public likeByCodigoUsingGET(codigo?: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public likeByCodigoUsingGET(codigo?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
-        let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (codigo !== undefined && codigo !== null) {
             queryParameters = queryParameters.set('codigo', <any>codigo);
         }
@@ -414,7 +412,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Persona>>('get', `${this.basePath}/persona/likebyCodigo`,
+        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/likebyCodigo`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -435,10 +433,10 @@ export class PersonaControllerService {
     public likeByDescripcionUsingGET(descripcion?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
     public likeByDescripcionUsingGET(descripcion?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
     public likeByDescripcionUsingGET(descripcion?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public likeByDescripcionUsingGET(descripcion?: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public likeByDescripcionUsingGET(descripcion?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
-        let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (descripcion !== undefined && descripcion !== null) {
             queryParameters = queryParameters.set('descripcion', <any>descripcion);
         }
@@ -458,7 +456,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Persona>>('get', `${this.basePath}/persona/likebyDescripcion`,
+        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/likebyDescripcion`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -478,7 +476,7 @@ export class PersonaControllerService {
     public listarPersonasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
     public listarPersonasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
     public listarPersonasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasUsingGET(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public listarPersonasUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -495,7 +493,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Persona>>('get', `${this.basePath}/persona/list`,
+        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/list`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -515,10 +513,10 @@ export class PersonaControllerService {
     public listarPersonasbylenguajeUsingGET(lenguaje?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
     public listarPersonasbylenguajeUsingGET(lenguaje?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
     public listarPersonasbylenguajeUsingGET(lenguaje?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public listarPersonasbylenguajeUsingGET(lenguaje?: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public listarPersonasbylenguajeUsingGET(lenguaje?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
-        let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (lenguaje !== undefined && lenguaje !== null) {
             queryParameters = queryParameters.set('Lenguaje', <any>lenguaje);
         }
@@ -538,7 +536,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Persona>>('get', `${this.basePath}/persona/listbyLenguaje`,
+        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/listbyLenguaje`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -559,10 +557,10 @@ export class PersonaControllerService {
     public verusuarioUsingGET(usuario?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
     public verusuarioUsingGET(usuario?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
     public verusuarioUsingGET(usuario?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
-    public verusuarioUsingGET(usuario?: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public verusuarioUsingGET(usuario?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
-        let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (usuario !== undefined && usuario !== null) {
             queryParameters = queryParameters.set('usuario', <any>usuario);
         }
@@ -582,7 +580,7 @@ export class PersonaControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Persona>>('get', `${this.basePath}/persona/VerUsuario`,
+        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/persona/VerUsuario`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

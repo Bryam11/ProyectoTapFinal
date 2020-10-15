@@ -10,18 +10,16 @@
  * Do not edit the class manually.
  *//* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional } from '@angular/core';
-import {
-    HttpClient, HttpHeaders, HttpParams,
-    HttpResponse, HttpEvent
-} from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec } from '../encoder';
+import { Inject, Injectable, Optional }                      from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams,
+         HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
-import { Observable } from 'rxjs';
+import { Observable }                                        from 'rxjs';
 
 
-import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
-import { Configuration } from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
+import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
@@ -31,7 +29,7 @@ export class BasicErrorControllerService {
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -65,7 +63,7 @@ export class BasicErrorControllerService {
     public errorUsingDELETE(observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: any; }>;
     public errorUsingDELETE(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: any; }>>;
     public errorUsingDELETE(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: any; }>>;
-    public errorUsingDELETE(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public errorUsingDELETE(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -82,7 +80,7 @@ export class BasicErrorControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<{ [key: string]: any; }>('delete', `${this.basePath}/error`,
+        return this.httpClient.request<{ [key: string]: any; }>('delete',`${this.basePath}/error`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -101,7 +99,7 @@ export class BasicErrorControllerService {
     public errorUsingGET(observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: any; }>;
     public errorUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: any; }>>;
     public errorUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: any; }>>;
-    public errorUsingGET(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public errorUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -118,7 +116,7 @@ export class BasicErrorControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<{ [key: string]: any; }>('get', `${this.basePath}/error`,
+        return this.httpClient.request<{ [key: string]: any; }>('get',`${this.basePath}/error`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -137,7 +135,7 @@ export class BasicErrorControllerService {
     public errorUsingHEAD(observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: any; }>;
     public errorUsingHEAD(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: any; }>>;
     public errorUsingHEAD(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: any; }>>;
-    public errorUsingHEAD(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public errorUsingHEAD(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -154,7 +152,7 @@ export class BasicErrorControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<{ [key: string]: any; }>('head', `${this.basePath}/error`,
+        return this.httpClient.request<{ [key: string]: any; }>('head',`${this.basePath}/error`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -173,7 +171,7 @@ export class BasicErrorControllerService {
     public errorUsingOPTIONS(observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: any; }>;
     public errorUsingOPTIONS(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: any; }>>;
     public errorUsingOPTIONS(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: any; }>>;
-    public errorUsingOPTIONS(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public errorUsingOPTIONS(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -190,7 +188,7 @@ export class BasicErrorControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<{ [key: string]: any; }>('options', `${this.basePath}/error`,
+        return this.httpClient.request<{ [key: string]: any; }>('options',`${this.basePath}/error`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -209,7 +207,7 @@ export class BasicErrorControllerService {
     public errorUsingPATCH(observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: any; }>;
     public errorUsingPATCH(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: any; }>>;
     public errorUsingPATCH(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: any; }>>;
-    public errorUsingPATCH(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public errorUsingPATCH(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -226,7 +224,7 @@ export class BasicErrorControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<{ [key: string]: any; }>('patch', `${this.basePath}/error`,
+        return this.httpClient.request<{ [key: string]: any; }>('patch',`${this.basePath}/error`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -245,7 +243,7 @@ export class BasicErrorControllerService {
     public errorUsingPOST(observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: any; }>;
     public errorUsingPOST(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: any; }>>;
     public errorUsingPOST(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: any; }>>;
-    public errorUsingPOST(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public errorUsingPOST(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -262,7 +260,7 @@ export class BasicErrorControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<{ [key: string]: any; }>('post', `${this.basePath}/error`,
+        return this.httpClient.request<{ [key: string]: any; }>('post',`${this.basePath}/error`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -281,7 +279,7 @@ export class BasicErrorControllerService {
     public errorUsingPUT(observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: any; }>;
     public errorUsingPUT(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: any; }>>;
     public errorUsingPUT(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: any; }>>;
-    public errorUsingPUT(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public errorUsingPUT(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -298,7 +296,7 @@ export class BasicErrorControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<{ [key: string]: any; }>('put', `${this.basePath}/error`,
+        return this.httpClient.request<{ [key: string]: any; }>('put',`${this.basePath}/error`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
